@@ -91,8 +91,15 @@ h1 .out{color:transparent;-webkit-text-stroke:2px var(--film-ink)}
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
 .fact{padding:44px 24px 40px 0}
 .fact + .fact{padding-left:24px;border-left:1px solid var(--line)}
-.fact b{display:block;font:400 clamp(2.8rem,7vw,6rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.fact span{display:block;margin-top:12px;color:var(--mute);max-width:24ch}
+.fact b{display:block;font:400 clamp(2.5rem,5.2vw,4.4rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fact .q{font:600 12px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--paper);margin-bottom:16px;min-height:2.7em}
+.fact strong{display:block;margin-top:14px;font:700 1.0625rem/1.3 var(--body)}
+.fact span{display:block;margin-top:6px;color:var(--mute);max-width:30ch}
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;counter-reset:st}
+.steps li{counter-increment:st;border-top:3px solid var(--film);padding:14px 12px 0 0;font:600 1rem/1.3 var(--body)}
+.steps li::before{content:"0" counter(st);display:block;font:600 12px/1 var(--mono);color:var(--film-ink);margin-bottom:10px}
+.steps li + li{border-top-color:var(--line)}
+.steps li small{display:block;font:400 .8125rem/1.4 var(--body);color:var(--mute);margin-top:6px}
 
 /* ---------- Khối chung ---------- */
 section{padding-block:96px 0}
@@ -212,6 +219,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   section{padding-block:68px 0}
   .chan{padding-block:64px 0}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0}
+  .fact .q{min-height:0}
   .idx a{grid-template-columns:44px minmax(0,1fr)}
   .idx a span:not(.no){grid-column:2}
   .genre{padding-block:80px 0}
@@ -235,7 +244,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <div class="top">
   <a class="id" href="#top"><span class="rec"></span>NPN · Portfolio 2026</a>
   <nav>
-    <a href="#top10">Top 10</a>
+    <a href="#top10">Video tốt nhất</a>
+    <a href="#quy-trinh">Quy trình</a>
     <a href="#the-loai">Thể loại</a>
     <a class="go" href="#lien-he">Liên hệ</a>
   </nav>
@@ -246,11 +256,11 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="hero-in wrap">
     <div class="tcode"><span class="rec"></span><span id="tcode">00:00:00:00</span></div>
     <h1 class="display"><span>Nguyễn</span><span class="out">Phạm Nguyên</span></h1>
-    <div class="role"><b>Video Producer</b><span>Từ video ngắn đến video dài hơn 2 tiếng</span></div>
-    <p class="pitch">Tư liệu lịch sử, 3D, story, phim AI và video ngắn. Hơn 200 video đã đăng, hơn 7 triệu lượt xem đếm được. Tôi tự xây hai kênh YouTube từ con số 0 và phụ trách hậu kỳ cho hai kênh khác.</p>
+    <div class="role"><b>Video Producer</b><span>Làm video có người xem, giao đều mỗi ngày</span></div>
+    <p class="pitch">Bạn giao đề bài, tôi trả về video hoàn chỉnh. Sáu tháng gần nhất tôi giao hơn 500 video, từ video ngắn triệu lượt xem đến video dài hơn 2 tiếng. Mọi con số trên trang này đều bấm ra được video gốc.</p>
     <div class="cta">
-      <a class="btn main" href="#top10"><span class="tri"></span>Xem 10 video cao nhất</a>
-      <a class="btn ghost" href="#the-loai">Xem theo thể loại</a>
+      <a class="btn main" href="#top10"><span class="tri"></span>Xem video tốt nhất</a>
+      <a class="btn ghost" href="#the-loai">Chọn loại video bạn cần</a>
     </div>
   </div>
 </header>
@@ -258,19 +268,19 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <div class="tape" aria-hidden="true"><div id="tape"></div></div>
 
 <div class="wrap">
-  <div class="facts" id="facts">
-    <div class="fact"><b>7,5M</b><span>hơn 7,5 triệu lượt xem, đếm trên Facebook, TikTok và YouTube</span></div>
-    <div class="fact"><b data-count="107" data-suffix=" GIỜ">107 GIỜ</b><span>video dài đã đăng trên YouTube, gồm 92 video</span></div>
-    <div class="fact"><b data-tc="8804">2:26:44</b><span>video dài nhất đã hoàn thiện</span></div>
-    <div class="fact"><b data-count="21">21</b><span>video mỗi tuần, tính trung bình trong 6 tháng</span></div>
+  <div class="facts reveal" id="facts">
+    <div class="fact"><div class="q">Video làm ra có người xem không?</div><b>7,5M</b><strong>Hơn 7,5 triệu lượt xem</strong><span>Đếm trên Facebook, TikTok và YouTube. Video cao nhất đạt 1,1 triệu, không chạy quảng cáo.</span></div>
+    <div class="fact"><div class="q">Làm có nhanh không?</div><b>3 / NGÀY</b><strong>Trung bình 3 video mỗi ngày</strong><span>21 video mỗi tuần, hơn 500 video trong 6 tháng.</span></div>
+    <div class="fact"><div class="q">Có kham nổi video dài không?</div><b>107 GIỜ</b><strong>92 video dài trong 9 tuần</strong><span>Đều đã lên YouTube. Video dài nhất 2 tiếng 26 phút.</span></div>
+    <div class="fact"><div class="q">Có tự lo được cả một kênh không?</div><b>0 → 17K</b><strong>Xây kênh từ con số 0</strong><span>17K người theo dõi Facebook bằng traffic tự nhiên, cùng hai kênh YouTube tự dựng từ đầu.</span></div>
   </div>
 </div>
 
 <section class="wrap" id="top10">
   <div class="reveal">
     <div class="label">Bảng xếp hạng</div>
-    <h2 class="display">10 video <em>cao nhất</em></h2>
-    <p class="sub">Năm video ngắn và năm video dài có lượt xem cao nhất. Bấm vào từng dòng để mở video gốc và tự kiểm tra con số.</p>
+    <h2 class="display">Đừng tin lời tôi, <em>hãy bấm xem</em></h2>
+    <p class="sub">Mười video có lượt xem cao nhất: năm video ngắn, năm video dài. Mỗi dòng mở thẳng video gốc để bạn tự kiểm tra con số.</p>
   </div>
   <div class="rank2">
     <div class="reveal"><h3 class="display">Video ngắn</h3><ol class="rk tall" id="rk-short"></ol></div>
@@ -278,9 +288,25 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   </div>
 </section>
 
+<section class="wrap reveal" id="quy-trinh">
+  <div class="label">Phạm vi công việc</div>
+  <h2 class="display">Giao đề bài, <em>nhận video</em></h2>
+  <p class="sub">Tôi tự làm được trọn các khâu dưới đây, từ lúc chưa có gì đến lúc video lên sóng.</p>
+  <ol class="steps">
+    <li>Nghiên cứu chủ đề</li>
+    <li>Ý tưởng</li>
+    <li>Kịch bản</li>
+    <li>Hình ảnh<small>Tìm footage, tạo ảnh và video AI</small></li>
+    <li>Dựng</li>
+    <li>Âm thanh<small>Voice, subtitle, sound effect</small></li>
+    <li>Xuất bản</li>
+  </ol>
+  <div class="tools" aria-label="Công cụ" id="tools"></div>
+</section>
+
 <section class="wrap reveal" id="the-loai">
   <div class="label">Thể loại</div>
-  <h2 class="display">Xem theo <em>thể loại</em></h2>
+  <h2 class="display">Bạn cần <em>loại video nào?</em></h2>
   <ul class="earlier idx" id="idx"></ul>
 </section>
 
@@ -290,7 +316,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="wrap">
     <div class="label">Liên hệ</div>
     <h2 class="display">Gọi tôi đến phỏng vấn</h2>
-    <p>Thông tin liên hệ có trong CV gửi kèm.</p>
+    <p>Cần xem tôi làm thật thế nào, hãy giao một đề bài thử. Thông tin liên hệ có trong CV gửi kèm.</p>
     <a class="btn" href="#top">Xem lại từ đầu ↑</a>
     <div class="note">Lượt xem đếm ngày 24/11/2026 từ trang công khai của YouTube, TikTok và Facebook. Riêng Facebook tính 10 reel công khai và các reel trong ảnh chụp trang Reels, chưa phải toàn bộ.</div>
   </div>
@@ -300,16 +326,15 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
-const TAPE = ["Tư liệu lịch sử", "3D", "Story", "Phim AI", "Video ngắn", "Dài nhất 2:26:44", "21 video mỗi tuần", "Xây kênh từ 0", "Hậu kỳ"];
+const TAPE = ["Tư liệu lịch sử", "3D", "Story", "Phim AI", "Video ngắn", "7,5 triệu lượt xem", "3 video mỗi ngày", "Dài nhất 2:26:44", "Xây kênh từ 0", "Hậu kỳ"];
 const D = "https://drive.google.com/";
 const KKH = "https://www.tiktok.com/@khoekhoahoc_/video/";
 
 // Bảng xếp hạng
-const FBR = "https://www.facebook.com/khoekhoahoc/reels/";
 const TOP_SHORT = [
-  { img: "assets/fb-a.jpg", href: FBR, views: "1,1 TRIỆU", title: "Bụng đói sống lâu hơn?", where: "Facebook Reels" },
-  { img: "", href: FBR, views: "925K", title: "Quá trình sinh thường", where: "Facebook Reels" },
-  { img: "assets/fb-b.jpg", href: FBR, views: "923K", title: "Rửa bát gây ung thư?", where: "Facebook Reels" },
+  { img: "assets/fb-a.jpg", href: "https://www.facebook.com/reel/2321950988334831", views: "1,1 TRIỆU", title: "Tại sao để bụng đói khi ngủ lại sống lâu hơn?", where: "Facebook Reels" },
+  { img: "", href: "https://www.facebook.com/reel/27348891024809976", views: "925K", title: "Quá trình sinh thường", where: "Facebook Reels" },
+  { img: "assets/fb-b.jpg", href: "https://www.facebook.com/reel/1937753960222215", views: "923K", title: "5 thói quen rửa bát này nguy hiểm đến mức nào?", where: "Facebook Reels" },
   { img: "assets/fb-1.jpg", href: "https://www.facebook.com/reel/1791459215620521", views: "738K", title: "5 chi tiết về ngày đèn đỏ mà 90% các bạn gái thường bỏ qua", where: "Facebook Reels" },
   { img: "assets/fb-2.jpg", href: "https://www.facebook.com/reel/2111565750244143", views: "694K", title: "Bạn trải qua những gì khi mang thai?", where: "Facebook Reels" },
 ];
@@ -403,9 +428,9 @@ const GENRES = [
     links: [
       { name: "Kênh gaming, giải trí", note: "YouTube", href: "https://www.youtube.com/@Kenji_036", go: "Mở kênh →" },
       { name: "Toàn bộ kho video", note: "Tất cả video và số liệu gốc lưu trên Google Drive.", href: D + "drive/folders/1ww9xESf19qSHHBF43Muxs1xZRjwSoeH5", go: "Mở Drive →" },
-    ],
-    tools: ["CapCut", "Canva", "KineMaster", "Kling AI", "Veo 3", "Grok", "PixVerse", "Flow", "MiniMax", "Gemini", "ChatGPT", "Nano Banana"] },
+    ] },
 ];
+const TOOLS = ["CapCut", "Canva", "KineMaster", "Kling AI", "Veo 3", "Grok", "PixVerse", "Flow", "MiniMax", "Gemini", "ChatGPT", "Nano Banana"];
 /* ====== HẾT PHẦN NỘI DUNG ====== */
 
 const p2 = n => String(n).padStart(2, "0");
@@ -439,6 +464,8 @@ else tcode.textContent = "REC";
 const rk = (v, i, img, href, views, meta) => `<li><a href="${href}" ${ext}><span class="n">${i + 1}</span><span class="thumb">${img ? `<img loading="lazy" alt="" src="${img}">` : ""}</span><span><b>${views}</b><span class="t">${esc(v.title)}</span><span class="m">${meta}</span></span></a></li>`;
 document.getElementById("rk-short").innerHTML = TOP_SHORT.map((v, i) => rk(v, i, v.img, v.href, v.views, `${v.where} · Khỏe Khoa Học`)).join("");
 document.getElementById("rk-long").innerHTML = TOP_LONG.map((v, i) => rk(v, i, `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`, yt(v.id), num(v.views), `YouTube · ${v.where} · ${tc(v.sec)}`)).join("");
+
+document.getElementById("tools").innerHTML = TOOLS.map(t => `<span>${t}</span>`).join("");
 
 // Mục lục và từng thể loại
 const dt = id => `assets/${id}.jpg`;
@@ -482,7 +509,6 @@ GENRES.forEach((g, gi) => {
   });
 
   if (g.links) sec.append(el("ul", { class: "earlier reveal", style: "margin-top:56px" }, g.links.map(l => `<li><a href="${l.href}" ${ext}><strong>${l.name}</strong><span>${l.note}</span><span class="arrow">${l.go}</span></a></li>`).join("")));
-  if (g.tools) sec.append(el("div", { class: "tools", "aria-label": "Công cụ" }, g.tools.map(t => `<span>${t}</span>`).join("")));
   main.append(sec);
 });
 
@@ -496,7 +522,7 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
 
   document.querySelectorAll(".reveal").forEach(sec => {
-    const items = sec.querySelectorAll(":scope > .label, :scope > h2, :scope > h3, :scope > .sub, :scope > .no, :scope > .gh, :scope > .chan-head, :scope > .grp-head, :scope > p, .rk li, .card, .short, .proof > *, .models > *, :scope > li, .idx li");
+    const items = sec.querySelectorAll(":scope > .label, :scope > h2, :scope > h3, :scope > .sub, :scope > .no, :scope > .gh, :scope > .chan-head, :scope > .grp-head, :scope > p, .rk li, .card, .short, .proof > *, .models > *, :scope > li, .idx li, .steps li, .fact");
     if (items.length) gsap.from(items, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 82%", once: true } });
   });
 
