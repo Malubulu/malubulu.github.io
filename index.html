@@ -219,15 +219,13 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .more{margin:36px 0 0;color:var(--mute);font-size:1.0625rem}
 .more a{font:400 1.5rem/1 var(--display);color:var(--film-ink);text-decoration:none;margin-left:18px;padding:8px 0;display:inline-block}
 .more a:hover{text-decoration:underline;text-underline-offset:5px}
-.chans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px}
-.chan{display:block;padding:28px 24px 26px 0;text-decoration:none;color:inherit}
-.chan + .chan{padding-left:24px;border-left:1px solid var(--line)}
-.chan:nth-child(3n+1){padding-left:0;border-left:0}
-.chan:nth-child(n+4){border-top:1px solid var(--line)}
-.chan small{display:block;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--film-ink)}
-.chan b{display:block;margin-top:14px;font:400 clamp(1.5rem,2.4vw,2rem)/1.1 var(--display);letter-spacing:.01em}
-.chan span{display:block;margin-top:10px;color:var(--mute)}
-.chan:hover b{color:var(--film-ink)}
+.chans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.chn{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit;transition:border-color .2s,background .2s}
+.chn:hover{border-color:var(--film);background:rgba(255,255,255,.03)}
+.chn img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;background:#222}
+.chn span{min-width:0}
+.chn b{display:block;font:700 1.0625rem/1.25 var(--body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chn small{display:block;margin-top:5px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--film-ink)}
 .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
 .shots figure{margin:0}
 .shots img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-radius:12px;border:1px solid var(--line)}
@@ -259,12 +257,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
   .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
   .shots{grid-template-columns:minmax(0,1fr)}
-  .chans{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .chan{padding:20px 12px 18px 0}
-  .chan b{font-size:1.25rem;overflow-wrap:anywhere}
-  .chan:nth-child(n){padding-left:12px;border-left:1px solid var(--line)}
-  .chan:nth-child(odd){padding-left:0;border-left:0}
-  .chan:nth-child(n+3){border-top:1px solid var(--line)}
+  .chans{grid-template-columns:minmax(0,1fr);gap:10px}
   .more a{margin-left:12px}
   .pick .play{display:none}
   .pick .kind{font-size:10.5px;padding:6px 7px}
@@ -397,12 +390,12 @@ const SIX = [
 ];
 // Kênh đã đăng (kênh công ty không nêu tên, chỉ gắn link)
 const CHANNELS = [
-  ["Facebook", "Khỏe Khoa Học", "17 nghìn theo dõi", "https://www.facebook.com/khoekhoahoc"],
-  ["TikTok", "@khoekhoahoc_", "122 video", "https://www.tiktok.com/@khoekhoahoc_"],
-  ["YouTube", "One Man's War", "11 video", "https://www.youtube.com/@OneMansWar.WW2"],
-  ["YouTube", "Same Ground", "3 video", "https://www.youtube.com/@samegroundmaps"],
-  ["TikTok · Dake Group", "Kênh mẹ và bé 1", "231 video · 3,9 triệu lượt xem", "https://www.tiktok.com/@meohaymebim.dake"],
-  ["TikTok · Dake Group", "Kênh mẹ và bé 2", "224 video", "https://www.tiktok.com/@mebimmattay.dake"],
+  ["Khỏe Khoa Học", "Facebook", "av-fb", "https://www.facebook.com/khoekhoahoc"],
+  ["Khỏe Khoa Học", "TikTok", "av-tt", "https://www.tiktok.com/@khoekhoahoc_"],
+  ["One Man's War", "YouTube", "av-omw", "https://www.youtube.com/@OneMansWar.WW2"],
+  ["Same Ground", "YouTube", "av-sg", "https://www.youtube.com/@samegroundmaps"],
+  ["Mẹo Hay Mẹ Bỉm", "TikTok", "av-d1", "https://www.tiktok.com/@meohaymebim.dake"],
+  ["Mẹ Bỉm Mát Tay", "TikTok", "av-d2", "https://www.tiktok.com/@mebimmattay.dake"],
 ];
 const MORE = [
   ["925 NGHÌN", "https://www.facebook.com/reel/27348891024809976"],
@@ -438,7 +431,7 @@ else tcode.textContent = "REC";
 document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}>
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
-document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chan" href="${c[3]}" ${ext}><small>${c[0]}</small><b>${c[1]}</b><span>${c[2]} →</span></a>`).join("");
+document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("");
 document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
 // Con số nảy từ 0 lên khi cuộn tới
@@ -462,7 +455,7 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.from(".tcode,.role,.exp li,.cta", { y: 24, opacity: 0, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
   document.querySelectorAll(".reveal").forEach(sec => {
-    const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, .chan, :scope > a, :scope > figcaption");
+    const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, .chn, :scope > a, :scope > figcaption");
     gsap.from(items.length ? items : sec, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 85%", once: true } });
   });
   gsap.from(".contact h2", { yPercent: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".contact", start: "top 80%", once: true } });
