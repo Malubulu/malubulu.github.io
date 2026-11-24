@@ -99,7 +99,7 @@ h1 .out{color:var(--paper)}
 .fact b{display:block;font:400 clamp(2.5rem,5.2vw,4.4rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .fact .q{font:600 12px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--paper);margin-bottom:16px;min-height:2.7em}
 .fact strong{display:block;margin-top:14px;font:700 1.0625rem/1.3 var(--body)}
-.fact span{display:block;margin-top:6px;color:var(--mute);max-width:30ch}
+.fact span{display:block;margin-top:12px;color:var(--mute);max-width:26ch}
 .steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;counter-reset:st}
 .steps li{counter-increment:st;border-top:3px solid var(--film);padding:14px 12px 0 0;font:600 1rem/1.3 var(--body)}
 .steps li::before{content:"0" counter(st);display:block;font:600 12px/1 var(--mono);color:var(--film-ink);margin-bottom:10px}
@@ -204,6 +204,23 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .genre .chan-head h3{font-size:clamp(1.7rem,3.8vw,2.8rem)}
 .genre .grp{margin-top:56px}
 
+/* ---------- Sáu video ---------- */
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px;margin-top:40px}
+.pick{display:flex;flex-direction:column;text-decoration:none;min-width:0}
+.pick .kind{position:absolute;left:10px;top:10px;background:var(--c);color:#0b0b0b;font:700 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px;border-radius:4px}
+.pick b{font:400 clamp(2.4rem,4.6vw,3.6rem)/1 var(--display);color:var(--c);margin-top:16px;font-variant-numeric:tabular-nums}
+.pick .s{color:var(--paper);margin-top:6px}
+.pick .r{font:400 12.5px/1.3 var(--mono);color:var(--mute);margin-top:6px}
+.more{margin:36px 0 0;color:var(--mute);font-size:1.0625rem}
+.more a{font:400 1.5rem/1 var(--display);color:var(--film-ink);text-decoration:none;margin-left:18px;padding:8px 0;display:inline-block}
+.more a:hover{text-decoration:underline;text-underline-offset:5px}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
+.shots figure{margin:0}
+.shots img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-radius:12px;border:1px solid var(--line)}
+.shots figcaption{margin-top:14px;color:var(--mute)}
+.shots figcaption b{display:block;font:400 clamp(2.2rem,4.4vw,3.4rem)/1 var(--display);color:var(--film-ink);margin-bottom:8px}
+#so-lieu .tools{margin-top:48px}
+
 /* ---------- Liên hệ ---------- */
 .contact{margin-top:110px;background:var(--film);color:var(--on-film)}
 .contact::before{content:"";display:block;height:26px;background:repeating-linear-gradient(-45deg,#0b0b0b 0 26px,var(--film) 26px 52px)}
@@ -226,6 +243,11 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   section{padding-block:68px 0}
   .chan{padding-block:64px 0}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
+  .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .shots{grid-template-columns:minmax(0,1fr)}
+  .more a{margin-left:12px}
+  .pick .play{display:none}
+  .pick .kind{font-size:10.5px;padding:6px 7px}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0}
   .fact .q{min-height:0}
   .idx a{grid-template-columns:44px minmax(0,1fr)}
@@ -251,9 +273,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <div class="top">
   <a class="id" href="#top"><span class="rec"></span>NPN · Portfolio 2026</a>
   <nav>
-    <a href="#top10">Video tốt nhất</a>
-    <a href="#quy-trinh">Quy trình</a>
-    <a href="#the-loai">Thể loại</a>
+    <a href="#video">Video</a>
+    <a href="#so-lieu">Số liệu</a>
     <a class="go" href="#lien-he">Liên hệ</a>
   </nav>
 </div>
@@ -265,13 +286,12 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <h1 class="display"><span>Nguyễn</span><span class="out">Phạm Nguyên</span></h1>
     <div class="role"><b>Video Producer</b><span>Gần 2 năm làm video, từ video ngắn đến video dài</span></div>
     <ul class="exp">
-      <li><b>Producer<small>Alin · 6 tháng</small></b><span>Video YouTube tiếng Anh cho khán giả quốc tế, dài từ 13 phút đến 2 tiếng 26 phút.</span></li>
-      <li><b>Content Creator<small>Hải Xuyên · 5 tháng</small></b><span>Xây kênh Facebook và TikTok từ con số 0. Facebook đạt 17K người theo dõi trong 2 tháng, reel cao nhất 1,1 triệu lượt xem.</span></li>
-      <li><b>AI Video Editor<small>Dake Group · 1 năm</small></b><span>10 video AI ngắn mỗi ngày cho xây kênh và bán hàng.</span></li>
+      <li><b>Producer<small>Alin · 6 tháng</small></b><span>Video YouTube tiếng Anh, dài từ 13 phút đến 2 tiếng 26 phút.</span></li>
+      <li><b>Content Creator<small>Hải Xuyên · 5 tháng</small></b><span>Xây kênh từ 0 lên 17K người theo dõi. Reel cao nhất 1,1 triệu lượt xem.</span></li>
+      <li><b>AI Video Editor<small>Dake Group · 1 năm</small></b><span>10 video AI ngắn mỗi ngày.</span></li>
     </ul>
     <div class="cta">
-      <a class="btn main" href="#top10"><span class="tri"></span>Xem video tốt nhất</a>
-      <a class="btn ghost" href="#the-loai">Chọn loại video bạn cần</a>
+      <a class="btn main" href="#video"><span class="tri"></span>Xem video nổi bật</a>
     </div>
   </div>
 </header>
@@ -280,56 +300,47 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 
 <div class="wrap">
   <div class="facts reveal" id="facts">
-    <div class="fact"><div class="q">Video làm ra có người xem không?</div><b>7,5M</b><strong>Hơn 7,5 triệu lượt xem</strong><span>Đếm trên Facebook, TikTok và YouTube. Phần lớn đến từ kênh Khỏe Khoa Học, không chạy quảng cáo.</span></div>
-    <div class="fact"><div class="q">Làm có nhanh không?</div><b>18 / TUẦN</b><strong>Nhịp giao bản dựng suốt 6 tháng ở Alin</strong><span>Mỗi ngày làm việc 3 đến 4 bản dựng. Bắt đầu là người dựng, sau đó được giao quản toàn bộ các kênh công ty chỉ định.</span></div>
-    <div class="fact"><div class="q">Làm được video dài không?</div><b>107 GIỜ</b><strong>92 video dài từ khi tôi quản kênh</strong><span>Phần dựng 100% do tôi làm. Video dài nhất 2 tiếng 26 phút.</span></div>
-    <div class="fact"><div class="q">Có tự lo được cả một kênh không?</div><b>0 → 17K</b><strong>Xây kênh từ con số 0 trong 2 tháng</strong><span>17K người theo dõi Facebook bằng traffic tự nhiên, không chạy quảng cáo.</span></div>
+    <div class="fact"><b>7,5M</b><span>lượt xem trên Facebook, TikTok và YouTube</span></div>
+    <div class="fact"><b>18 / TUẦN</b><span>bản dựng mỗi tuần, giữ suốt 6 tháng</span></div>
+    <div class="fact"><b>2:26:44</b><span>video dài nhất đã hoàn thiện</span></div>
+    <div class="fact"><b>0 → 17K</b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
   </div>
 </div>
 
-<section class="wrap" id="top10">
+<section class="wrap" id="video">
   <div class="reveal">
-    <div class="label">Video tốt nhất</div>
-    <h2 class="display">10 video <em>nổi bật</em></h2>
-    <p class="sub">Năm video ngắn có lượt xem cao nhất và năm video dài nổi bật nhất. Mỗi dòng mở thẳng video gốc để bạn tự kiểm tra.</p>
+    <div class="label">Video nổi bật</div>
+    <h2 class="display">Mỗi thể loại, <em>một video</em></h2>
   </div>
-  <div class="rank2">
-    <div class="reveal"><h3 class="display">Video ngắn, theo lượt xem</h3><ol class="rk tall" id="rk-short"></ol></div>
-    <div class="reveal"><h3 class="display">Video dài nổi bật</h3><ol class="rk" id="rk-long"></ol></div>
-  </div>
+  <div class="six reveal" id="six"></div>
+  <p class="more reveal">Reel khác trên cùng kênh: <span id="more"></span></p>
 </section>
 
-<section class="wrap reveal" id="quy-trinh">
-  <div class="label">Phạm vi công việc</div>
-  <h2 class="display">Tôi làm <em>những khâu nào</em></h2>
-  <p class="sub">Phần dựng 100% do tôi làm: dựng, ghép voice, phụ đề, tìm source, đồ hoạ. Kịch bản và thumbnail tuỳ kênh: có kênh tôi làm, có kênh bộ phận khác làm. Vai trò cụ thể ghi ở từng kênh bên dưới.</p>
-  <ol class="steps">
-    <li>Nghiên cứu chủ đề</li>
-    <li>Ý tưởng</li>
-    <li>Kịch bản</li>
-    <li>Hình ảnh<small>Tìm footage, tạo ảnh và video AI</small></li>
-    <li>Dựng</li>
-    <li>Âm thanh<small>Voice, subtitle, sound effect</small></li>
-    <li>Xuất bản</li>
-  </ol>
+<section class="wrap" id="so-lieu">
+  <div class="reveal">
+    <div class="label">Số liệu thật</div>
+    <h2 class="display">Ảnh chụp <em>từ kênh</em></h2>
+  </div>
+  <div class="shots">
+    <figure class="reveal">
+      <a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E.jpg"></a>
+      <figcaption><b>0 → 17K</b>Kênh Khỏe Khoa Học: người theo dõi Facebook sau 2 tháng, traffic tự nhiên.</figcaption>
+    </figure>
+    <figure class="reveal">
+      <a href="https://youtu.be/0Xa86NDdvcc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp YouTube Studio của video What the General at Bastogne Did After He Answered NUTS" src="assets/omw-studio.jpg"></a>
+      <figcaption><b>2.000 GIỜ</b>Kênh One Man's War: thời gian xem của một video trong 7 ngày đầu.</figcaption>
+    </figure>
+  </div>
   <div class="tools" aria-label="Công cụ" id="tools"></div>
 </section>
-
-<section class="wrap reveal" id="the-loai">
-  <div class="label">Thể loại</div>
-  <h2 class="display">Bạn cần <em>loại video nào?</em></h2>
-  <ul class="earlier idx" id="idx"></ul>
-</section>
-
-<main class="wrap" id="video"></main>
 
 <footer class="contact" id="lien-he">
   <div class="wrap">
     <div class="label">Liên hệ</div>
     <h2 class="display">Gọi tôi đến phỏng vấn</h2>
-    <p>Cần xem tôi làm thật thế nào, hãy giao một đề bài thử. Thông tin liên hệ có trong CV gửi kèm.</p>
+    <p>Thông tin liên hệ có trong CV gửi kèm.</p>
     <a class="btn" href="#top">Xem lại từ đầu ↑</a>
-    <div class="note">Lượt xem đếm ngày 24/11/2026 từ trang công khai của YouTube, TikTok và Facebook. Riêng Facebook tính 10 reel công khai và các reel trong ảnh chụp trang Reels, chưa phải toàn bộ.</div>
+    <div class="note">Lượt xem đếm ngày 24/11/2026.</div>
   </div>
 </footer>
 
@@ -337,188 +348,54 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
-const TAPE = ["Tư liệu lịch sử", "3D", "Truyện kể dài", "Phim AI", "Video ngắn", "7,5 triệu lượt xem", "18 bản dựng mỗi tuần", "Dài nhất 2:26:44", "Xây kênh từ 0"];
-const D = "https://drive.google.com/";
-const KKH = "https://www.tiktok.com/@khoekhoahoc_/video/";
+const TAPE = ["Video ngắn", "Tư liệu lịch sử", "Truyện kể dài", "3D", "Phim AI", "7,5 triệu lượt xem", "18 bản dựng mỗi tuần", "Xây kênh từ 0"];
+const YT = id => ({ href: "https://youtu.be/" + id, img: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, alt: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` });
 
-// Bảng xếp hạng
-const TOP_SHORT = [
-  { img: "assets/fb-a.jpg", href: "https://www.facebook.com/reel/2321950988334831", views: "1,1 TRIỆU", title: "Tại sao để bụng đói khi ngủ lại sống lâu hơn?", where: "Facebook Reels" },
-  { img: "", href: "https://www.facebook.com/reel/27348891024809976", views: "925K", title: "Quá trình sinh thường", where: "Facebook Reels" },
-  { img: "assets/fb-b.jpg", href: "https://www.facebook.com/reel/1937753960222215", views: "923K", title: "5 thói quen rửa bát này nguy hiểm đến mức nào?", where: "Facebook Reels" },
-  { img: "assets/fb-1.jpg", href: "https://www.facebook.com/reel/1791459215620521", views: "738K", title: "5 chi tiết về ngày đèn đỏ mà 90% các bạn gái thường bỏ qua", where: "Facebook Reels" },
-  { img: "assets/fb-2.jpg", href: "https://www.facebook.com/reel/2111565750244143", views: "694K", title: "Bạn trải qua những gì khi mang thai?", where: "Facebook Reels" },
+// Sáu video: mỗi thể loại một video tốt nhất
+const SIX = [
+  { kind: "Video ngắn", color: "var(--c-ai3d)", big: "1,1 TRIỆU", sub: "lượt xem · Facebook Reels", role: "Làm toàn bộ",
+    href: "https://www.facebook.com/reel/2321950988334831", img: "assets/fb-a.jpg" },
+  { kind: "Tư liệu lịch sử", color: "var(--c-doc)", big: "17.286", sub: "lượt xem · dài 43 phút", role: "Kênh riêng, tự xây", ...YT("0Xa86NDdvcc") },
+  { kind: "Truyện kể dài", color: "var(--c-film)", big: "1:47:30", sub: "thời lượng · 6.004 lượt xem", role: "Hậu kỳ", ...YT("mqdHeFNrgjE") },
+  { kind: "AI + 3D", color: "var(--c-3d)", big: "2.581", sub: "lượt xem · dài 13 phút", role: "Dựng toàn bộ kênh", ...YT("Kl2d0hrjixQ") },
+  { kind: "3D thuần", color: "var(--c-3d)", big: "07:20", sub: "timelapse 3D, không dùng AI", role: "Kênh riêng, tự xây", ...YT("cVOJ9YCAGHc") },
+  { kind: "Phim AI", color: "var(--c-film)", big: "26:18", sub: "thời lượng", role: "Hậu kỳ", ...YT("06BNzS5oMuY") },
 ];
-const TOP_LONG = [
-  { id: "0Xa86NDdvcc", sec: 2589, views: 17286, where: "Tư liệu + motion", title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
-  { id: "mqdHeFNrgjE", sec: 6450, views: 6004,  where: "Truyện kể", title: "She Rode Into Town Pulling Three Coffins—The Outlaws Laughed Until She Called Their Names" },
-  { id: "xQDuMTChe6Y", sec: 2365, views: 3535,  where: "Tư liệu", title: "Japanese Admirals Didn’t Think Iowa’s Guns Could Reach 23 Miles — Then 4 Ships Mysteriously Vanished" },
-  { id: "Kl2d0hrjixQ", sec: 816,  views: 2581,  where: "AI + 3D", title: "They Signed a Pledge to Ram American Bombers" },
-  { id: "YzttChwm8G0", sec: 6656, views: 1780,  where: "Truyện kể", title: "They Ordered the Old Man Off the Porch—Unaware He Was the Last Living Gunslinger" },
+const MORE = [
+  ["925K", "https://www.facebook.com/reel/27348891024809976"],
+  ["923K", "https://www.facebook.com/reel/1937753960222215"],
+  ["738K", "https://www.facebook.com/reel/1791459215620521"],
+  ["694K", "https://www.facebook.com/reel/2111565750244143"],
 ];
-
-// Thể loại. Mỗi thể loại có "groups" (video YouTube) hoặc "old" (video ngắn, ảnh lưu trong assets/)
-const GENRES = [
-  { id: "video-ngan", name: "Video ngắn", color: "var(--c-ai3d)", sum: ["Reel cao nhất 1,1 triệu lượt xem", "Facebook Reels, TikTok, video AI"],
-    old: [
-      { name: "Khỏe Khoa Học", role: "Content Creator · Hải Xuyên", link: "https://www.facebook.com/khoekhoahoc", linkText: "Mở trang Facebook →",
-        proof: { img: "1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E", big: "0 → 17K", label: "người theo dõi trên Facebook sau 2 tháng",
-          text: "Kênh sức khỏe, kiến thức, khoa học trên Facebook Reels và TikTok. Xây từ con số 0 bằng traffic tự nhiên, không chạy quảng cáo. Phụ trách toàn bộ quy trình: nghiên cứu chủ đề, ý tưởng, kịch bản, tìm footage, dựng và xuất bản.",
-          mini: [["1,1 triệu", "lượt xem, reel cao nhất"], ["633.661", "lượt xem TikTok, 122 video"], ["40,4K", "lượt thích TikTok"], ["50", "video Facebook mỗi tháng"]],
-          more: D + "drive/folders/1ivrV4RQOwsE_88i85BryKeN9VBOI9xXM",
-          more2: "https://www.tiktok.com/@khoekhoahoc_" },
-        shorts: [
-          { id: "1GRABYNxccAFNQCXlC3RNEDb0s1jxyciy", t: "Dạng 1 · Video 2D" },
-          { id: "1FgFPU-rvmBy1E4xfE4KJ4qZTrwovSipD", t: "Dạng 2" },
-          { id: "1i-x8Cq-z5jEsN7dC5TgtA82foTi5gMVp", t: "Dạng 3 · Dựng từ source có sẵn" },
-        ],
-        modelsNote: "Bộ model nhân vật gốc của kênh.", modelsLink: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r",
-        models: ["1lQmZNn0LqCssUk2US8pyrULgaMeMY-9N", "1yzdf_T-Pev_w2thy2HRuBdF30sIdQDbc", "1Q0kI6x_20Nx78lGTZKKmuE8Ist9Muudy", "1FnKy4ClDlnjO3NWtUYzlQLUZNm5Kb6oU", "1MQl_KD0rvATF4-Retd_neDQZehPYiz0j"] },
-      { name: "Video AI", role: "AI Video Editor · Dake Group", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
-        text: "Trung bình 10 video ngắn mỗi ngày cho xây kênh và bán hàng. Làm toàn bộ quy trình: viết prompt, tạo ảnh AI, tạo video AI, dựng, ghép voice, subtitle và sound effect.",
-        shorts: [
-          { id: "1V4dg1R-au6FJN68mti5iV6c12_baeFBp", t: "Video AI" },
-          { id: "1ks_E74Z3NOc8YtEtD47N1CzwEQWK9YZj", t: "Video AI" },
-          { id: "1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO", t: "Video AI bán hàng" },
-          { id: "1M1-uik1Mg59b9A3T0qkaxqkVOx_nOBKs", t: "Video AI bán hàng" },
-        ]},
-      { name: "TikTok Unitour", role: "Dake Group", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
-        text: "Dựng video cho các nội dung và sự kiện TikTok của công ty.",
-        shorts: [
-          { id: "1LCm_C2OLCz3RfQEgbA6yhYZnklQEEn7y", t: "Unitour 2025 · phần 1" },
-          { id: "1shxdnEUNGDpaE9QxFb3ABMkeFjduv_Zg", t: "Unitour 2025 · phần 2" },
-        ]},
-    ]},
-  { id: "tu-lieu", name: "Tư liệu lịch sử", color: "var(--c-doc)", sum: ["49 video", "42 giờ thành phẩm"],
-    groups: [
-      { name: "One Man's War", url: "https://www.youtube.com/@OneMansWar.WW2", own: true, role: "Kênh riêng, tự xây", tag: "Tư liệu + motion",
-        text: "Kênh lịch sử Thế chiến II, mỗi video khoảng 40 phút. Dựng từ phim tư liệu kết hợp đồ hoạ motion. Kênh mở ngày 10/11/2026; video đứng đầu đạt 17.286 lượt xem sau 8 ngày.",
-        proof: { img: "assets/omw-studio.jpg", alt: "Ảnh chụp YouTube Studio của video What the General at Bastogne Did After He Answered NUTS",
-          big: "2.000 GIỜ", label: "thời gian xem của một video trong 7 ngày đầu",
-          text: "Số liệu YouTube Studio của video đứng đầu kênh, chụp ngày 23/11/2026 ở mốc 7.300 lượt xem. Đến 24/11 video đã có 17.286 lượt xem.",
-          mini: [["7.167", "lượt xem trong 48 giờ"], ["3.800", "lượt trong 48 giờ đó do YouTube đề xuất"]] },
-        videos: [
-          { id: "0Xa86NDdvcc", sec: 2589, views: 17286, title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
-          { id: "0v6fWK9KlgU", sec: 2320, views: 1408,  title: "9,000 Prisoners Refused to Leave Their Prison Camp" },
-          { id: "fBJgI4UbHNE", sec: 2436, views: 1354,  title: "John Basilone Had the Medal of Honor and a Ticket Home. He Asked to Go Back" },
-        ]},
-      { name: "Ba kênh tư liệu khác", url: "", role: "Kịch bản, dựng", tag: "Tư liệu",
-        text: "38 video tư liệu Thế chiến II. Một kênh tôi phụ trách kịch bản và dựng (23 video). Hai kênh còn lại tôi làm toàn bộ (15 video).",
-        videos: [
-          { id: "xQDuMTChe6Y", sec: 2365, views: 3535, title: "Japanese Admirals Didn’t Think Iowa’s Guns Could Reach 23 Miles — Then 4 Ships Mysteriously Vanished" },
-        ]},
-    ]},
-  { id: "3d", name: "3D", color: "var(--c-3d)", sum: ["6 video", "3D thuần", "AI kết hợp 3D"],
-    groups: [
-      { name: "Same Ground", url: "https://www.youtube.com/@samegroundmaps", own: true, role: "Kênh riêng, tự xây", tag: "3D thuần",
-        text: "Timelapse 3D dựng lại quá trình một thành phố lớn lên qua hàng nghìn năm. Làm hoàn toàn bằng 3D, không dùng AI.",
-        videos: [
-          { id: "cVOJ9YCAGHc", sec: 440, views: 1039, title: "Watch MADRID Grow for 1,166 Years - 3D Timelapse (No AI)" },
-        ]},
-      { name: "Dự án công ty: quân sự, lịch sử", url: "", role: "Dựng toàn bộ kênh", tag: "AI + 3D",
-        text: "Kênh quân sự, lịch sử. Video khoảng 13 phút, hình ảnh AI kết hợp 3D. Tôi phụ trách toàn bộ phần dựng của kênh.",
-        videos: [
-          { id: "Kl2d0hrjixQ", sec: 816, views: 2581, title: "They Signed a Pledge to Ram American Bombers" },
-          { id: "jIazK1fqCF4", sec: 805, views: 1443, title: "KV-2: One Tank Against a Panzer Division" },
-        ]},
-    ]},
-  { id: "story", name: "Truyện kể dài và phim AI", color: "var(--c-film)", sum: ["37 video", "64 giờ thành phẩm"],
-    groups: [
-      { name: "Dự án công ty: truyện cao bồi", url: "", role: "Phụ trách hậu kỳ", tag: "Truyện kể, phim AI",
-        text: "Truyện cao bồi miền Tây nước Mỹ, dạng truyện kể dài và phim AI. Mỗi video truyện kể dài từ 1 tiếng 25 phút đến 2 tiếng 26 phút. Tôi làm toàn bộ hậu kỳ: dựng, ghép voice, phụ đề, tìm source, đồ hoạ. Thumbnail và tiêu đề do phòng khác làm.",
-        videos: [
-          { id: "mqdHeFNrgjE", sec: 6450, views: 6004, title: "She Rode Into Town Pulling Three Coffins—The Outlaws Laughed Until She Called Their Names" },
-          { id: "1D3CWHZDzus", sec: 8804, note: "Video dài nhất", title: "Outlaw Poured Whiskey on a Helpless Widow—Unaware She Was the West’s Most Feared Bounty Hunter" },
-          { id: "06BNzS5oMuY", sec: 1578, note: "Phim AI", title: "The Marshal Came for the Wounded Boy… Unaware He Was Wearing Her Dead Husband’s Watch" },
-        ]},
-    ]},
-];
+const WALL = ["0Xa86NDdvcc", "mqdHeFNrgjE", "Kl2d0hrjixQ", "cVOJ9YCAGHc", "06BNzS5oMuY", "xQDuMTChe6Y", "YzttChwm8G0", "jIazK1fqCF4", "0v6fWK9KlgU", "fBJgI4UbHNE", "1D3CWHZDzus"];
 const TOOLS = ["CapCut", "Blender", "Unreal Engine", "Canva", "KineMaster", "Claude", "ChatGPT", "Gemini", "AI33", "Kling AI", "Veo 3", "Flow", "Grok", "PixVerse", "MiniMax", "Nano Banana"];
 /* ====== HẾT PHẦN NỘI DUNG ====== */
 
 const p2 = n => String(n).padStart(2, "0");
-const tc = s => { const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = Math.floor(s%60); return h ? `${h}:${p2(m)}:${p2(x)}` : `${p2(m)}:${p2(x)}`; };
-const num = n => Math.round(n).toLocaleString("vi-VN");
-const yt = id => `https://youtu.be/${id}`;
-const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
 const el = (tag, attrs = {}, html = "") => { const e = document.createElement(tag); for (const k in attrs) e.setAttribute(k, attrs[k]); e.innerHTML = html; return e; };
 const ext = `target="_blank" rel="noopener"`;
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const all = [...new Map([...TOP_LONG, ...GENRES.flatMap(g => (g.groups || []).flatMap(c => c.videos))].map(v => [v.id, v])).values()];
 
 // Bức tường khung hình: 5 cột, mỗi cột lặp hai lần để trôi liền mạch
 const wall = document.getElementById("wall");
 for (let c = 0; c < 5; c++) {
   const col = el("div", { class: "col", style: `--d:${52 + c * 9}s` });
-  const order = all.map((_, i) => all[(i * 2 + c * 3) % all.length]).slice(0, 9);
-  col.innerHTML = [...order, ...order].map(v => `<img alt="" loading="eager" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg">`).join("");
+  const order = WALL.map((_, i) => WALL[(i * 2 + c * 3) % WALL.length]).slice(0, 9);
+  col.innerHTML = [...order, ...order].map(id => `<img alt="" loading="eager" src="https://i.ytimg.com/vi/${id}/mqdefault.jpg">`).join("");
   wall.append(col);
 }
-
-// Dải chữ chạy
 document.getElementById("tape").innerHTML = [...TAPE, ...TAPE, ...TAPE, ...TAPE].map(t => `<span>${t}</span>`).join("");
+document.getElementById("tools").innerHTML = TOOLS.map(t => `<span>${t}</span>`).join("");
 
 // Mã thời gian đang chạy (24 khung hình/giây)
 const tcode = document.getElementById("tcode"), t0 = performance.now();
 if (!still) (function tick() { const f = Math.floor((performance.now() - t0) / 1000 * 24); const s = Math.floor(f / 24); tcode.textContent = `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}:${p2(s%60)}:${p2(f%24)}`; requestAnimationFrame(tick); })();
 else tcode.textContent = "REC";
 
-// Bảng xếp hạng
-const rk = (v, i, img, href, views, meta) => `<li><a href="${href}" ${ext}><span class="n">${i + 1}</span><span class="thumb">${img ? `<img loading="lazy" alt="" src="${img}">` : ""}</span><span><b>${views}</b><span class="t">${esc(v.title)}</span><span class="m">${meta}</span></span></a></li>`;
-document.getElementById("rk-short").innerHTML = TOP_SHORT.map((v, i) => rk(v, i, v.img, v.href, v.views, `${v.where} · Khỏe Khoa Học`)).join("");
-document.getElementById("rk-long").innerHTML = TOP_LONG.map((v, i) => rk(v, i, `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`, yt(v.id), tc(v.sec), `${num(v.views)} lượt xem · YouTube · ${v.where}`)).join("");
-
-document.getElementById("tools").innerHTML = TOOLS.map(t => `<span>${t}</span>`).join("");
-
-// Mục lục và từng thể loại
-const dt = id => `assets/${id}.jpg`;
-const idx = document.getElementById("idx"), main = document.getElementById("video");
-GENRES.forEach((g, gi) => {
-  const no = p2(gi + 1);
-  idx.append(el("li", { style: `--c:${g.color}` }, `<a href="#${g.id}"><span class="no">${no}</span><strong>${esc(g.name)}</strong><span>${g.sum.join(" · ")}</span><span class="arrow">Xem ↓</span></a>`));
-
-  const sec = el("section", { class: "genre", id: g.id, style: `--c:${g.color}` });
-  sec.append(el("div", { class: "genre-head reveal" }, `<div class="no" aria-hidden="true">${no}</div><div class="gh"><h2 class="display">${esc(g.name)}</h2><div class="gsum">${g.sum.map(x => `<span>${x}</span>`).join("")}</div></div>`));
-
-  (g.groups || []).forEach(c => {
-    const s = el("div", { class: "chan reveal" });
-    s.append(el("div", { class: "chan-head" },
-      `<h3 class="display">${c.url ? `<a href="${c.url}" ${ext}>${esc(c.name)}</a>` : esc(c.name)}</h3>
-       <div class="tags">${c.role ? `<span class="tag${c.own ? " own" : ""}">${c.role}</span>` : ""}<span class="tag">${c.tag}</span></div>`));
-    s.append(el("p", {}, c.text));
-    if (c.proof) { const q = c.proof;
-      s.append(el("div", { class: "proof" }, `<img loading="lazy" alt="${q.alt}" src="${q.img}">
-        <div><div class="big">${q.big}</div><div class="label">${q.label}</div><p>${q.text}</p>
-        <div class="mini">${q.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div></div>`)); }
-    const grid = el("div", { class: `grid n${c.videos.length}` });
-    c.videos.forEach(v => {
-      const meta = [v.note, v.views >= 2000 ? num(v.views) + " lượt xem" : ""].filter(Boolean).join(" · ");
-      grid.append(el("a", { class: "card", href: yt(v.id), target: "_blank", rel: "noopener" },
-        `<span class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'"><span class="play"><span class="tri"></span>Xem</span><span class="tc">${tc(v.sec)}</span></span>
-         <h4>${esc(v.title)}</h4>${meta ? `<div class="meta">${meta}</div>` : ""}`));
-    });
-    s.append(grid);
-    sec.append(s);
-  });
-
-  (g.old || []).forEach(o => {
-    const s = el("div", { class: "grp reveal" });
-    s.append(el("div", { class: "grp-head" }, `<h3 class="display">${esc(o.name)}</h3>${o.role ? `<span class="tag" style="--c:var(--film-ink)">${o.role}</span>` : ""}<a href="${o.link}" ${ext}>${o.linkText}</a>`));
-    if (o.text) s.append(el("p", {}, o.text));
-    if (o.proof) { const p = o.proof;
-      s.append(el("div", { class: "proof" }, `<a href="${o.link}" ${ext}><img loading="lazy" alt="Ảnh chụp trang Facebook ${esc(o.name)}" src="${dt(p.img)}"></a>
-        <div><div class="big">${p.big}</div><div class="label">${p.label}</div><p>${p.text}</p>
-        <div class="mini">${p.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
-        <div class="cta" style="margin-top:22px"><a class="btn ghost" href="${p.more}" ${ext}>Xem số liệu gốc</a><a class="btn ghost" href="${p.more2}" ${ext}>Mở kênh TikTok</a></div></div>`)); }
-    if (o.shorts) s.append(el("div", { class: "shorts" }, o.shorts.map(v => `<a class="short" href="${D}file/d/${v.id}/view" ${ext}><span class="thumb"><img loading="lazy" alt="" src="${dt(v.id)}"><span class="play"><span class="tri"></span>Xem</span></span><span class="t">${v.t}</span></a>`).join("")));
-    if (o.modelsNote) s.append(el("p", {}, o.modelsNote));
-    if (o.models) s.append(el("div", { class: "models" }, o.models.map(id => `<a class="thumb" href="${o.modelsLink || o.link}" ${ext}><img loading="lazy" alt="" src="${dt(id)}"></a>`).join("")));
-    sec.append(s);
-  });
-
-  if (g.links) sec.append(el("ul", { class: "earlier reveal", style: "margin-top:56px" }, g.links.map(l => `<li><a href="${l.href}" ${ext}><strong>${l.name}</strong><span>${l.note}</span><span class="arrow">${l.go}</span></a></li>`).join("")));
-  main.append(sec);
-});
+document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}>
+  <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
+  <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
+document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
 // Chuyển động khi cuộn (trang vẫn đọc được đầy đủ nếu không có)
 if (window.gsap && window.ScrollTrigger && !still) {
@@ -528,17 +405,9 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.from("h1 span", { yPercent: 60, opacity: 0, duration: .9, stagger: .12, ease: "power4.out" });
   gsap.from(".tcode,.role,.exp li,.cta", { y: 24, opacity: 0, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
-
   document.querySelectorAll(".reveal").forEach(sec => {
-    const items = sec.querySelectorAll(":scope > .label, :scope > h2, :scope > h3, :scope > .sub, :scope > .no, :scope > .gh, :scope > .chan-head, :scope > .grp-head, :scope > p, .rk li, .card, .short, .proof > *, .models > *, :scope > li, .idx li, .steps li, .fact");
-    if (items.length) gsap.from(items, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 82%", once: true } });
-  });
-
-  document.querySelectorAll("#facts b").forEach(b => {
-    if (!b.dataset.tc && !b.dataset.count) return;
-    const o = { v: 0 }, isTc = b.dataset.tc, end = +(b.dataset.tc || b.dataset.count), suf = b.dataset.suffix || "";
-    gsap.to(o, { v: end, duration: 1.4, ease: "power2.out", scrollTrigger: { trigger: "#facts", start: "top 88%", once: true },
-      onUpdate: () => b.textContent = (isTc ? tc(o.v) : num(o.v)) + suf });
+    const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, :scope > a, :scope > figcaption");
+    gsap.from(items.length ? items : sec, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 85%", once: true } });
   });
   gsap.from(".contact h2", { yPercent: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".contact", start: "top 80%", once: true } });
 }
