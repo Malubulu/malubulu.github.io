@@ -289,7 +289,7 @@ CHANNELS.forEach(c => {
 // Liên hệ
 const ways = document.getElementById("ways");
 if (CONTACT.length) CONTACT.forEach(c => ways.append(el("div", {}, `<div class="label">${c.label}</div><a href="${c.href}"><b>${esc(c.value)}</b></a>`)));
-else ways.append(el("div", {}, `<b style="color:var(--mute)">[Chưa có số điện thoại và email]</b>`));
+else ways.append(el("div", {}, `<b style="font-family:var(--body);font-weight:500">Thông tin liên hệ có trong CV gửi kèm.</b>`));
 </script>
 </body>
 </html>
