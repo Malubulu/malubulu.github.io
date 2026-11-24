@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nguyễn Phạm Nguyên · Video Producer</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Portfolio của Nguyễn Phạm Nguyên, Video Producer. Video YouTube từ 7 phút đến gần 2 tiếng: tư liệu, motion, 3D, AI.">
+<meta name="description" content="Portfolio của Nguyễn Phạm Nguyên, Video Producer. Tư liệu lịch sử, 3D, story, phim AI và video ngắn. Hơn 3 triệu lượt xem đếm được.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -100,30 +100,6 @@ h2{font-size:clamp(2.6rem,8vw,6.5rem)}
 h2 em{font-style:normal;color:var(--film-ink)}
 .sub{color:var(--mute);max-width:60ch;margin:14px 0 0;font-size:1.0625rem}
 
-/* ---------- Video nổi bật ---------- */
-.feat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:36px}
-.feat .thumb{border-radius:14px}
-.feat .big{font:400 clamp(3.5rem,9vw,7.5rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums}
-.feat h3{font:600 clamp(1.15rem,2.2vw,1.5rem)/1.35 var(--body);margin:18px 0 0;text-wrap:pretty}
-.feat p{color:var(--mute);margin:10px 0 22px}
-
-/* ---------- Timeline ---------- */
-.tl{--lab:150px;--tc:76px;position:relative;margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 16px;overflow:hidden}
-.ruler{position:relative;height:26px;margin-left:var(--lab);margin-right:var(--tc);border-bottom:1px solid var(--line)}
-.ruler i{position:absolute;bottom:0;width:1px;height:8px;background:var(--mute)}
-.ruler em{position:absolute;bottom:12px;transform:translateX(-50%);font:400 11px/1 var(--mono);font-style:normal;color:var(--mute)}
-.ruler em:first-of-type{transform:none}
-.ruler em:last-of-type{color:var(--film-ink);font-weight:600}
-.row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);align-items:center;min-height:40px}
-.row .ch{font-size:.8125rem;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:12px}
-.row a{display:flex;align-items:center;text-decoration:none;min-width:0;min-height:40px}
-.clip{height:24px;border-radius:5px;background:var(--c);min-width:8px;flex:none;transform-origin:left center;transition:filter .2s}
-.row a:hover .clip{filter:brightness(1.25)}
-.row .tc{margin-left:10px;font:600 12.5px/1 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.8125rem;color:var(--mute)}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{width:16px;height:10px;border-radius:3px;background:var(--c)}
-
 /* ---------- Dự án ---------- */
 .chan{padding-block:88px 0}
 .chan-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;padding-bottom:18px;border-bottom:3px solid var(--c)}
@@ -183,6 +159,37 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .models{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,170px));gap:14px;margin-top:22px}
 .models .thumb{aspect-ratio:1}
 
+/* ---------- Bảng xếp hạng ---------- */
+.rank2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:40px}
+.rank2 h3{font-size:clamp(1.6rem,3.4vw,2.4rem);padding-bottom:14px;border-bottom:3px solid var(--film)}
+.rk{list-style:none;margin:0;padding:0}
+.rk li{border-bottom:1px solid var(--line)}
+.rk a{display:grid;grid-template-columns:40px 112px minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;min-height:112px;text-decoration:none;transition:padding .25s cubic-bezier(.2,.8,.2,1)}
+.rk a:hover{padding-left:10px}
+.rk .n{font:400 2.5rem/1 var(--display);color:transparent;-webkit-text-stroke:1.5px var(--mute)}
+.rk li:first-child .n{-webkit-text-stroke:0;color:var(--film-ink)}
+.rk .thumb{width:112px;border-radius:6px}
+.rk.tall a{grid-template-columns:40px 60px minmax(0,1fr)}
+.rk.tall .thumb{width:60px;aspect-ratio:3/4}
+.rk b{display:block;font:400 clamp(1.9rem,3.4vw,2.6rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums}
+.rk .t{font:600 .9375rem/1.35 var(--body);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rk .m{display:block;font:400 12px/1.3 var(--mono);color:var(--mute);margin-top:5px}
+
+/* ---------- Mục lục thể loại ---------- */
+.idx a{grid-template-columns:64px minmax(0,1fr) minmax(0,1.3fr) auto}
+.idx .no{font:400 1.6rem/1 var(--display);color:var(--c)}
+
+/* ---------- Thể loại ---------- */
+.genre{padding-block:120px 0}
+.genre-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;align-items:end;padding-bottom:22px;border-bottom:3px solid var(--c)}
+.genre-head .no{font:400 clamp(4.5rem,13vw,10rem)/.86 var(--display);color:transparent;-webkit-text-stroke:2px var(--c)}
+.genre-head h2{font-size:clamp(2.2rem,6.4vw,5.25rem)}
+.gsum{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:12px;font:600 13px/1.3 var(--mono);color:var(--c)}
+.genre .chan{padding-block:56px 0}
+.genre .chan-head{border-bottom:1px solid var(--line)}
+.genre .chan-head h3{font-size:clamp(1.7rem,3.8vw,2.8rem)}
+.genre .grp{margin-top:56px}
+
 /* ---------- Liên hệ ---------- */
 .contact{margin-top:110px;background:var(--film);color:var(--on-film)}
 .contact::before{content:"";display:block;height:26px;background:repeating-linear-gradient(-45deg,#0b0b0b 0 26px,var(--film) 26px 52px)}
@@ -204,11 +211,11 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .fact:nth-child(n+3){border-top:1px solid var(--line)}
   section{padding-block:68px 0}
   .chan{padding-block:64px 0}
-  .feat{grid-template-columns:minmax(0,1fr);gap:22px}
-  .tl{--lab:0px;padding:16px 14px 12px}
-  .row{grid-template-columns:minmax(0,1fr);padding-block:2px}
-  .row .ch{padding:6px 0 0}
-  .row a{min-height:34px}
+  .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
+  .idx a{grid-template-columns:44px minmax(0,1fr)}
+  .idx a span:not(.no){grid-column:2}
+  .genre{padding-block:80px 0}
+  .genre-head{gap:8px 16px}
   .grid.n2,.grid.n3{grid-template-columns:minmax(0,1fr)}
   .earlier a{grid-template-columns:minmax(0,1fr)}
   .proof{grid-template-columns:minmax(0,1fr);gap:20px}
@@ -228,8 +235,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <div class="top">
   <a class="id" href="#top"><span class="rec"></span>NPN · Portfolio 2026</a>
   <nav>
-    <a href="#video">Video</a>
-    <a href="#thoi-luong">Thời lượng</a>
+    <a href="#top10">Top 10</a>
+    <a href="#the-loai">Thể loại</a>
     <a class="go" href="#lien-he">Liên hệ</a>
   </nav>
 </div>
@@ -239,11 +246,11 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="hero-in wrap">
     <div class="tcode"><span class="rec"></span><span id="tcode">00:00:00:00</span></div>
     <h1 class="display"><span>Nguyễn</span><span class="out">Phạm Nguyên</span></h1>
-    <div class="role"><b>Video Producer</b><span>YouTube từ 7 phút đến gần 2 tiếng</span></div>
-    <p class="pitch">Tư liệu kết hợp motion, 3D thuần, AI kết hợp 3D và phim AI. Tôi đã tự xây hai kênh từ con số 0 và phụ trách hậu kỳ cho hai kênh khác. Các video dưới đây chỉ là một phần tiêu biểu.</p>
+    <div class="role"><b>Video Producer</b><span>Từ video ngắn đến video dài hơn 2 tiếng</span></div>
+    <p class="pitch">Tư liệu lịch sử, 3D, story, phim AI và video ngắn. Hơn 200 video đã đăng, hơn 3 triệu lượt xem đếm được. Tôi tự xây hai kênh YouTube từ con số 0 và phụ trách hậu kỳ cho hai kênh khác.</p>
     <div class="cta">
-      <a class="btn main" href="#video"><span class="tri"></span>Xem video</a>
-      <a class="btn ghost" href="#lien-he">Liên hệ phỏng vấn</a>
+      <a class="btn main" href="#top10"><span class="tri"></span>Xem 10 video cao nhất</a>
+      <a class="btn ghost" href="#the-loai">Xem theo thể loại</a>
     </div>
   </div>
 </header>
@@ -252,59 +259,32 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 
 <div class="wrap">
   <div class="facts" id="facts">
-    <div class="fact"><b data-count="17027">17.027</b><span>lượt xem cho một video sau 8 ngày, trên kênh mới tự xây</span></div>
-    <div class="fact"><b data-tc="6656">1:50:56</b><span>video dài nhất đã hoàn thiện</span></div>
+    <div class="fact"><b data-count="3" data-suffix=" TRIỆU">3 TRIỆU</b><span>lượt xem trở lên, đếm trên Facebook, TikTok và YouTube</span></div>
+    <div class="fact"><b data-count="107" data-suffix=" GIỜ">107 GIỜ</b><span>video dài đã đăng trên YouTube, gồm 92 video</span></div>
+    <div class="fact"><b data-tc="8804">2:26:44</b><span>video dài nhất đã hoàn thiện</span></div>
     <div class="fact"><b data-count="21">21</b><span>video mỗi tuần, tính trung bình trong 6 tháng</span></div>
-    <div class="fact"><b data-count="2">2</b><span>kênh tự xây từ con số 0</span></div>
   </div>
 </div>
 
-<section class="wrap reveal" id="noi-bat">
-  <div class="label">Video nổi bật</div>
-  <h2 class="display">Kênh mới, <em>17 nghìn</em> lượt xem</h2>
-  <div class="feat">
-    <a class="thumb" href="https://youtu.be/0Xa86NDdvcc" target="_blank" rel="noopener" aria-label="Mở video What the General at Bastogne Did After He Answered NUTS trên YouTube">
-      <img alt="" src="https://i.ytimg.com/vi/0Xa86NDdvcc/maxresdefault.jpg">
-      <span class="play"><span class="tri"></span>Xem</span><span class="tc">43:09</span>
-    </a>
-    <div>
-      <div class="big">17.027</div>
-      <div class="label">lượt xem sau 8 ngày đăng</div>
-      <h3>What the General at Bastogne Did After He Answered 'NUTS!'</h3>
-      <p>Video 43 phút trên One Man's War, kênh tôi tự xây từ con số 0. Dựng từ phim tư liệu kết hợp đồ hoạ motion.</p>
-      <a class="btn main" href="https://youtu.be/0Xa86NDdvcc" target="_blank" rel="noopener"><span class="tri"></span>Mở trên YouTube</a>
-    </div>
+<section class="wrap" id="top10">
+  <div class="reveal">
+    <div class="label">Bảng xếp hạng</div>
+    <h2 class="display">10 video <em>cao nhất</em></h2>
+    <p class="sub">Năm video ngắn và năm video dài có lượt xem cao nhất. Bấm vào từng dòng để mở video gốc và tự kiểm tra con số.</p>
+  </div>
+  <div class="rank2">
+    <div class="reveal"><h3 class="display">Video ngắn</h3><ol class="rk tall" id="rk-short"></ol></div>
+    <div class="reveal"><h3 class="display">Video dài</h3><ol class="rk" id="rk-long"></ol></div>
   </div>
 </section>
 
-<section class="wrap reveal" id="thoi-luong">
-  <div class="label">Thời lượng thật</div>
-  <h2 class="display">Từ 7 phút đến <em>gần 2 tiếng</em></h2>
-  <p class="sub">Mỗi thanh là một video, vẽ đúng tỉ lệ thời lượng. Bấm vào thanh để mở video.</p>
-  <div class="tl" id="tl">
-    <div class="ruler" id="ruler"></div>
-    <div id="rows"></div>
-    <div class="legend" id="legend"></div>
-  </div>
+<section class="wrap reveal" id="the-loai">
+  <div class="label">Thể loại</div>
+  <h2 class="display">Xem theo <em>thể loại</em></h2>
+  <ul class="earlier idx" id="idx"></ul>
 </section>
 
 <main class="wrap" id="video"></main>
-
-<section class="wrap" id="truoc-do">
-  <div class="reveal">
-    <div class="label">Trước đó</div>
-    <h2 class="display">Video ngắn, AI và <em>xây kênh</em></h2>
-    <p class="sub">Những gì tôi làm trước khi chuyển sang video dài: xây kênh từ đầu, video ngắn cho TikTok và Reels, video AI.</p>
-  </div>
-  <div id="old"></div>
-  <ul class="earlier reveal" style="margin-top:64px">
-    <li><a href="https://www.youtube.com/@Kenji_036" target="_blank" rel="noopener"><strong>Kênh gaming, giải trí</strong><span>YouTube</span><span class="arrow">Mở kênh →</span></a></li>
-    <li><a href="https://drive.google.com/drive/folders/1ww9xESf19qSHHBF43Muxs1xZRjwSoeH5" target="_blank" rel="noopener"><strong>Toàn bộ kho video</strong><span>Tất cả video và số liệu gốc lưu trên Google Drive.</span><span class="arrow">Mở Drive →</span></a></li>
-  </ul>
-  <div class="tools" aria-label="Công cụ">
-    <span>CapCut</span><span>Canva</span><span>KineMaster</span><span>Kling AI</span><span>Veo 3</span><span>Grok</span><span>PixVerse</span><span>Flow</span><span>MiniMax</span><span>Gemini</span><span>ChatGPT</span><span>Nano Banana</span>
-  </div>
-</section>
 
 <footer class="contact" id="lien-he">
   <div class="wrap">
@@ -312,7 +292,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <h2 class="display">Gọi tôi đến phỏng vấn</h2>
     <p>Thông tin liên hệ có trong CV gửi kèm.</p>
     <a class="btn" href="#top">Xem lại từ đầu ↑</a>
-    <div class="note">Số liệu lượt xem lấy từ YouTube ngày 24/11/2026.</div>
+    <div class="note">Lượt xem đếm ngày 24/11/2026 từ trang công khai của YouTube, TikTok và Facebook. Riêng Facebook chỉ tính 10 reel xem được khi chưa đăng nhập.</div>
   </div>
 </footer>
 
@@ -320,74 +300,110 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
-const TAPE = ["Tư liệu + motion", "3D thuần", "AI + 3D", "Phim AI", "Story", "7 phút → 2 tiếng", "21 video mỗi tuần", "Xây kênh từ 0", "Hậu kỳ"];
-
-const KINDS = {
-  doc:  { color: "var(--c-doc)",  name: "Tư liệu + motion" },
-  d3:   { color: "var(--c-3d)",   name: "3D thuần" },
-  ai3d: { color: "var(--c-ai3d)", name: "AI + 3D" },
-  film: { color: "var(--c-film)", name: "Phim AI, story" },
-};
-
-const CHANNELS = [
-  { name: "One Man's War", url: "https://www.youtube.com/@OneMansWar.WW2", kind: "doc", own: true,
-    role: "Tự xây từ 0",
-    text: "Kênh lịch sử Thế chiến II, mỗi video khoảng 40 phút. Dựng từ phim tư liệu kết hợp đồ hoạ motion.",
-    videos: [
-      { id: "0Xa86NDdvcc", sec: 2589, views: 17027, title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
-      { id: "0v6fWK9KlgU", sec: 2320, views: 1385,  title: "9,000 Prisoners Refused to Leave Their Prison Camp" },
-      { id: "fBJgI4UbHNE", sec: 2436, views: 1351,  title: "John Basilone Had the Medal of Honor and a Ticket Home. He Asked to Go Back" },
-    ]},
-  { name: "Same Ground", url: "https://www.youtube.com/@samegroundmaps", kind: "d3", own: true,
-    role: "Tự xây từ 0",
-    text: "Timelapse 3D dựng lại quá trình một thành phố lớn lên qua hàng nghìn năm. Làm hoàn toàn bằng 3D, không dùng AI.",
-    videos: [
-      { id: "cVOJ9YCAGHc", sec: 440, views: 1039, title: "Watch MADRID Grow for 1,166 Years - 3D Timelapse (No AI)" },
-    ]},
-  { name: "Dự án công ty: quân sự, lịch sử", short: "Dự án công ty", url: "", kind: "ai3d",
-    role: "Phụ trách hậu kỳ",
-    text: "Kênh quân sự, lịch sử. Video khoảng 13 phút, hình ảnh AI kết hợp 3D.",
-    videos: [
-      { id: "Kl2d0hrjixQ", sec: 816, views: 2579, title: "They Signed a Pledge to Ram American Bombers" },
-      { id: "jIazK1fqCF4", sec: 805, views: 1443, title: "KV-2: One Tank Against a Panzer Division" },
-      { id: "Cy1JJm9TImY", sec: 832, title: "The Biggest Gun Ever Fired in War" },
-    ]},
-  { name: "Dự án công ty: truyện miền Tây", short: "Dự án công ty", url: "", kind: "film",
-    role: "Phụ trách hậu kỳ",
-    text: "Truyện miền Tây dạng story và phim AI, có video dài gần 2 tiếng.",
-    videos: [
-      { id: "YzttChwm8G0", sec: 6656, views: 1780, title: "They Ordered the Old Man Off the Porch—Unaware He Was the Last Living Gunslinger", note: "Video dài" },
-      { id: "06BNzS5oMuY", sec: 1578, title: "The Marshal Came for the Wounded Boy… Unaware He Was Wearing Her Dead Husband's Watch", note: "Phim AI" },
-    ]},
-];
+const TAPE = ["Tư liệu lịch sử", "3D", "Story", "Phim AI", "Video ngắn", "Dài nhất 2:26:44", "21 video mỗi tuần", "Xây kênh từ 0", "Hậu kỳ"];
 const D = "https://drive.google.com/";
-const OLD = [
-  { name: "Khỏe Khoa Học", link: "https://www.facebook.com/khoekhoahoc", linkText: "Mở trang Facebook →",
-    proof: { img: "1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E", big: "0 → 10K", label: "người theo dõi trên Facebook",
-      text: "Kênh sức khỏe, kiến thức, khoa học trên Facebook Reels và TikTok. Xây từ con số 0 bằng traffic tự nhiên, không chạy quảng cáo. Phụ trách toàn bộ quy trình: nghiên cứu chủ đề, ý tưởng, kịch bản, tìm footage, dựng và xuất bản.",
-      mini: [["900.000", "lượt xem, video cao nhất"], ["50", "video mỗi tháng"], ["19,2K", "lượt thích TikTok"]],
-      more: D + "drive/folders/1ivrV4RQOwsE_88i85BryKeN9VBOI9xXM" },
-    shorts: [
-      { id: "1GRABYNxccAFNQCXlC3RNEDb0s1jxyciy", t: "Video 2D" },
-      { id: "1FgFPU-rvmBy1E4xfE4KJ4qZTrwovSipD", t: "Dạng video 2" },
-      { id: "1i-x8Cq-z5jEsN7dC5TgtA82foTi5gMVp", t: "Video dựng từ source có sẵn" },
+const KKH = "https://www.tiktok.com/@khoekhoahoc_/video/";
+
+// Bảng xếp hạng
+const TOP_SHORT = [
+  { img: "assets/fb-1.jpg", href: "https://www.facebook.com/reel/1791459215620521", views: "738K", title: "5 chi tiết về ngày đèn đỏ mà 90% các bạn gái thường bỏ qua", where: "Facebook Reels" },
+  { img: "assets/fb-2.jpg", href: "https://www.facebook.com/reel/2111565750244143", views: "694K", title: "Bạn trải qua những gì khi mang thai?", where: "Facebook Reels" },
+  { img: "assets/fb-3.jpg", href: "https://www.facebook.com/reel/4325155004400847", views: "636K", title: "Có thật sự là già đi sau sinh không?", where: "Facebook Reels" },
+  { img: "assets/tt-1.jpg", href: KKH + "7668128748914461973", views: "213,8K", title: "Rất muốn tập trung nhưng không thể?", where: "TikTok" },
+  { img: "assets/tt-2.jpg", href: KKH + "7657132762364841237", views: "168,8K", title: "Chỉ với 4 thói quen này giúp bạn làm chậm quá trình lão hóa lên tới 90%", where: "TikTok" },
+];
+const TOP_LONG = [
+  { id: "0Xa86NDdvcc", sec: 2589, views: 17286, where: "Tư liệu + motion", title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
+  { id: "mqdHeFNrgjE", sec: 6450, views: 6004,  where: "Story", title: "She Rode Into Town Pulling Three Coffins—The Outlaws Laughed Until She Called Their Names" },
+  { id: "xQDuMTChe6Y", sec: 2365, views: 3535,  where: "Tư liệu", title: "Japanese Admirals Didn’t Think Iowa’s Guns Could Reach 23 Miles — Then 4 Ships Mysteriously Vanished" },
+  { id: "Kl2d0hrjixQ", sec: 816,  views: 2581,  where: "AI + 3D", title: "They Signed a Pledge to Ram American Bombers" },
+  { id: "YzttChwm8G0", sec: 6656, views: 1780,  where: "Story", title: "They Ordered the Old Man Off the Porch—Unaware He Was the Last Living Gunslinger" },
+];
+
+// Thể loại. Mỗi thể loại có "groups" (video YouTube) hoặc "old" (video ngắn, ảnh lưu trong assets/)
+const GENRES = [
+  { id: "tu-lieu", name: "Tư liệu lịch sử", color: "var(--c-doc)", sum: ["49 video", "42 giờ", "30.018 lượt xem"],
+    groups: [
+      { name: "One Man's War", url: "https://www.youtube.com/@OneMansWar.WW2", own: true, role: "Tự xây từ 0", tag: "Tư liệu + motion",
+        text: "Kênh lịch sử Thế chiến II, mỗi video khoảng 40 phút. Dựng từ phim tư liệu kết hợp đồ hoạ motion. 11 video, 21.898 lượt xem kể từ ngày 10/11/2026.",
+        videos: [
+          { id: "0Xa86NDdvcc", sec: 2589, views: 17286, title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
+          { id: "0v6fWK9KlgU", sec: 2320, views: 1408,  title: "9,000 Prisoners Refused to Leave Their Prison Camp" },
+          { id: "fBJgI4UbHNE", sec: 2436, views: 1354,  title: "John Basilone Had the Medal of Honor and a Ticket Home. He Asked to Go Back" },
+        ]},
+      { name: "Ba kênh tư liệu khác", url: "", tag: "Tư liệu",
+        text: "38 video tư liệu Thế chiến II trên ba kênh khác, phần lớn dài từ 40 phút đến gần 2 tiếng.",
+        videos: [
+          { id: "xQDuMTChe6Y", sec: 2365, views: 3535, title: "Japanese Admirals Didn’t Think Iowa’s Guns Could Reach 23 Miles — Then 4 Ships Mysteriously Vanished" },
+          { id: "oug0qLq281A", sec: 2437, views: 691,  title: "What U-156's Captain Radioed in Plain English After Sinking the Laconia | COLOR FOOTAGE" },
+          { id: "ivOtbQwlpCM", sec: 2219, title: "Rare Color Footage of Okinawa 1945 — The Football Marines Who Never Came Home" },
+        ]},
     ]},
-  { name: "Video AI", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
-    text: "Trung bình 10 video ngắn mỗi ngày cho xây kênh và bán hàng. Làm toàn bộ quy trình: viết prompt, tạo ảnh AI, tạo video AI, dựng, ghép voice, subtitle và sound effect.",
-    shorts: [
-      { id: "1V4dg1R-au6FJN68mti5iV6c12_baeFBp", t: "Video AI" },
-      { id: "1ks_E74Z3NOc8YtEtD47N1CzwEQWK9YZj", t: "Video AI" },
-      { id: "1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO", t: "Video AI bán hàng" },
-      { id: "1M1-uik1Mg59b9A3T0qkaxqkVOx_nOBKs", t: "Video AI bán hàng" },
+  { id: "3d", name: "3D", color: "var(--c-3d)", sum: ["6 video", "6.098 lượt xem"],
+    groups: [
+      { name: "Same Ground", url: "https://www.youtube.com/@samegroundmaps", own: true, role: "Tự xây từ 0", tag: "3D thuần",
+        text: "Timelapse 3D dựng lại quá trình một thành phố lớn lên qua hàng nghìn năm. Làm hoàn toàn bằng 3D, không dùng AI.",
+        videos: [
+          { id: "cVOJ9YCAGHc", sec: 440, views: 1039, title: "Watch MADRID Grow for 1,166 Years - 3D Timelapse (No AI)" },
+          { id: "z5FhbxysnMs", sec: 570, title: "Watch DUBAI Grow for 193 Years - 3D Timelapse (No AI)" },
+          { id: "vy7Dn8X0iMU", sec: 465, title: "Watch EDINBURGH Grow for 898 Years - 3D Timelapse (No AI)" },
+        ]},
+      { name: "Dự án công ty: quân sự, lịch sử", url: "", role: "Phụ trách hậu kỳ", tag: "AI + 3D",
+        text: "Kênh quân sự, lịch sử. Video khoảng 13 phút, hình ảnh AI kết hợp 3D.",
+        videos: [
+          { id: "Kl2d0hrjixQ", sec: 816, views: 2581, title: "They Signed a Pledge to Ram American Bombers" },
+          { id: "jIazK1fqCF4", sec: 805, views: 1443, title: "KV-2: One Tank Against a Panzer Division" },
+          { id: "Cy1JJm9TImY", sec: 832, views: 926,  title: "The Biggest Gun Ever Fired in War" },
+        ]},
     ]},
-  { name: "TikTok Unitour", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
-    text: "Dựng video cho các nội dung và sự kiện TikTok của công ty.",
-    shorts: [
-      { id: "1LCm_C2OLCz3RfQEgbA6yhYZnklQEEn7y", t: "Video 1" },
-      { id: "1shxdnEUNGDpaE9QxFb3ABMkeFjduv_Zg", t: "Video 2" },
+  { id: "story", name: "Story và phim AI", color: "var(--c-film)", sum: ["37 video", "64 giờ", "22.151 lượt xem"],
+    groups: [
+      { name: "Dự án công ty: truyện miền Tây", url: "", role: "Phụ trách hậu kỳ", tag: "Story, phim AI",
+        text: "Truyện miền Tây dạng story và phim AI. Video story dài từ 1 tiếng 25 phút đến 2 tiếng 26 phút.",
+        videos: [
+          { id: "mqdHeFNrgjE", sec: 6450, views: 6004, title: "She Rode Into Town Pulling Three Coffins—The Outlaws Laughed Until She Called Their Names" },
+          { id: "1D3CWHZDzus", sec: 8804, note: "Video dài nhất", title: "Outlaw Poured Whiskey on a Helpless Widow—Unaware She Was the West’s Most Feared Bounty Hunter" },
+          { id: "06BNzS5oMuY", sec: 1578, note: "Phim AI", title: "The Marshal Came for the Wounded Boy… Unaware He Was Wearing Her Dead Husband’s Watch" },
+        ]},
     ]},
-  { name: "Model nhân vật", link: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r", linkText: "Xem cả bộ →",
-    models: ["1lQmZNn0LqCssUk2US8pyrULgaMeMY-9N", "1yzdf_T-Pev_w2thy2HRuBdF30sIdQDbc", "1Q0kI6x_20Nx78lGTZKKmuE8Ist9Muudy", "1FnKy4ClDlnjO3NWtUYzlQLUZNm5Kb6oU", "1MQl_KD0rvATF4-Retd_neDQZehPYiz0j"] },
+  { id: "video-ngan", name: "Video ngắn", color: "var(--c-ai3d)", sum: ["Facebook Reels, TikTok", "Hơn 2,9 triệu lượt xem đếm được"],
+    old: [
+      { name: "Khỏe Khoa Học", link: "https://www.facebook.com/khoekhoahoc", linkText: "Mở trang Facebook →",
+        proof: { img: "1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E", big: "0 → 17K", label: "người theo dõi trên Facebook",
+          text: "Kênh sức khỏe, kiến thức, khoa học trên Facebook Reels và TikTok. Xây từ con số 0 bằng traffic tự nhiên, không chạy quảng cáo. Phụ trách toàn bộ quy trình: nghiên cứu chủ đề, ý tưởng, kịch bản, tìm footage, dựng và xuất bản.",
+          mini: [["738K", "lượt xem, reel cao nhất"], ["633.661", "lượt xem TikTok, 122 video"], ["40,4K", "lượt thích TikTok"], ["50", "video mỗi tháng"]],
+          more: D + "drive/folders/1ivrV4RQOwsE_88i85BryKeN9VBOI9xXM",
+          more2: "https://www.tiktok.com/@khoekhoahoc_" },
+        shorts: [
+          { id: "1GRABYNxccAFNQCXlC3RNEDb0s1jxyciy", t: "Video 2D" },
+          { id: "1FgFPU-rvmBy1E4xfE4KJ4qZTrwovSipD", t: "Dạng video 2" },
+          { id: "1i-x8Cq-z5jEsN7dC5TgtA82foTi5gMVp", t: "Video dựng từ source có sẵn" },
+        ]},
+      { name: "Video AI", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
+        text: "Trung bình 10 video ngắn mỗi ngày cho xây kênh và bán hàng. Làm toàn bộ quy trình: viết prompt, tạo ảnh AI, tạo video AI, dựng, ghép voice, subtitle và sound effect.",
+        shorts: [
+          { id: "1V4dg1R-au6FJN68mti5iV6c12_baeFBp", t: "Video AI" },
+          { id: "1ks_E74Z3NOc8YtEtD47N1CzwEQWK9YZj", t: "Video AI" },
+          { id: "1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO", t: "Video AI bán hàng" },
+          { id: "1M1-uik1Mg59b9A3T0qkaxqkVOx_nOBKs", t: "Video AI bán hàng" },
+        ]},
+      { name: "TikTok Unitour", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
+        text: "Dựng video cho các nội dung và sự kiện TikTok của công ty.",
+        shorts: [
+          { id: "1LCm_C2OLCz3RfQEgbA6yhYZnklQEEn7y", t: "Video 1" },
+          { id: "1shxdnEUNGDpaE9QxFb3ABMkeFjduv_Zg", t: "Video 2" },
+        ]},
+    ]},
+  { id: "khac", name: "Khác", color: "var(--mute)", sum: ["Model nhân vật", "Kênh gaming", "Kho video gốc"],
+    old: [
+      { name: "Model nhân vật", link: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r", linkText: "Xem cả bộ →",
+        models: ["1lQmZNn0LqCssUk2US8pyrULgaMeMY-9N", "1yzdf_T-Pev_w2thy2HRuBdF30sIdQDbc", "1Q0kI6x_20Nx78lGTZKKmuE8Ist9Muudy", "1FnKy4ClDlnjO3NWtUYzlQLUZNm5Kb6oU", "1MQl_KD0rvATF4-Retd_neDQZehPYiz0j"] },
+    ],
+    links: [
+      { name: "Kênh gaming, giải trí", note: "YouTube", href: "https://www.youtube.com/@Kenji_036", go: "Mở kênh →" },
+      { name: "Toàn bộ kho video", note: "Tất cả video và số liệu gốc lưu trên Google Drive.", href: D + "drive/folders/1ww9xESf19qSHHBF43Muxs1xZRjwSoeH5", go: "Mở Drive →" },
+    ],
+    tools: ["CapCut", "Canva", "KineMaster", "Kling AI", "Veo 3", "Grok", "PixVerse", "Flow", "MiniMax", "Gemini", "ChatGPT", "Nano Banana"] },
 ];
 /* ====== HẾT PHẦN NỘI DUNG ====== */
 
@@ -397,79 +413,76 @@ const num = n => Math.round(n).toLocaleString("vi-VN");
 const yt = id => `https://youtu.be/${id}`;
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
 const el = (tag, attrs = {}, html = "") => { const e = document.createElement(tag); for (const k in attrs) e.setAttribute(k, attrs[k]); e.innerHTML = html; return e; };
-const all = CHANNELS.flatMap(c => c.videos.map(v => ({ ...v, ch: c })));
+const ext = `target="_blank" rel="noopener"`;
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const all = [...new Map([...TOP_LONG, ...GENRES.flatMap(g => (g.groups || []).flatMap(c => c.videos))].map(v => [v.id, v])).values()];
 
 // Bức tường khung hình: 5 cột, mỗi cột lặp hai lần để trôi liền mạch
 const wall = document.getElementById("wall");
 for (let c = 0; c < 5; c++) {
   const col = el("div", { class: "col", style: `--d:${52 + c * 9}s` });
-  const order = all.map((_, i) => all[(i * 2 + c * 3) % all.length]);
+  const order = all.map((_, i) => all[(i * 2 + c * 3) % all.length]).slice(0, 9);
   col.innerHTML = [...order, ...order].map(v => `<img alt="" loading="eager" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg">`).join("");
   wall.append(col);
 }
 
 // Dải chữ chạy
-const tape = document.getElementById("tape");
-tape.innerHTML = [...TAPE, ...TAPE, ...TAPE, ...TAPE].map(t => `<span>${t}</span>`).join("");
+document.getElementById("tape").innerHTML = [...TAPE, ...TAPE, ...TAPE, ...TAPE].map(t => `<span>${t}</span>`).join("");
 
 // Mã thời gian đang chạy (24 khung hình/giây)
 const tcode = document.getElementById("tcode"), t0 = performance.now();
 if (!still) (function tick() { const f = Math.floor((performance.now() - t0) / 1000 * 24); const s = Math.floor(f / 24); tcode.textContent = `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}:${p2(s%60)}:${p2(f%24)}`; requestAnimationFrame(tick); })();
 else tcode.textContent = "REC";
 
-// Timeline: một thước đo chung, 0 → video dài nhất
-const MAX = Math.max(...all.map(v => v.sec));
-const ruler = document.getElementById("ruler");
-[[0, "0"], [1800, "30′"], [3600, "1:00"], [5400, "1:30"], [MAX, tc(MAX)]].forEach(([t, text]) => {
-  const x = t / MAX * 100;
-  ruler.append(el("i", { style: `left:${x}%` }), el("em", { style: `left:${x}%` }, text));
-});
-const rows = document.getElementById("rows");
-[...all].sort((a, b) => b.sec - a.sec).forEach(v => {
-  const r = el("div", { class: "row", style: `--c:${KINDS[v.ch.kind].color}` });
-  r.append(el("div", { class: "ch" }, esc(v.ch.short || v.ch.name)));
-  r.append(el("a", { href: yt(v.id), target: "_blank", rel: "noopener", title: v.title, "aria-label": `${v.title}, ${tc(v.sec)}` },
-    `<span class="clip" style="width:calc((100% - var(--tc)) * ${(v.sec / MAX).toFixed(4)})"></span><span class="tc">${tc(v.sec)}</span>`));
-  rows.append(r);
-});
-const legend = document.getElementById("legend");
-for (const k in KINDS) legend.append(el("span", { style: `--c:${KINDS[k].color}` }, `<i></i>${KINDS[k].name}`));
+// Bảng xếp hạng
+const rk = (v, i, img, href, views, meta) => `<li><a href="${href}" ${ext}><span class="n">${i + 1}</span><span class="thumb"><img loading="lazy" alt="" src="${img}"></span><span><b>${views}</b><span class="t">${esc(v.title)}</span><span class="m">${meta}</span></span></a></li>`;
+document.getElementById("rk-short").innerHTML = TOP_SHORT.map((v, i) => rk(v, i, v.img, v.href, v.views, `${v.where} · Khỏe Khoa Học`)).join("");
+document.getElementById("rk-long").innerHTML = TOP_LONG.map((v, i) => rk(v, i, `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`, yt(v.id), num(v.views), `YouTube · ${v.where} · ${tc(v.sec)}`)).join("");
 
-// Từng dự án
-const main = document.getElementById("video");
-CHANNELS.forEach(c => {
-  const s = el("section", { class: "chan reveal", style: `--c:${KINDS[c.kind].color}` });
-  s.append(el("div", { class: "chan-head" },
-    `<h3 class="display">${c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}</h3>
-     <div class="tags"><span class="tag${c.own ? " own" : ""}">${c.role}</span><span class="tag">${KINDS[c.kind].name}</span></div>`));
-  s.append(el("p", {}, c.text));
-  const g = el("div", { class: `grid n${c.videos.length}` });
-  c.videos.forEach(v => {
-    const meta = [v.note, v.views ? num(v.views) + " lượt xem" : ""].filter(Boolean).join(" · ");
-    g.append(el("a", { class: "card", href: yt(v.id), target: "_blank", rel: "noopener" },
-      `<span class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'"><span class="play"><span class="tri"></span>Xem</span><span class="tc">${tc(v.sec)}</span></span>
-       <h4>${esc(v.title)}</h4>${meta ? `<div class="meta">${meta}</div>` : ""}`));
-  });
-  s.append(g);
-  main.append(s);
-});
-
-// Video cũ: ảnh xem trước lấy thẳng từ Drive
+// Mục lục và từng thể loại
 const dt = id => `assets/${id}.jpg`;
-const old = document.getElementById("old");
-OLD.forEach(g => {
-  const s = el("div", { class: "grp reveal" });
-  s.append(el("div", { class: "grp-head" }, `<h3 class="display">${esc(g.name)}</h3><a href="${g.link}" target="_blank" rel="noopener">${g.linkText}</a>`));
-  if (g.text) s.append(el("p", {}, g.text));
-  if (g.proof) { const p = g.proof;
-    s.append(el("div", { class: "proof" }, `<a href="${g.link}" target="_blank" rel="noopener"><img loading="lazy" alt="Trang Facebook ${esc(g.name)} với 10K người theo dõi" src="${dt(p.img, 1200)}"></a>
-      <div><div class="big">${p.big}</div><div class="label">${p.label}</div><p>${p.text}</p>
-      <div class="mini">${p.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
-      <a class="btn ghost" style="margin-top:22px" href="${p.more}" target="_blank" rel="noopener">Xem số liệu gốc</a></div>`)); }
-  if (g.shorts) s.append(el("div", { class: "shorts" }, g.shorts.map(v => `<a class="short" href="${D}file/d/${v.id}/view" target="_blank" rel="noopener"><span class="thumb"><img loading="lazy" alt="" src="${dt(v.id, 480)}"><span class="play"><span class="tri"></span>Xem</span></span><span class="t">${v.t}</span></a>`).join("")));
-  if (g.models) s.append(el("div", { class: "models" }, g.models.map(id => `<a class="thumb" href="${g.link}" target="_blank" rel="noopener"><img loading="lazy" alt="" src="${dt(id, 400)}"></a>`).join("")));
-  old.append(s);
+const idx = document.getElementById("idx"), main = document.getElementById("video");
+GENRES.forEach((g, gi) => {
+  const no = p2(gi + 1);
+  idx.append(el("li", { style: `--c:${g.color}` }, `<a href="#${g.id}"><span class="no">${no}</span><strong>${esc(g.name)}</strong><span>${g.sum.join(" · ")}</span><span class="arrow">Xem ↓</span></a>`));
+
+  const sec = el("section", { class: "genre", id: g.id, style: `--c:${g.color}` });
+  sec.append(el("div", { class: "genre-head reveal" }, `<div class="no" aria-hidden="true">${no}</div><div class="gh"><h2 class="display">${esc(g.name)}</h2><div class="gsum">${g.sum.map(x => `<span>${x}</span>`).join("")}</div></div>`));
+
+  (g.groups || []).forEach(c => {
+    const s = el("div", { class: "chan reveal" });
+    s.append(el("div", { class: "chan-head" },
+      `<h3 class="display">${c.url ? `<a href="${c.url}" ${ext}>${esc(c.name)}</a>` : esc(c.name)}</h3>
+       <div class="tags">${c.role ? `<span class="tag${c.own ? " own" : ""}">${c.role}</span>` : ""}<span class="tag">${c.tag}</span></div>`));
+    s.append(el("p", {}, c.text));
+    const grid = el("div", { class: `grid n${c.videos.length}` });
+    c.videos.forEach(v => {
+      const meta = [v.note, v.views ? num(v.views) + " lượt xem" : ""].filter(Boolean).join(" · ");
+      grid.append(el("a", { class: "card", href: yt(v.id), target: "_blank", rel: "noopener" },
+        `<span class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'"><span class="play"><span class="tri"></span>Xem</span><span class="tc">${tc(v.sec)}</span></span>
+         <h4>${esc(v.title)}</h4>${meta ? `<div class="meta">${meta}</div>` : ""}`));
+    });
+    s.append(grid);
+    sec.append(s);
+  });
+
+  (g.old || []).forEach(o => {
+    const s = el("div", { class: "grp reveal" });
+    s.append(el("div", { class: "grp-head" }, `<h3 class="display">${esc(o.name)}</h3><a href="${o.link}" ${ext}>${o.linkText}</a>`));
+    if (o.text) s.append(el("p", {}, o.text));
+    if (o.proof) { const p = o.proof;
+      s.append(el("div", { class: "proof" }, `<a href="${o.link}" ${ext}><img loading="lazy" alt="Ảnh chụp trang Facebook ${esc(o.name)}" src="${dt(p.img)}"></a>
+        <div><div class="big">${p.big}</div><div class="label">${p.label}</div><p>${p.text}</p>
+        <div class="mini">${p.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
+        <div class="cta" style="margin-top:22px"><a class="btn ghost" href="${p.more}" ${ext}>Xem số liệu gốc</a><a class="btn ghost" href="${p.more2}" ${ext}>Mở kênh TikTok</a></div></div>`)); }
+    if (o.shorts) s.append(el("div", { class: "shorts" }, o.shorts.map(v => `<a class="short" href="${D}file/d/${v.id}/view" ${ext}><span class="thumb"><img loading="lazy" alt="" src="${dt(v.id)}"><span class="play"><span class="tri"></span>Xem</span></span><span class="t">${v.t}</span></a>`).join("")));
+    if (o.models) s.append(el("div", { class: "models" }, o.models.map(id => `<a class="thumb" href="${o.link}" ${ext}><img loading="lazy" alt="" src="${dt(id)}"></a>`).join("")));
+    sec.append(s);
+  });
+
+  if (g.links) sec.append(el("ul", { class: "earlier reveal", style: "margin-top:56px" }, g.links.map(l => `<li><a href="${l.href}" ${ext}><strong>${l.name}</strong><span>${l.note}</span><span class="arrow">${l.go}</span></a></li>`).join("")));
+  if (g.tools) sec.append(el("div", { class: "tools", "aria-label": "Công cụ" }, g.tools.map(t => `<span>${t}</span>`).join("")));
+  main.append(sec);
 });
 
 // Chuyển động khi cuộn (trang vẫn đọc được đầy đủ nếu không có)
@@ -482,15 +495,14 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
 
   document.querySelectorAll(".reveal").forEach(sec => {
-    gsap.from(sec.querySelectorAll(":scope > .label, :scope > h2, :scope > .sub, :scope > .chan-head, :scope > .grp-head, :scope > p, .feat > *, .card, .short, .proof > *, .models > *, :scope > li, .tl"),
-      { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 82%", once: true } });
+    const items = sec.querySelectorAll(":scope > .label, :scope > h2, :scope > h3, :scope > .sub, :scope > .no, :scope > .gh, :scope > .chan-head, :scope > .grp-head, :scope > p, .rk li, .card, .short, .proof > *, .models > *, :scope > li, .idx li");
+    if (items.length) gsap.from(items, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 82%", once: true } });
   });
-  gsap.from(".clip", { scaleX: 0, duration: .9, stagger: .06, ease: "power3.out", scrollTrigger: { trigger: "#tl", start: "top 78%", once: true } });
 
   document.querySelectorAll("#facts b").forEach(b => {
-    const o = { v: 0 }, isTc = b.dataset.tc, end = +(b.dataset.tc || b.dataset.count);
+    const o = { v: 0 }, isTc = b.dataset.tc, end = +(b.dataset.tc || b.dataset.count), suf = b.dataset.suffix || "";
     gsap.to(o, { v: end, duration: 1.4, ease: "power2.out", scrollTrigger: { trigger: "#facts", start: "top 88%", once: true },
-      onUpdate: () => b.textContent = isTc ? tc(o.v) : num(o.v) });
+      onUpdate: () => b.textContent = (isTc ? tc(o.v) : num(o.v)) + suf });
   });
   gsap.from(".contact h2", { yPercent: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".contact", start: "top 80%", once: true } });
 }
