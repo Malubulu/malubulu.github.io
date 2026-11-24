@@ -265,8 +265,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <h1 class="display"><span>Nguyễn</span><span class="out">Phạm Nguyên</span></h1>
     <div class="role"><b>Video Producer</b><span>3 công ty, 3 vai trò, từ video ngắn đến video dài</span></div>
     <ul class="exp">
-      <li><b>Producer<small>Alin · 6 tháng</small></b><span>Video YouTube tiếng Anh cho khán giả quốc tế, dài từ 7 phút đến 2 tiếng 26 phút.</span></li>
-      <li><b>Content Creator<small>Fang Food · 5 tháng</small></b><span>Xây kênh Facebook và TikTok từ 0 lên 17K người theo dõi. Reel cao nhất 1,1 triệu lượt xem.</span></li>
+      <li><b>Producer<small>Alin · 6 tháng</small></b><span>Video YouTube tiếng Anh cho khán giả quốc tế, dài từ 13 phút đến 2 tiếng 26 phút.</span></li>
+      <li><b>Content Creator<small>Fang Food · 5 tháng</small></b><span>Xây kênh Facebook và TikTok từ con số 0. Facebook đạt 17K người theo dõi trong 2 tháng, reel cao nhất 1,1 triệu lượt xem.</span></li>
       <li><b>AI Video Editor<small>Dake Group</small></b><span>10 video AI ngắn mỗi ngày cho xây kênh và bán hàng.</span></li>
     </ul>
     <div class="cta">
@@ -282,7 +282,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="facts reveal" id="facts">
     <div class="fact"><div class="q">Video làm ra có người xem không?</div><b>7,5M</b><strong>Hơn 7,5 triệu lượt xem</strong><span>Đếm trên Facebook, TikTok và YouTube. Video cao nhất đạt 1,1 triệu, không chạy quảng cáo.</span></div>
     <div class="fact"><div class="q">Làm có nhanh không?</div><b>21 / TUẦN</b><strong>Nhịp giao video ở vị trí Producer</strong><span>Hơn 4 video mỗi ngày làm việc, giữ suốt 6 tháng.</span></div>
-    <div class="fact"><div class="q">Làm được video dài không?</div><b>107 GIỜ</b><strong>92 video dài trong 9 tuần</strong><span>Phần dựng 100% do tôi làm. Video dài nhất 2 tiếng 26 phút.</span></div>
+    <div class="fact"><div class="q">Làm được video dài không?</div><b>107 GIỜ</b><strong>92 video dài đang công khai trên YouTube</strong><span>Phần dựng 100% do tôi làm. Video dài nhất 2 tiếng 26 phút.</span></div>
     <div class="fact"><div class="q">Có tự lo được cả một kênh không?</div><b>0 → 17K</b><strong>Xây kênh từ con số 0 trong 2 tháng</strong><span>17K người theo dõi Facebook bằng traffic tự nhiên, không chạy quảng cáo.</span></div>
   </div>
 </div>
@@ -291,17 +291,17 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="reveal">
     <div class="label">Bảng xếp hạng</div>
     <h2 class="display">10 video <em>cao nhất</em></h2>
-    <p class="sub">Năm video ngắn và năm video dài có lượt xem cao nhất. Mỗi dòng mở thẳng video gốc để bạn tự kiểm tra.</p>
+    <p class="sub">Năm video ngắn có lượt xem cao nhất và năm video dài nổi bật nhất. Mỗi dòng mở thẳng video gốc để bạn tự kiểm tra.</p>
   </div>
   <div class="rank2">
-    <div class="reveal"><h3 class="display">Video ngắn</h3><ol class="rk tall" id="rk-short"></ol></div>
-    <div class="reveal"><h3 class="display">Video dài</h3><ol class="rk" id="rk-long"></ol></div>
+    <div class="reveal"><h3 class="display">Video ngắn, theo lượt xem</h3><ol class="rk tall" id="rk-short"></ol></div>
+    <div class="reveal"><h3 class="display">Video dài nổi bật</h3><ol class="rk" id="rk-long"></ol></div>
   </div>
 </section>
 
 <section class="wrap reveal" id="quy-trinh">
   <div class="label">Phạm vi công việc</div>
-  <h2 class="display">Giao đề bài, <em>nhận video</em></h2>
+  <h2 class="display">Tôi làm <em>những khâu nào</em></h2>
   <p class="sub">Phần dựng 100% do tôi làm: dựng, ghép voice, phụ đề, source, đồ hoạ. Kịch bản và thumbnail tuỳ kênh: có kênh tôi làm, có kênh bộ phận khác làm. Vai trò cụ thể ghi ở từng kênh bên dưới.</p>
   <ol class="steps">
     <li>Nghiên cứu chủ đề</li>
@@ -359,7 +359,7 @@ const TOP_LONG = [
 
 // Thể loại. Mỗi thể loại có "groups" (video YouTube) hoặc "old" (video ngắn, ảnh lưu trong assets/)
 const GENRES = [
-  { id: "video-ngan", name: "Video ngắn", color: "var(--c-ai3d)", sum: ["Facebook Reels, TikTok", "Hơn 7,5 triệu lượt xem đếm được"],
+  { id: "video-ngan", name: "Video ngắn", color: "var(--c-ai3d)", sum: ["Facebook Reels", "TikTok", "Video AI"],
     old: [
       { name: "Khỏe Khoa Học", role: "Content Creator", link: "https://www.facebook.com/khoekhoahoc", linkText: "Mở trang Facebook →",
         proof: { img: "1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E", big: "0 → 17K", label: "người theo dõi trên Facebook sau 2 tháng",
@@ -372,9 +372,9 @@ const GENRES = [
           { id: "1FgFPU-rvmBy1E4xfE4KJ4qZTrwovSipD", t: "Dạng 2" },
           { id: "1i-x8Cq-z5jEsN7dC5TgtA82foTi5gMVp", t: "Dạng 3 · Dựng từ source có sẵn" },
         ],
-        modelsNote: "File model gốc của nhân vật trên kênh, do tôi giữ.", modelsLink: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r",
+        modelsNote: "Bộ model nhân vật gốc của kênh.", modelsLink: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r",
         models: ["1lQmZNn0LqCssUk2US8pyrULgaMeMY-9N", "1yzdf_T-Pev_w2thy2HRuBdF30sIdQDbc", "1Q0kI6x_20Nx78lGTZKKmuE8Ist9Muudy", "1FnKy4ClDlnjO3NWtUYzlQLUZNm5Kb6oU", "1MQl_KD0rvATF4-Retd_neDQZehPYiz0j"] },
-      { name: "Video AI", role: "AI Video Editor", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
+      { name: "Video AI", role: "AI Video Editor · Dake Group", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
         text: "Trung bình 10 video ngắn mỗi ngày cho xây kênh và bán hàng. Làm toàn bộ quy trình: viết prompt, tạo ảnh AI, tạo video AI, dựng, ghép voice, subtitle và sound effect.",
         shorts: [
           { id: "1V4dg1R-au6FJN68mti5iV6c12_baeFBp", t: "Video AI" },
@@ -382,7 +382,7 @@ const GENRES = [
           { id: "1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO", t: "Video AI bán hàng" },
           { id: "1M1-uik1Mg59b9A3T0qkaxqkVOx_nOBKs", t: "Video AI bán hàng" },
         ]},
-      { name: "TikTok Unitour", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
+      { name: "TikTok Unitour", role: "Dake Group", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
         text: "Dựng video cho các nội dung và sự kiện TikTok của công ty.",
         shorts: [
           { id: "1LCm_C2OLCz3RfQEgbA6yhYZnklQEEn7y", t: "Unitour 2025 · phần 1" },
@@ -391,18 +391,18 @@ const GENRES = [
     ]},
   { id: "tu-lieu", name: "Tư liệu lịch sử", color: "var(--c-doc)", sum: ["49 video", "42 giờ thành phẩm"],
     groups: [
-      { name: "One Man's War", url: "https://www.youtube.com/@OneMansWar.WW2", own: true, role: "Kênh tự xây", tag: "Tư liệu + motion",
+      { name: "One Man's War", url: "https://www.youtube.com/@OneMansWar.WW2", own: true, role: "Kênh riêng, tự xây", tag: "Tư liệu + motion",
         text: "Kênh lịch sử Thế chiến II, mỗi video khoảng 40 phút. Dựng từ phim tư liệu kết hợp đồ hoạ motion. Kênh mở ngày 10/11/2026; video đứng đầu đạt 17.286 lượt xem sau 8 ngày.",
         proof: { img: "assets/omw-studio.jpg", alt: "Ảnh chụp YouTube Studio của video What the General at Bastogne Did After He Answered NUTS",
           big: "2.000 GIỜ", label: "thời gian xem của một video trong 7 ngày đầu",
-          text: "Số liệu YouTube Studio của video đứng đầu kênh, chụp ngày 23/11/2026 khi video đạt 7.300 lượt xem.",
+          text: "Số liệu YouTube Studio của video đứng đầu kênh, chụp ngày 23/11/2026, lúc video mới đạt 7.300 lượt xem. Một ngày sau con số là 17.286.",
           mini: [["16 phút", "trung bình mỗi lượt xem, video dài 43 phút"], ["7.167", "lượt xem trong 48 giờ"], ["3.800", "lượt trong 48 giờ đó do YouTube đề xuất"]] },
         videos: [
           { id: "0Xa86NDdvcc", sec: 2589, views: 17286, title: "What the General at Bastogne Did After He Answered 'NUTS!'" },
           { id: "0v6fWK9KlgU", sec: 2320, views: 1408,  title: "9,000 Prisoners Refused to Leave Their Prison Camp" },
           { id: "fBJgI4UbHNE", sec: 2436, views: 1354,  title: "John Basilone Had the Medal of Honor and a Ticket Home. He Asked to Go Back" },
         ]},
-      { name: "Ba kênh tư liệu khác", url: "", role: "Kịch bản, dựng", tag: "Tư liệu",
+      { name: "Ba kênh tư liệu khác", url: "", role: "Kịch bản, dựng · Toàn bộ", tag: "Tư liệu",
         text: "38 video tư liệu Thế chiến II. Một kênh tôi phụ trách kịch bản và dựng (23 video). Hai kênh còn lại tôi làm toàn bộ (15 video).",
         videos: [
           { id: "xQDuMTChe6Y", sec: 2365, views: 3535, title: "Japanese Admirals Didn’t Think Iowa’s Guns Could Reach 23 Miles — Then 4 Ships Mysteriously Vanished" },
@@ -410,9 +410,9 @@ const GENRES = [
           { id: "ivOtbQwlpCM", sec: 2219, title: "Rare Color Footage of Okinawa 1945 — The Football Marines Who Never Came Home" },
         ]},
     ]},
-  { id: "3d", name: "3D", color: "var(--c-3d)", sum: ["3D thuần", "AI kết hợp 3D"],
+  { id: "3d", name: "3D", color: "var(--c-3d)", sum: ["6 video", "3D thuần", "AI kết hợp 3D"],
     groups: [
-      { name: "Same Ground", url: "https://www.youtube.com/@samegroundmaps", own: true, role: "Kênh tự xây", tag: "3D thuần",
+      { name: "Same Ground", url: "https://www.youtube.com/@samegroundmaps", own: true, role: "Kênh riêng, tự xây", tag: "3D thuần",
         text: "Timelapse 3D dựng lại quá trình một thành phố lớn lên qua hàng nghìn năm. Làm hoàn toàn bằng 3D, không dùng AI.",
         videos: [
           { id: "cVOJ9YCAGHc", sec: 440, views: 1039, title: "Watch MADRID Grow for 1,166 Years - 3D Timelapse (No AI)" },
@@ -502,7 +502,7 @@ GENRES.forEach((g, gi) => {
         <div class="mini">${q.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div></div>`)); }
     const grid = el("div", { class: `grid n${c.videos.length}` });
     c.videos.forEach(v => {
-      const meta = [v.note, v.views ? num(v.views) + " lượt xem" : ""].filter(Boolean).join(" · ");
+      const meta = [v.note, v.views >= 1000 ? num(v.views) + " lượt xem" : ""].filter(Boolean).join(" · ");
       grid.append(el("a", { class: "card", href: yt(v.id), target: "_blank", rel: "noopener" },
         `<span class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'"><span class="play"><span class="tri"></span>Xem</span><span class="tc">${tc(v.sec)}</span></span>
          <h4>${esc(v.title)}</h4>${meta ? `<div class="meta">${meta}</div>` : ""}`));
