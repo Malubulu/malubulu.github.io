@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Ý tưởng: trang là một cuộn phim. Mở đầu bằng bức tường khung hình đang trôi, chữ áp phích cỡ lớn,
-   các khối vàng phim đen đặc xen kẽ nền đen, và một timeline vẽ đúng tỉ lệ thời lượng. */
+   các khối đỏ rạp phim xen kẽ nền đen, và một timeline vẽ đúng tỉ lệ thời lượng. */
 :root{
   color-scheme: dark;
   --black:#07080a;       /* nền phòng chiếu */
@@ -19,10 +19,11 @@
   --line:#262a31;        /* vạch chia */
   --paper:#f3f0e8;       /* chữ chính */
   --mute:#9aa1ab;        /* chữ phụ */
-  --film:#ffc91f;        /* vàng hộp phim: màu nhấn và khối lớn */
-  --on-film:#0b0b0b;     /* chữ trên nền vàng */
+  --film:#e10600;        /* đỏ màn nhung rạp phim: khối lớn và nút */
+  --film-ink:#ff4a3a;    /* đỏ sáng hơn cho chữ trên nền đen */
+  --on-film:#ffffff;     /* chữ trên nền đỏ */
   --rec:#ff3b30;         /* đèn REC */
-  --c-doc:#ffc91f; --c-3d:#3dd6b8; --c-ai3d:#6aa8ff; --c-film:#ff7a59;
+  --c-doc:#ff4a3a; --c-3d:#3dd6b8; --c-ai3d:#6aa8ff; --c-film:#ffb020;
   --display:"Anton","Arial Narrow",Impact,sans-serif;
   --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
@@ -48,7 +49,7 @@ img{max-width:100%;display:block}
 .top nav a{font:600 13px/1 var(--body);text-decoration:none;padding:12px 14px;border-radius:999px}
 .top nav a:hover{background:rgba(255,255,255,.1)}
 .top nav a.go{background:var(--film);color:var(--on-film)}
-.top nav a.go:hover{background:#ffd84d}
+.top nav a.go:hover{background:#ff2a1a}
 
 /* ---------- Mở đầu ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
@@ -66,7 +67,7 @@ img{max-width:100%;display:block}
 .tcode{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--mono);letter-spacing:.08em;padding:9px 12px;border:1px solid rgba(255,255,255,.28);border-radius:4px;background:rgba(7,8,10,.5)}
 h1{font-size:clamp(3rem,min(14vw,21svh),12rem);line-height:1.04;margin-top:.34em;white-space:nowrap}
 h1 span{display:block}
-h1 .out{color:transparent;-webkit-text-stroke:2px var(--film)}
+h1 .out{color:transparent;-webkit-text-stroke:2px var(--film-ink)}
 .role{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px}
 .role b{font:700 clamp(1.05rem,2.2vw,1.5rem)/1.2 var(--body);background:var(--film);color:var(--on-film);padding:8px 14px;border-radius:4px}
 .role span{font:500 clamp(1rem,1.8vw,1.25rem)/1.4 var(--body)}
@@ -75,12 +76,12 @@ h1 .out{color:transparent;-webkit-text-stroke:2px var(--film)}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:700 16px/1 var(--body);text-decoration:none;border:2px solid var(--paper);transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s,color .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.main{background:var(--film);border-color:var(--film);color:var(--on-film)}
-.btn.main:hover{background:#ffd84d}
+.btn.main:hover{background:#ff2a1a}
 .btn.ghost:hover{background:var(--paper);color:var(--black)}
 .tri{width:0;height:0;border-left:10px solid currentColor;border-block:6px solid transparent}
 
 /* ---------- Dải chữ chạy ---------- */
-.tape{background:var(--film);color:var(--on-film);overflow:hidden;border-block:3px solid var(--on-film)}
+.tape{background:var(--film);color:var(--on-film);overflow:hidden;border-block:3px solid #0b0b0b}
 .tape div{display:flex;width:max-content;animation:tape 38s linear infinite}
 .tape span{font:400 clamp(1.4rem,3.4vw,2.4rem)/1 var(--display);text-transform:uppercase;padding:14px 0;white-space:nowrap}
 .tape span::after{content:"";display:inline-block;width:.5em;height:.5em;background:var(--on-film);border-radius:50%;margin:0 .7em;vertical-align:middle}
@@ -90,19 +91,19 @@ h1 .out{color:transparent;-webkit-text-stroke:2px var(--film)}
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
 .fact{padding:44px 24px 40px 0}
 .fact + .fact{padding-left:24px;border-left:1px solid var(--line)}
-.fact b{display:block;font:400 clamp(2.8rem,7vw,6rem)/1 var(--display);color:var(--film);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fact b{display:block;font:400 clamp(2.8rem,7vw,6rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .fact span{display:block;margin-top:12px;color:var(--mute);max-width:24ch}
 
 /* ---------- Khối chung ---------- */
 section{padding-block:96px 0}
 h2{font-size:clamp(2.6rem,8vw,6.5rem)}
-h2 em{font-style:normal;color:var(--film)}
+h2 em{font-style:normal;color:var(--film-ink)}
 .sub{color:var(--mute);max-width:60ch;margin:14px 0 0;font-size:1.0625rem}
 
 /* ---------- Video nổi bật ---------- */
 .feat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:36px}
 .feat .thumb{border-radius:14px}
-.feat .big{font:400 clamp(3.5rem,9vw,7.5rem)/1 var(--display);color:var(--film);font-variant-numeric:tabular-nums}
+.feat .big{font:400 clamp(3.5rem,9vw,7.5rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums}
 .feat h3{font:600 clamp(1.15rem,2.2vw,1.5rem)/1.35 var(--body);margin:18px 0 0;text-wrap:pretty}
 .feat p{color:var(--mute);margin:10px 0 22px}
 
@@ -112,7 +113,7 @@ h2 em{font-style:normal;color:var(--film)}
 .ruler i{position:absolute;bottom:0;width:1px;height:8px;background:var(--mute)}
 .ruler em{position:absolute;bottom:12px;transform:translateX(-50%);font:400 11px/1 var(--mono);font-style:normal;color:var(--mute)}
 .ruler em:first-of-type{transform:none}
-.ruler em:last-of-type{color:var(--film);font-weight:600}
+.ruler em:last-of-type{color:var(--film-ink);font-weight:600}
 .row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);align-items:center;min-height:40px}
 .row .ch{font-size:.8125rem;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:12px}
 .row a{display:flex;align-items:center;text-decoration:none;min-width:0;min-height:40px}
@@ -131,7 +132,7 @@ h2 em{font-style:normal;color:var(--film)}
 .chan-head h3 a:hover{color:var(--c)}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 11px;border-radius:4px;color:var(--c);border:1.5px solid var(--c)}
-.tag.own{background:var(--c);color:var(--on-film)}
+.tag.own{background:var(--c);color:#0b0b0b}
 .chan > p{margin:16px 0 0;max-width:64ch;color:var(--mute);font-size:1.0625rem}
 .grid{display:grid;gap:24px;margin-top:28px}
 .grid.n1{grid-template-columns:minmax(0,820px)}
@@ -139,12 +140,12 @@ h2 em{font-style:normal;color:var(--film)}
 .grid.n3{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
 .grid.n3 .card:first-child{grid-row:span 2}
 .card{display:flex;flex-direction:column;gap:12px;text-decoration:none;min-width:0}
-.thumb{position:relative;display:block;aspect-ratio:16/9;background:var(--panel);border-radius:10px;overflow:hidden;box-shadow:0 0 0 0 var(--c,var(--film));transition:box-shadow .25s}
+.thumb{position:relative;display:block;aspect-ratio:16/9;background:var(--panel);border-radius:10px;overflow:hidden;box-shadow:0 0 0 0 var(--c,var(--film-ink));transition:box-shadow .25s}
 .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-a:hover > .thumb,a.thumb:hover{box-shadow:0 0 0 3px var(--c,var(--film))}
+a:hover > .thumb,a.thumb:hover{box-shadow:0 0 0 3px var(--c,var(--film-ink))}
 a:hover > .thumb img,a.thumb:hover img{transform:scale(1.045)}
 .thumb .tc{position:absolute;right:10px;bottom:10px;background:rgba(7,8,10,.9);color:#fff;font:600 12.5px/1 var(--mono);padding:6px 8px;border-radius:4px}
-.thumb .play{position:absolute;left:12px;bottom:10px;height:34px;padding:0 14px 0 12px;border-radius:999px;background:var(--c,var(--film));color:var(--on-film);display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.thumb .play{position:absolute;left:12px;bottom:10px;height:34px;padding:0 14px 0 12px;border-radius:999px;background:var(--c,var(--film-ink));color:#0b0b0b;display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .card h4{font:600 1.0625rem/1.35 var(--body);margin:0;text-wrap:pretty}
 .grid.n3 .card:first-child h4{font-size:clamp(1.15rem,2vw,1.5rem)}
@@ -154,16 +155,37 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .earlier{list-style:none;padding:0;margin:32px 0 0;border-top:1px solid var(--line)}
 .earlier li{border-bottom:1px solid var(--line)}
 .earlier a{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:8px 28px;align-items:center;padding:24px 0;text-decoration:none;transition:padding .25s cubic-bezier(.2,.8,.2,1),color .2s}
-.earlier a:hover{padding-left:14px;color:var(--film)}
+.earlier a:hover{padding-left:14px;color:var(--film-ink)}
 .earlier strong{font:400 clamp(1.4rem,3vw,2.2rem)/1.15 var(--display);text-transform:uppercase}
 .earlier span{color:var(--mute)}
-.earlier .arrow{font:600 13px/1 var(--mono);color:var(--film);white-space:nowrap}
+.earlier .arrow{font:600 13px/1 var(--mono);color:var(--film-ink);white-space:nowrap}
 .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .tools span{font:400 13px/1 var(--mono);padding:10px 12px;border:1px solid var(--line);border-radius:4px}
 
+/* ---------- Nhóm video cũ ---------- */
+.grp{margin-top:64px}
+.grp-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.grp-head h3{font-size:clamp(1.7rem,3.8vw,2.8rem)}
+.grp-head a{font:600 13px/1 var(--mono);color:var(--film-ink);text-decoration:none;white-space:nowrap;padding:8px 0}
+.grp-head a:hover{text-decoration:underline;text-underline-offset:4px}
+.grp > p{color:var(--mute);max-width:64ch;margin:14px 0 0;font-size:1.0625rem}
+.proof{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:center;margin-top:24px}
+.proof img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.proof .big{font:400 clamp(3.5rem,9vw,7rem)/1 var(--display);color:var(--film-ink)}
+.proof p{color:var(--mute);margin:12px 0 0}
+.proof .mini{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:20px;font:600 14px/1.3 var(--mono)}
+.proof .mini b{color:var(--paper);font-size:1.25rem;display:block}
+.proof .mini span{color:var(--mute)}
+.shorts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,190px));gap:18px;margin-top:22px}
+.short{display:flex;flex-direction:column;gap:8px;text-decoration:none;min-width:0}
+.short .thumb{aspect-ratio:9/16}
+.short span.t{font:600 .9375rem/1.3 var(--body)}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,170px));gap:14px;margin-top:22px}
+.models .thumb{aspect-ratio:1}
+
 /* ---------- Liên hệ ---------- */
 .contact{margin-top:110px;background:var(--film);color:var(--on-film)}
-.contact::before{content:"";display:block;height:26px;background:repeating-linear-gradient(-45deg,var(--on-film) 0 26px,var(--film) 26px 52px)}
+.contact::before{content:"";display:block;height:26px;background:repeating-linear-gradient(-45deg,#0b0b0b 0 26px,var(--film) 26px 52px)}
 .contact .wrap{padding-block:72px 64px}
 .contact .label{color:var(--on-film)}
 .contact h2{font-size:clamp(3.2rem,12.5vw,11rem);line-height:1.06;margin-top:10px}
@@ -189,6 +211,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .row a{min-height:34px}
   .grid.n2,.grid.n3{grid-template-columns:minmax(0,1fr)}
   .earlier a{grid-template-columns:minmax(0,1fr)}
+  .proof{grid-template-columns:minmax(0,1fr);gap:20px}
+  .shorts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grp{margin-top:48px}
   .contact{margin-top:72px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -215,7 +240,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <div class="tcode"><span class="rec"></span><span id="tcode">00:00:00:00</span></div>
     <h1 class="display"><span>Nguyễn</span><span class="out">Phạm Nguyên</span></h1>
     <div class="role"><b>Video Producer</b><span>YouTube từ 7 phút đến gần 2 tiếng</span></div>
-    <p class="pitch">Tư liệu kết hợp motion, 3D thuần, AI kết hợp 3D và phim AI. Tôi đã tự xây hai kênh từ con số 0 và phụ trách hậu kỳ cho hai dự án khác.</p>
+    <p class="pitch">Tư liệu kết hợp motion, 3D thuần, AI kết hợp 3D và phim AI. Tôi đã tự xây hai kênh từ con số 0 và phụ trách hậu kỳ cho hai kênh khác. Các video dưới đây chỉ là một phần tiêu biểu.</p>
     <div class="cta">
       <a class="btn main" href="#video"><span class="tri"></span>Xem video</a>
       <a class="btn ghost" href="#lien-he">Liên hệ phỏng vấn</a>
@@ -229,7 +254,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="facts" id="facts">
     <div class="fact"><b data-count="17027">17.027</b><span>lượt xem cho một video sau 8 ngày, trên kênh mới tự xây</span></div>
     <div class="fact"><b data-tc="6656">1:50:56</b><span>video dài nhất đã hoàn thiện</span></div>
-    <div class="fact"><b data-count="4">4</b><span>dự án YouTube đã tham gia sản xuất</span></div>
+    <div class="fact"><b data-count="4">4</b><span>kênh YouTube trong 6 tháng</span></div>
     <div class="fact"><b data-count="2">2</b><span>kênh tự xây từ con số 0</span></div>
   </div>
 </div>
@@ -265,13 +290,16 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 
 <main class="wrap" id="video"></main>
 
-<section class="wrap reveal" id="truoc-do">
-  <div class="label">Trước đó</div>
-  <h2 class="display">Video ngắn và <em>xây kênh</em></h2>
-  <ul class="earlier">
-    <li><a href="https://drive.google.com/drive/folders/1ivrV4RQOwsE_88i85BryKeN9VBOI9xXM" target="_blank" rel="noopener"><strong>Kênh sức khỏe, kiến thức</strong><span>Xây kênh từ 0 lên 10k, không chạy quảng cáo, traffic tự nhiên.</span><span class="arrow">Xem số liệu →</span></a></li>
-    <li><a href="https://drive.google.com/drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob" target="_blank" rel="noopener"><strong>Video AI ngắn</strong><span>Video ngắn và video bán hàng làm bằng công cụ AI cho TikTok, Reels.</span><span class="arrow">Xem video →</span></a></li>
-    <li><a href="https://drive.google.com/file/d/1GRABYNxccAFNQCXlC3RNEDb0s1jxyciy/view" target="_blank" rel="noopener"><strong>Video 2D</strong><span>Video dạng hoạt hình 2D.</span><span class="arrow">Xem video →</span></a></li>
+<section class="wrap" id="truoc-do">
+  <div class="reveal">
+    <div class="label">Trước đó</div>
+    <h2 class="display">Video ngắn, AI và <em>xây kênh</em></h2>
+    <p class="sub">Những gì tôi làm trước khi chuyển sang video dài: xây kênh từ đầu, video ngắn cho TikTok và Reels, video AI.</p>
+  </div>
+  <div id="old"></div>
+  <ul class="earlier reveal" style="margin-top:64px">
+    <li><a href="https://www.youtube.com/@Kenji_036" target="_blank" rel="noopener"><strong>Kênh gaming, giải trí</strong><span>YouTube</span><span class="arrow">Mở kênh →</span></a></li>
+    <li><a href="https://drive.google.com/drive/folders/1ww9xESf19qSHHBF43Muxs1xZRjwSoeH5" target="_blank" rel="noopener"><strong>Toàn bộ kho video</strong><span>Tất cả video và số liệu gốc lưu trên Google Drive.</span><span class="arrow">Mở Drive →</span></a></li>
   </ul>
   <div class="tools" aria-label="Công cụ">
     <span>CapCut</span><span>Flow</span><span>Pixverse</span><span>Grok</span><span>Minimax</span>
@@ -331,6 +359,34 @@ const CHANNELS = [
       { id: "YzttChwm8G0", sec: 6656, views: 1780, title: "They Ordered the Old Man Off the Porch—Unaware He Was the Last Living Gunslinger", note: "Video dài" },
       { id: "06BNzS5oMuY", sec: 1578, title: "The Marshal Came for the Wounded Boy… Unaware He Was Wearing Her Dead Husband's Watch", note: "Phim AI" },
     ]},
+];
+const D = "https://drive.google.com/";
+const OLD = [
+  { name: "Khỏe Khoa Học", link: "https://www.facebook.com/khoekhoahoc", linkText: "Mở trang Facebook →",
+    proof: { img: "1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E", big: "0 → 10K", label: "người theo dõi trên Facebook",
+      text: "Kênh sức khỏe, kiến thức, khoa học. Xây từ con số 0, không chạy quảng cáo, traffic tự nhiên.",
+      mini: [["19,2K", "lượt thích TikTok"], ["855", "follower TikTok"]],
+      more: D + "drive/folders/1ivrV4RQOwsE_88i85BryKeN9VBOI9xXM" },
+    shorts: [
+      { id: "1GRABYNxccAFNQCXlC3RNEDb0s1jxyciy", t: "Video 2D" },
+      { id: "1FgFPU-rvmBy1E4xfE4KJ4qZTrwovSipD", t: "Dạng video 2" },
+      { id: "1i-x8Cq-z5jEsN7dC5TgtA82foTi5gMVp", t: "Video dựng từ source có sẵn" },
+    ]},
+  { name: "Video AI", link: D + "drive/folders/1FwpsecmrBwmu65OklZEry6l_RDp9F-Ob", linkText: "Mở thư mục →",
+    text: "Video ngắn và video bán hàng làm bằng CapCut, Flow, Pixverse, Grok, Minimax.",
+    shorts: [
+      { id: "1V4dg1R-au6FJN68mti5iV6c12_baeFBp", t: "Video AI" },
+      { id: "1ks_E74Z3NOc8YtEtD47N1CzwEQWK9YZj", t: "Video AI" },
+      { id: "1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO", t: "Video AI bán hàng" },
+      { id: "1M1-uik1Mg59b9A3T0qkaxqkVOx_nOBKs", t: "Video AI bán hàng" },
+    ]},
+  { name: "TikTok Unitour", link: D + "drive/folders/1JNWzkEMTepJR0xhuM8OEOvjP6i5FyRec", linkText: "Mở thư mục →",
+    shorts: [
+      { id: "1LCm_C2OLCz3RfQEgbA6yhYZnklQEEn7y", t: "Video 1" },
+      { id: "1shxdnEUNGDpaE9QxFb3ABMkeFjduv_Zg", t: "Video 2" },
+    ]},
+  { name: "Model nhân vật", link: D + "drive/folders/1QE7vmo3cP68mUDKVVIJJd8WdAP87fE6r", linkText: "Xem cả bộ →",
+    models: ["1lQmZNn0LqCssUk2US8pyrULgaMeMY-9N", "1yzdf_T-Pev_w2thy2HRuBdF30sIdQDbc", "1Q0kI6x_20Nx78lGTZKKmuE8Ist9Muudy", "1FnKy4ClDlnjO3NWtUYzlQLUZNm5Kb6oU", "1MQl_KD0rvATF4-Retd_neDQZehPYiz0j"] },
 ];
 /* ====== HẾT PHẦN NỘI DUNG ====== */
 
@@ -398,6 +454,23 @@ CHANNELS.forEach(c => {
   main.append(s);
 });
 
+// Video cũ: ảnh xem trước lấy thẳng từ Drive
+const dt = id => `assets/${id}.jpg`;
+const old = document.getElementById("old");
+OLD.forEach(g => {
+  const s = el("div", { class: "grp reveal" });
+  s.append(el("div", { class: "grp-head" }, `<h3 class="display">${esc(g.name)}</h3><a href="${g.link}" target="_blank" rel="noopener">${g.linkText}</a>`));
+  if (g.text) s.append(el("p", {}, g.text));
+  if (g.proof) { const p = g.proof;
+    s.append(el("div", { class: "proof" }, `<a href="${g.link}" target="_blank" rel="noopener"><img loading="lazy" alt="Trang Facebook ${esc(g.name)} với 10K người theo dõi" src="${dt(p.img, 1200)}"></a>
+      <div><div class="big">${p.big}</div><div class="label">${p.label}</div><p>${p.text}</p>
+      <div class="mini">${p.mini.map(m => `<div><b>${m[0]}</b><span>${m[1]}</span></div>`).join("")}</div>
+      <a class="btn ghost" style="margin-top:22px" href="${p.more}" target="_blank" rel="noopener">Xem số liệu gốc</a></div>`)); }
+  if (g.shorts) s.append(el("div", { class: "shorts" }, g.shorts.map(v => `<a class="short" href="${D}file/d/${v.id}/view" target="_blank" rel="noopener"><span class="thumb"><img loading="lazy" alt="" src="${dt(v.id, 480)}"><span class="play"><span class="tri"></span>Xem</span></span><span class="t">${v.t}</span></a>`).join("")));
+  if (g.models) s.append(el("div", { class: "models" }, g.models.map(id => `<a class="thumb" href="${g.link}" target="_blank" rel="noopener"><img loading="lazy" alt="" src="${dt(id, 400)}"></a>`).join("")));
+  old.append(s);
+});
+
 // Chuyển động khi cuộn (trang vẫn đọc được đầy đủ nếu không có)
 if (window.gsap && window.ScrollTrigger && !still) {
   gsap.registerPlugin(ScrollTrigger);
@@ -408,7 +481,7 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
 
   document.querySelectorAll(".reveal").forEach(sec => {
-    gsap.from(sec.querySelectorAll(":scope > .label, :scope > h2, :scope > .sub, :scope > .chan-head, :scope > p, .feat > *, .card, .earlier li, .tl"),
+    gsap.from(sec.querySelectorAll(":scope > .label, :scope > h2, :scope > .sub, :scope > .chan-head, :scope > .grp-head, :scope > p, .feat > *, .card, .short, .proof > *, .models > *, :scope > li, .tl"),
       { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 82%", once: true } });
   });
   gsap.from(".clip", { scaleX: 0, duration: .9, stagger: .06, ease: "power3.out", scrollTrigger: { trigger: "#tl", start: "top 78%", once: true } });
