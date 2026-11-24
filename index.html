@@ -93,13 +93,18 @@ h1 .out{color:var(--paper)}
 @keyframes tape{to{transform:translateX(-50%)}}
 
 /* ---------- Con số ---------- */
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
-.fact{padding:44px 24px 40px 0}
-.fact + .fact{padding-left:24px;border-left:1px solid var(--line)}
-.fact b{display:block;font:400 clamp(2.5rem,5.2vw,4.4rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.fact{padding:48px 32px 44px 0}
+.fact + .fact{padding-left:32px;border-left:1px solid var(--line)}
+.fact b{display:flex;align-items:baseline;gap:.14em;font:400 clamp(3.4rem,7vw,6rem)/1 var(--display);color:var(--paper);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fact b i{font-style:normal}
+.fact b small{font-size:.42em;color:var(--film-ink);letter-spacing:.02em}
+.fact b em{font-style:normal;color:var(--mute);font-size:.6em}
+.fact .k{display:flex;align-items:center;gap:10px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
+.fact .k::before{content:"";width:18px;height:2px;background:var(--film)}
 .fact .q{font:600 12px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--paper);margin-bottom:16px;min-height:2.7em}
 .fact strong{display:block;margin-top:14px;font:700 1.0625rem/1.3 var(--body)}
-.fact span{display:block;margin-top:12px;color:var(--mute);max-width:26ch}
+.fact > span{display:block;margin-top:16px;color:var(--mute);max-width:30ch}
 .steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;counter-reset:st}
 .steps li{counter-increment:st;border-top:3px solid var(--film);padding:14px 12px 0 0;font:600 1rem/1.3 var(--body)}
 .steps li::before{content:"0" counter(st);display:block;font:600 12px/1 var(--mono);color:var(--film-ink);margin-bottom:10px}
@@ -236,10 +241,10 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .wall{grid-template-columns:repeat(3,minmax(0,1fr));inset:-20% -30%}
   .hero-in{padding-block:96px 32px}
   .exp li{grid-template-columns:minmax(0,1fr)}
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .fact{padding:28px 14px 26px 0}
-  .fact:nth-child(3){padding-left:0;border-left:0}
-  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .facts{grid-template-columns:1fr}
+  .fact{padding:26px 0 24px}
+  .fact + .fact{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .fact .k{margin-bottom:14px}
   section{padding-block:68px 0}
   .chan{padding-block:64px 0}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
@@ -300,10 +305,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 
 <div class="wrap">
   <div class="facts reveal" id="facts">
-    <div class="fact"><b>7,5M</b><span>lượt xem trên Facebook, TikTok và YouTube</span></div>
-    <div class="fact"><b>18 / TUẦN</b><span>bản dựng mỗi tuần, giữ suốt 6 tháng</span></div>
-    <div class="fact"><b>2:26:44</b><span>video dài nhất đã hoàn thiện</span></div>
-    <div class="fact"><b>0 → 17K</b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
+    <div class="fact"><div class="k">Lượt xem</div><b><i data-to="7.5" data-dec="1">7,5</i><small>TRIỆU</small></b><span>trên Facebook, TikTok và YouTube</span></div>
+    <div class="fact"><div class="k">Năng suất</div><b><i data-to="18">18</i><small>/ TUẦN</small></b><span>bản dựng hoàn chỉnh mỗi tuần</span></div>
+    <div class="fact"><div class="k">Xây kênh</div><b><em>0 →</em><i data-to="17">17</i><small>K</small></b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
   </div>
 </div>
 
@@ -396,6 +400,18 @@ document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
 document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
+
+// Con số nảy từ 0 lên khi cuộn tới
+if (!still && "IntersectionObserver" in window) {
+  const nums = [...document.querySelectorAll("#facts i[data-to]")];
+  const show = (n, v) => n.textContent = v.toFixed(+n.dataset.dec || 0).replace(".", ",");
+  nums.forEach(n => show(n, 0));
+  new IntersectionObserver((es, io) => { if (!es.some(e => e.isIntersecting)) return; io.disconnect();
+    const t1 = performance.now(), D = 1600;
+    (function step(now) { const k = Math.min(1, (now - t1) / D), e = 1 - Math.pow(1 - k, 4);
+      nums.forEach(n => show(n, +n.dataset.to * e)); if (k < 1) requestAnimationFrame(step); })(t1);
+  }, { threshold: .4 }).observe(document.getElementById("facts"));
+}
 
 // Chuyển động khi cuộn (trang vẫn đọc được đầy đủ nếu không có)
 if (window.gsap && window.ScrollTrigger && !still) {
