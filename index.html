@@ -326,7 +326,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <h2 class="display">Mỗi thể loại, <em>một video</em></h2>
   </div>
   <div class="six reveal" id="six"></div>
-  <p class="more reveal">Reel khác trên cùng kênh: <span id="more"></span></p>
+  <p class="more reveal">Reel Facebook khác: <span id="more"></span></p>
+  <p class="more reveal" style="margin-top:8px">Video TikTok khác: <span id="more-tt"></span></p>
 </section>
 
 <section class="wrap" id="kenh">
@@ -382,9 +383,10 @@ const SIX = [
   { kind: "AI + 3D", color: "var(--c-3d)", big: "2.581", sub: "lượt xem · dài 13 phút", role: "Dựng toàn bộ kênh", ...YT("Kl2d0hrjixQ") },
   { kind: "3D thuần", color: "var(--c-3d)", big: "07:20", sub: "timelapse 3D, không dùng AI", role: "Kênh riêng, tự xây", ...YT("cVOJ9YCAGHc") },
   { kind: "Phim AI", color: "var(--c-film)", big: "26:18", sub: "thời lượng", role: "Hậu kỳ", ...YT("06BNzS5oMuY") },
-  { kind: "Short AI", color: "var(--c-ai3d)", big: "10 / NGÀY", sub: "video AI ngắn mỗi ngày · TikTok", role: "Làm toàn bộ",
-    href: "https://www.tiktok.com/@meohaymebim.dake/video/7542454616626040071", img: "assets/1V4dg1R-au6FJN68mti5iV6c12_baeFBp.jpg" },
-  { kind: "Video bán hàng", color: "var(--c-ai3d)", big: "BÁN HÀNG", sub: "video giới thiệu sản phẩm dựng bằng AI", role: "Làm toàn bộ", ...DRV("1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO") },
+  { kind: "Short AI", color: "var(--c-ai3d)", big: "149,2 NGHÌN", sub: "lượt xem · video AI trên TikTok", role: "Làm toàn bộ",
+    href: "https://www.tiktok.com/@mebimmintay.dake/video/7581685731110817031", img: "assets/tt-ai.jpg" },
+  { kind: "Video bán hàng", color: "var(--c-ai3d)", big: "362,1 NGHÌN", sub: "lượt xem · video giới thiệu sản phẩm", role: "Làm toàn bộ",
+    href: "https://www.tiktok.com/@mebimmintay.dake/video/7584674082411547921", img: "assets/tt-sale.jpg" },
   { kind: "TikTok", color: "var(--c-ai3d)", big: "633.661", sub: "lượt xem · 122 video TikTok", role: "Kênh tự xây",
     href: "https://www.tiktok.com/@khoekhoahoc_", img: "assets/tt-1.jpg" },
 ];
@@ -397,12 +399,17 @@ const CHANNELS = [
   ["Mẹo Hay Mẹ Bỉm", "TikTok", "av-d1", "https://www.tiktok.com/@meohaymebim.dake"],
   ["Mẹ Bỉm Mát Tay", "TikTok", "av-d2", "https://www.tiktok.com/@mebimmattay.dake"],
   ["Mẹ Bỉm Mìn Tây", "TikTok", "av-d3", "https://www.tiktok.com/@mebimmintay.dake"],
+  ["Đức Anh Review", "TikTok", "av-d4", "https://www.tiktok.com/@ducanhreview.dake"],
 ];
 const MORE = [
   ["925 NGHÌN", "https://www.facebook.com/reel/27348891024809976"],
   ["923 NGHÌN", "https://www.facebook.com/reel/1937753960222215"],
   ["738 NGHÌN", "https://www.facebook.com/reel/1791459215620521"],
   ["694 NGHÌN", "https://www.facebook.com/reel/2111565750244143"],
+];
+const MORE_TT = [
+  ["619 NGHÌN", "https://www.tiktok.com/@mebimmintay.dake/video/7582784005355916551"],
+  ["234 NGHÌN", "https://www.tiktok.com/@mebimmintay.dake/video/7579451651573042450"],
 ];
 const WALL = ["0Xa86NDdvcc", "mqdHeFNrgjE", "Kl2d0hrjixQ", "cVOJ9YCAGHc", "06BNzS5oMuY", "xQDuMTChe6Y", "YzttChwm8G0", "jIazK1fqCF4", "0v6fWK9KlgU", "fBJgI4UbHNE", "1D3CWHZDzus"];
 const TOOLS = ["CapCut", "Blender", "Unreal Engine", "Canva", "KineMaster", "Claude", "ChatGPT", "Gemini", "AI33", "Kling AI", "Veo 3", "Flow", "Grok", "PixVerse", "MiniMax", "Nano Banana"];
@@ -433,6 +440,7 @@ document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
 document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("");
+document.getElementById("more-tt").innerHTML = MORE_TT.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
 // Con số nảy từ 0 lên khi cuộn tới
