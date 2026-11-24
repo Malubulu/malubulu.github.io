@@ -219,6 +219,13 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .more{margin:36px 0 0;color:var(--mute);font-size:1.0625rem}
 .more a{font:400 1.5rem/1 var(--display);color:var(--film-ink);text-decoration:none;margin-left:18px;padding:8px 0;display:inline-block}
 .more a:hover{text-decoration:underline;text-underline-offset:5px}
+.chans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px}
+.chan{display:block;padding:28px 24px 26px 0;text-decoration:none;color:inherit}
+.chan + .chan{padding-left:24px;border-left:1px solid var(--line)}
+.chan small{display:block;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--film-ink)}
+.chan b{display:block;margin-top:14px;font:400 clamp(1.5rem,2.4vw,2rem)/1.1 var(--display);letter-spacing:.01em}
+.chan span{display:block;margin-top:10px;color:var(--mute)}
+.chan:hover b{color:var(--film-ink)}
 .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
 .shots figure{margin:0}
 .shots img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-radius:12px;border:1px solid var(--line)}
@@ -250,6 +257,11 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
   .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
   .shots{grid-template-columns:minmax(0,1fr)}
+  .chans{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chan{padding:20px 12px 18px 0}
+  .chan b{font-size:1.25rem;overflow-wrap:anywhere}
+  .chan:nth-child(3){padding-left:0;border-left:0}
+  .chan:nth-child(n+3){border-top:1px solid var(--line)}
   .more a{margin-left:12px}
   .pick .play{display:none}
   .pick .kind{font-size:10.5px;padding:6px 7px}
@@ -279,6 +291,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <a class="id" href="#top"><span class="rec"></span>NPN · Portfolio 2026</a>
   <nav>
     <a href="#video">Video</a>
+    <a href="#kenh">Kênh</a>
     <a href="#so-lieu">Số liệu</a>
     <a class="go" href="#lien-he">Liên hệ</a>
   </nav>
@@ -292,7 +305,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <div class="role"><b>Video Producer</b><span>Gần 2 năm làm video, từ video ngắn đến video dài</span></div>
     <ul class="exp">
       <li><b>Producer<small>Alin · 6 tháng</small></b><span>Video YouTube tiếng Anh, dài từ 13 phút đến 2 tiếng 26 phút.</span></li>
-      <li><b>Content Creator<small>Hải Xuyên · 5 tháng</small></b><span>Xây kênh từ 0 lên 17K người theo dõi. Reel cao nhất 1,1 triệu lượt xem.</span></li>
+      <li><b>Content Creator<small>Hải Xuyên · 5 tháng</small></b><span>Xây kênh từ 0 lên 17 nghìn người theo dõi. Reel cao nhất 1,1 triệu lượt xem.</span></li>
       <li><b>AI Video Editor<small>Dake Group · 1 năm</small></b><span>10 video AI ngắn mỗi ngày.</span></li>
     </ul>
     <div class="cta">
@@ -307,7 +320,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="facts reveal" id="facts">
     <div class="fact"><div class="k">Lượt xem</div><b><i data-to="7.5" data-dec="1">7,5</i><small>TRIỆU</small></b><span>trên Facebook, TikTok và YouTube</span></div>
     <div class="fact"><div class="k">Năng suất</div><b><i data-to="18">18</i><small>/ TUẦN</small></b><span>bản dựng hoàn chỉnh mỗi tuần</span></div>
-    <div class="fact"><div class="k">Xây kênh</div><b><em>0 →</em><i data-to="17">17</i><small>K</small></b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
+    <div class="fact"><div class="k">Xây kênh</div><b><em>0 →</em><i data-to="17">17</i><small>NGHÌN</small></b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
   </div>
 </div>
 
@@ -320,6 +333,14 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <p class="more reveal">Reel khác trên cùng kênh: <span id="more"></span></p>
 </section>
 
+<section class="wrap" id="kenh">
+  <div class="reveal">
+    <div class="label">Kênh đã đăng</div>
+    <h2 class="display">Kênh <em>tự xây</em></h2>
+  </div>
+  <div class="chans reveal" id="chans"></div>
+</section>
+
 <section class="wrap" id="so-lieu">
   <div class="reveal">
     <div class="label">Số liệu thật</div>
@@ -328,7 +349,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="shots">
     <figure class="reveal">
       <a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E.jpg"></a>
-      <figcaption><b>0 → 17K</b>Kênh Khỏe Khoa Học: người theo dõi Facebook sau 2 tháng, traffic tự nhiên.</figcaption>
+      <figcaption><b>0 → 17 NGHÌN</b>Kênh Khỏe Khoa Học: người theo dõi Facebook sau 2 tháng, traffic tự nhiên.</figcaption>
     </figure>
     <figure class="reveal">
       <a href="https://youtu.be/0Xa86NDdvcc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp YouTube Studio của video What the General at Bastogne Did After He Answered NUTS" src="assets/omw-studio.jpg"></a>
@@ -353,9 +374,10 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
 const TAPE = ["3D", "2D", "Motion Graphic", "Đồ hoạ", "Phim AI", "Short AI", "Video bán hàng", "Tư liệu lịch sử", "Truyện kể dài"];
+const DRV = id => ({ href: "https://drive.google.com/file/d/" + id + "/view", img: `assets/${id}.jpg` });
 const YT = id => ({ href: "https://youtu.be/" + id, img: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, alt: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` });
 
-// Sáu video: mỗi thể loại một video tốt nhất
+// Mỗi thể loại một video tốt nhất
 const SIX = [
   { kind: "Video ngắn", color: "var(--c-ai3d)", big: "1,1 TRIỆU", sub: "lượt xem · Facebook Reels", role: "Làm toàn bộ",
     href: "https://www.facebook.com/reel/2321950988334831", img: "assets/fb-a.jpg" },
@@ -364,12 +386,23 @@ const SIX = [
   { kind: "AI + 3D", color: "var(--c-3d)", big: "2.581", sub: "lượt xem · dài 13 phút", role: "Dựng toàn bộ kênh", ...YT("Kl2d0hrjixQ") },
   { kind: "3D thuần", color: "var(--c-3d)", big: "07:20", sub: "timelapse 3D, không dùng AI", role: "Kênh riêng, tự xây", ...YT("cVOJ9YCAGHc") },
   { kind: "Phim AI", color: "var(--c-film)", big: "26:18", sub: "thời lượng", role: "Hậu kỳ", ...YT("06BNzS5oMuY") },
+  { kind: "Short AI", color: "var(--c-ai3d)", big: "10 / NGÀY", sub: "video AI ngắn mỗi ngày", role: "Làm toàn bộ", ...DRV("1V4dg1R-au6FJN68mti5iV6c12_baeFBp") },
+  { kind: "Video bán hàng", color: "var(--c-ai3d)", big: "BÁN HÀNG", sub: "video giới thiệu sản phẩm dựng bằng AI", role: "Làm toàn bộ", ...DRV("1wO8Lj3z6BIPsOm229vMAWv67YpwyJsHO") },
+  { kind: "TikTok", color: "var(--c-ai3d)", big: "633.661", sub: "lượt xem · 122 video TikTok", role: "Kênh tự xây",
+    href: "https://www.tiktok.com/@khoekhoahoc_", img: "assets/tt-1.jpg" },
+];
+// Kênh đã đăng (chỉ kênh tự xây; kênh công ty không nêu tên)
+const CHANNELS = [
+  ["Facebook", "Khỏe Khoa Học", "17 nghìn theo dõi", "https://www.facebook.com/khoekhoahoc"],
+  ["TikTok", "@khoekhoahoc_", "122 video", "https://www.tiktok.com/@khoekhoahoc_"],
+  ["YouTube", "One Man's War", "11 video", "https://www.youtube.com/@OneMansWar.WW2"],
+  ["YouTube", "Same Ground", "3 video", "https://www.youtube.com/@samegroundmaps"],
 ];
 const MORE = [
-  ["925K", "https://www.facebook.com/reel/27348891024809976"],
-  ["923K", "https://www.facebook.com/reel/1937753960222215"],
-  ["738K", "https://www.facebook.com/reel/1791459215620521"],
-  ["694K", "https://www.facebook.com/reel/2111565750244143"],
+  ["925 NGHÌN", "https://www.facebook.com/reel/27348891024809976"],
+  ["923 NGHÌN", "https://www.facebook.com/reel/1937753960222215"],
+  ["738 NGHÌN", "https://www.facebook.com/reel/1791459215620521"],
+  ["694 NGHÌN", "https://www.facebook.com/reel/2111565750244143"],
 ];
 const WALL = ["0Xa86NDdvcc", "mqdHeFNrgjE", "Kl2d0hrjixQ", "cVOJ9YCAGHc", "06BNzS5oMuY", "xQDuMTChe6Y", "YzttChwm8G0", "jIazK1fqCF4", "0v6fWK9KlgU", "fBJgI4UbHNE", "1D3CWHZDzus"];
 const TOOLS = ["CapCut", "Blender", "Unreal Engine", "Canva", "KineMaster", "Claude", "ChatGPT", "Gemini", "AI33", "Kling AI", "Veo 3", "Flow", "Grok", "PixVerse", "MiniMax", "Nano Banana"];
@@ -399,6 +432,7 @@ else tcode.textContent = "REC";
 document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}>
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
+document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chan" href="${c[3]}" ${ext}><small>${c[0]}</small><b>${c[1]}</b><span>${c[2]} →</span></a>`).join("");
 document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
 // Con số nảy từ 0 lên khi cuộn tới
@@ -422,7 +456,7 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.from(".tcode,.role,.exp li,.cta", { y: 24, opacity: 0, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
   document.querySelectorAll(".reveal").forEach(sec => {
-    const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, :scope > a, :scope > figcaption");
+    const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, .chan, :scope > a, :scope > figcaption");
     gsap.from(items.length ? items : sec, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 85%", once: true } });
   });
   gsap.from(".contact h2", { yPercent: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".contact", start: "top 80%", once: true } });
