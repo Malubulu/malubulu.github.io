@@ -178,6 +178,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .rk .thumb{width:112px;border-radius:6px}
 .rk.tall a{grid-template-columns:40px 60px minmax(0,1fr)}
 .rk.tall .thumb{width:60px;aspect-ratio:3/4}
+.rk .thumb:empty{background:#5b3a9e;display:grid;place-items:center}
+.rk .thumb:empty::after{content:"";border-left:14px solid #fff;border-block:9px solid transparent}
 .rk b{display:block;font:400 clamp(1.9rem,3.4vw,2.6rem)/1 var(--display);color:var(--film-ink);font-variant-numeric:tabular-nums}
 .rk .t{font:600 .9375rem/1.35 var(--body);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rk .m{display:block;font:400 12px/1.3 var(--mono);color:var(--mute);margin-top:5px}
@@ -270,7 +272,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <div class="wrap">
   <div class="facts reveal" id="facts">
     <div class="fact"><div class="q">Video làm ra có người xem không?</div><b>7,5M</b><strong>Hơn 7,5 triệu lượt xem</strong><span>Đếm trên Facebook, TikTok và YouTube. Video cao nhất đạt 1,1 triệu, không chạy quảng cáo.</span></div>
-    <div class="fact"><div class="q">Làm có nhanh không?</div><b>3 / NGÀY</b><strong>Trung bình 3 video mỗi ngày</strong><span>21 video mỗi tuần, hơn 500 video trong 6 tháng.</span></div>
+    <div class="fact"><div class="q">Làm có nhanh không?</div><b>21 / TUẦN</b><strong>Hơn 4 video mỗi ngày làm việc</strong><span>Giữ đều nhịp đó suốt 6 tháng, tổng cộng hơn 500 video.</span></div>
     <div class="fact"><div class="q">Có kham nổi video dài không?</div><b>107 GIỜ</b><strong>92 video dài trong 9 tuần</strong><span>Đều đã lên YouTube. Video dài nhất 2 tiếng 26 phút.</span></div>
     <div class="fact"><div class="q">Có tự lo được cả một kênh không?</div><b>0 → 17K</b><strong>Xây kênh từ con số 0</strong><span>17K người theo dõi Facebook bằng traffic tự nhiên, cùng hai kênh YouTube tự dựng từ đầu.</span></div>
   </div>
@@ -326,7 +328,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
-const TAPE = ["Tư liệu lịch sử", "3D", "Story", "Phim AI", "Video ngắn", "7,5 triệu lượt xem", "3 video mỗi ngày", "Dài nhất 2:26:44", "Xây kênh từ 0", "Hậu kỳ"];
+const TAPE = ["Tư liệu lịch sử", "3D", "Story", "Phim AI", "Video ngắn", "7,5 triệu lượt xem", "21 video mỗi tuần", "Dài nhất 2:26:44", "Xây kênh từ 0", "Hậu kỳ"];
 const D = "https://drive.google.com/";
 const KKH = "https://www.tiktok.com/@khoekhoahoc_/video/";
 
