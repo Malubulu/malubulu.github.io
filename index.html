@@ -155,6 +155,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .earlier .arrow{font:600 13px/1 var(--mono);color:var(--film-ink);white-space:nowrap}
 .tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .tools span{font:400 13px/1 var(--mono);padding:10px 12px;border:1px solid var(--line);border-radius:4px}
+.tools span{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:10px;font:600 14px/1 var(--body)}
+.tools img{width:30px;height:30px;border-radius:7px;object-fit:cover;background:#fff;flex:none}
 
 /* ---------- Nhóm video cũ ---------- */
 .grp{margin-top:64px}
@@ -433,7 +435,7 @@ const MORE_TT = [
   ["234 NGHÌN", "https://www.tiktok.com/@mebimmintay.dake/video/7579451651573042450"],
 ];
 const WALL = ["h_ltVKRXn0o", "OqYdZVLUAMc", "0Xa86NDdvcc", "8IdqSxs4lP0", "F3BFNWwGoLU", "0Sty79iTQnE", "z5FhbxysnMs", "ouYs73xyAmI", "TOXvgNQIz3k", "IVmH7_2ESZE", "06BNzS5oMuY", "6jMUEtexLgw", "xQDuMTChe6Y", "cVOJ9YCAGHc", "PUeAJejrDqI", "J6lc7bqHad4", "TOFLRHnTvH4", "uAB8eKxTF0I", "Oy2ekdIPn04", "aeRym3dMdKs", "vy7Dn8X0iMU", "GLX8u2ws3ak", "NjXxEg9aUnc", "scBjVvjnDEc", "HaDfG3EWSaE", "9HJ6qDM0wEk", "ygWyMViorJk", "vVN5rWSzUY4", "62295Ye2Cbo", "bBtSzQNam1Y", "DJE50h5d4AE", "Da7t4D10EyA", "cWFO-Sk1nYA", "PErMcl-Ko-s", "hCuak88S14w", "0mTUalyjz60", "siHbGAsMXyw", "puXc1d5UGl8", "FWbZOM7ISF4", "N-7s3FV_BqU", "FFduqYlLznY", "0v6fWK9KlgU", "kO-0pcwEN-k", "RP9GFqHnl3c", "P2eJcNFxXm0"];
-const TOOLS = ["CapCut", "Blender", "Unreal Engine", "Canva", "KineMaster", "Claude", "ChatGPT", "Gemini", "AI33", "Kling AI", "Veo 3", "Flow", "Grok", "PixVerse", "MiniMax", "Nano Banana", "HeyGen", "Higgsfield", "Google Labs", "Gemini Omni Flash", "ElevenLabs", "Suno"];
+const TOOLS = [["CapCut", "capcut"], ["Blender", "blender"], ["Unreal Engine", "unreal"], ["Canva", "canva"], ["KineMaster", "kinemaster"], ["Claude", "claude"], ["ChatGPT", "chatgpt"], ["Gemini", "gemini"], ["AI33", "ai33"], ["Kling AI", "kling"], ["Veo 3", "veo"], ["Flow", "flow"], ["Grok", "grok"], ["PixVerse", "pixverse"], ["MiniMax", "minimax"], ["Nano Banana", "gemini"], ["HeyGen", "heygen"], ["Higgsfield", "higgsfield"], ["Google Labs", "flow"], ["Gemini Omni Flash", "gemini"], ["ElevenLabs", "elevenlabs"], ["Suno", "suno"]];
 /* ====== HẾT PHẦN NỘI DUNG ====== */
 
 const p2 = n => String(n).padStart(2, "0");
@@ -450,7 +452,7 @@ for (let c = 0; c < 5; c++) {
   wall.append(col);
 }
 document.getElementById("tape").innerHTML = [...TAPE, ...TAPE, ...TAPE, ...TAPE].map(t => `<span>${t}</span>`).join("");
-document.getElementById("tools").innerHTML = TOOLS.map(t => `<span>${t}</span>`).join("");
+document.getElementById("tools").innerHTML = TOOLS.map(t => `<span><img loading="lazy" alt="" src="assets/logo/${t[1]}.png">${t[0]}</span>`).join("");
 
 // Mã thời gian đang chạy (24 khung hình/giây)
 const tcode = document.getElementById("tcode"), t0 = performance.now();
