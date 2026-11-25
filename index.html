@@ -153,9 +153,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .earlier strong{font:400 clamp(1.4rem,3vw,2.2rem)/1.15 var(--display);text-transform:uppercase}
 .earlier span{color:var(--mute)}
 .earlier .arrow{font:600 13px/1 var(--mono);color:var(--film-ink);white-space:nowrap}
-.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.tools{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:48px}
 .tools span{font:400 13px/1 var(--mono);padding:10px 12px;border:1px solid var(--line);border-radius:4px}
-.tools span{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:10px;font:600 14px/1 var(--body)}
+.tools span{display:flex;align-items:center;gap:10px;padding:7px 12px 7px 7px;border-radius:10px;font:600 14px/1.2 var(--body);min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .tools img{width:30px;height:30px;border-radius:7px;object-fit:cover;background:#fff;flex:none}
 
 /* ---------- Nhóm video cũ ---------- */
@@ -267,6 +267,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
   .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
   .shots{grid-template-columns:minmax(0,1fr)}
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:36px}
+  .tools span{font-size:13px}
   .chans{grid-template-columns:minmax(0,1fr);gap:10px}
   .more a{margin-left:12px}
   .pick .play{display:none}
