@@ -226,11 +226,15 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .chn span{min-width:0}
 .chn b{display:block;font:700 1.0625rem/1.25 var(--body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chn small{display:block;margin-top:5px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--film-ink)}
-.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:40px}
+.shot-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin:48px 0 0;padding-bottom:14px;border-bottom:1px solid var(--line);font:400 clamp(1.6rem,3vw,2.2rem)/1 var(--display);letter-spacing:.01em}
+.shot-h a{text-decoration:none}
+.shot-h a:hover{color:var(--film-ink)}
+.shot-h small{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:24px;align-items:start}
 .shots figure{margin:0}
-.shots img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-radius:12px;border:1px solid var(--line)}
+.shots img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#0d0e11;border-radius:12px;border:1px solid var(--line)}
 .shots figcaption{margin-top:14px;color:var(--mute)}
-.shots figcaption b{display:block;font:400 clamp(2.2rem,4.4vw,3.4rem)/1 var(--display);color:var(--film-ink);margin-bottom:8px}
+.shots figcaption b{display:inline-block;margin-right:12px;vertical-align:baseline;font:400 clamp(2.2rem,4.4vw,3.4rem)/1 var(--display);color:var(--film-ink);margin-bottom:8px}
 #so-lieu .tools{margin-top:48px}
 
 /* ---------- Liên hệ ---------- */
@@ -343,14 +347,26 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <div class="label">Số liệu thật</div>
     <h2 class="display">Ảnh chụp <em>từ kênh</em></h2>
   </div>
+  <h3 class="shot-h reveal"><a href="https://www.youtube.com/@OneMansWar.WW2" target="_blank" rel="noopener">One Man's War</a><small>YouTube · 28 ngày, tính đến 23/11/2026</small></h3>
   <div class="shots">
     <figure class="reveal">
-      <a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E.jpg"></a>
-      <figcaption><b>0 → 17 NGHÌN</b>Kênh Khỏe Khoa Học: người theo dõi Facebook sau 2 tháng, traffic tự nhiên.</figcaption>
+      <img loading="lazy" alt="Ảnh chụp YouTube Studio: tỷ lệ phần trăm đã xem trung bình theo từng video của kênh One Man's War" src="assets/omw-retention.jpg">
+      <figcaption><b>57%</b>tỷ lệ xem trung bình, video dài khoảng 40 phút.</figcaption>
     </figure>
     <figure class="reveal">
-      <a href="https://youtu.be/0Xa86NDdvcc" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp YouTube Studio của video What the General at Bastogne Did After He Answered NUTS" src="assets/omw-studio.jpg"></a>
-      <figcaption><b>2.000 GIỜ</b>Kênh One Man's War: thời gian xem của một video trong 7 ngày đầu.</figcaption>
+      <img loading="lazy" alt="Ảnh chụp YouTube Studio: lượt xem và thời gian xem 28 ngày của kênh One Man's War" src="assets/omw-28d.jpg">
+      <figcaption><b>7.000 GIỜ</b>thời gian xem, 21,7 nghìn lượt xem.</figcaption>
+    </figure>
+  </div>
+  <h3 class="shot-h reveal"><a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener">Khỏe Khoa Học</a><small>Facebook · không chạy quảng cáo</small></h3>
+  <div class="shots">
+    <figure class="reveal">
+      <img loading="lazy" alt="Ảnh chụp thông tin chi tiết của trang Facebook Khỏe Khoa Học: 3.256.634 lượt xem trong 28 ngày" src="assets/kkh-insights.jpg">
+      <figcaption><b>3,25 TRIỆU</b>lượt xem trong 28 ngày.</figcaption>
+    </figure>
+    <figure class="reveal">
+      <img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/1PZghmpA8oZ-f0PKrpqDXSxcpP4AJzl6E.jpg">
+      <figcaption><b>0 → 17 NGHÌN</b>người theo dõi sau 2 tháng.</figcaption>
     </figure>
   </div>
   <div class="tools" aria-label="Công cụ" id="tools"></div>
