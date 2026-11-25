@@ -241,12 +241,14 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 #so-lieu .tools{margin-top:48px}
 
 /* ---------- Liên hệ ---------- */
-.contact{margin-top:110px;border-top:3px solid var(--film)}
+.contact{margin-top:110px;background:var(--film);color:var(--on-film)}
+.contact::before{content:"";display:block;height:26px;background:repeating-linear-gradient(-45deg,#0b0b0b 0 26px,var(--film) 26px 52px)}
 .contact .wrap{padding-block:72px 64px}
-.contact h2{margin-top:.3em}
-.contact p{font:500 clamp(1.05rem,1.8vw,1.25rem)/1.6 var(--body);margin:22px 0 0;max-width:52ch;color:var(--mute)}
-.contact p b{color:var(--paper);font-weight:700}
-.contact .btn{margin-top:30px}
+.contact .label{color:var(--on-film)}
+.contact h2{font-size:clamp(2.8rem,9vw,7.5rem);line-height:1.2;margin-top:.25em}
+.contact h2 em{color:#0b0b0b}
+.contact p{font:600 clamp(1.1rem,2vw,1.4rem)/1.5 var(--body);margin:22px 0 0;max-width:44ch}
+.contact .btn{margin-top:30px;border-color:var(--on-film);background:var(--on-film);color:var(--film)}
 .note{margin-top:40px;font:400 12px/1.4 var(--mono);opacity:.75}
 
 @media (max-width:860px){
@@ -376,7 +378,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <div class="wrap">
     <div class="label">Liên hệ</div>
     <h2 class="display">Cảm ơn anh chị <em>đã xem</em></h2>
-    <p>Rất mong được trao đổi thêm với anh chị về vị trí này. <b>Thông tin liên hệ có trong CV gửi kèm.</b></p>
+    <p>Rất mong được trao đổi thêm với anh chị về vị trí này. Thông tin liên hệ có trong CV gửi kèm.</p>
     <a class="btn" href="#top">Xem lại từ đầu ↑</a>
     <div class="note">Lượt xem đếm ngày 24 và 25/11/2026.</div>
   </div>
