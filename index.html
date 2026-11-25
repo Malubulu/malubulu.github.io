@@ -333,8 +333,6 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <h2 class="display">Mỗi thể loại, <em>một video</em></h2>
   </div>
   <div class="six reveal" id="six"></div>
-  <p class="more reveal">Reel Facebook khác: <span id="more"></span></p>
-  <p class="more reveal" style="margin-top:8px">Video TikTok khác: <span id="more-tt"></span></p>
 </section>
 
 <section class="wrap" id="kenh">
@@ -463,8 +461,6 @@ document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
 document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("")
   + `<div class="chn etc"><i>…</i><span><b>Và các kênh khác</b><small>YouTube · TikTok</small></span></div>`;
-document.getElementById("more-tt").innerHTML = MORE_TT.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
-document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
 // Con số nảy từ 0 lên khi cuộn tới
 if (!still && "IntersectionObserver" in window) {
