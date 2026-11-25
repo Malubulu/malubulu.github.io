@@ -237,6 +237,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .shot-h small{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:24px;align-items:start}
 .shots figure{margin:0}
+.shots .zoom{display:block;cursor:zoom-in}
 .shots img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#0d0e11;border-radius:12px;border:1px solid var(--line)}
 .shots figcaption{margin-top:14px;color:var(--mute)}
 .shots figcaption b{display:inline-block;margin-right:12px;vertical-align:baseline;font:400 clamp(2.2rem,4.4vw,3.4rem)/1 var(--display);color:var(--film-ink);margin-bottom:8px}
@@ -268,7 +269,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
   .shots{grid-template-columns:minmax(0,1fr)}
   .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:36px}
-  .tools span{font-size:13px}
+  .tools span{font-size:13px;white-space:normal;padding-right:8px}
   .chans{grid-template-columns:minmax(0,1fr);gap:10px}
   .more a{margin-left:12px}
   .pick .play{display:none}
@@ -356,22 +357,22 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   <h3 class="shot-h reveal"><a href="https://www.youtube.com/@OneMansWar.WW2" target="_blank" rel="noopener">One Man's War</a><small>YouTube · 28 ngày, tính đến 23/11/2026</small></h3>
   <div class="shots">
     <figure class="reveal">
-      <img loading="lazy" alt="Ảnh chụp YouTube Studio: tỷ lệ phần trăm đã xem trung bình theo từng video của kênh One Man's War" src="assets/omw-retention.jpg">
+      <a class="zoom" href="assets/omw-retention.jpg" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp YouTube Studio: tỷ lệ phần trăm đã xem trung bình theo từng video của kênh One Man's War" src="assets/omw-retention.jpg"></a>
       <figcaption><b>57%</b>tỷ lệ xem trung bình, video dài khoảng 40 phút.</figcaption>
     </figure>
     <figure class="reveal">
-      <img loading="lazy" alt="Ảnh chụp YouTube Studio: lượt xem và thời gian xem 28 ngày của kênh One Man's War" src="assets/omw-28d.jpg">
+      <a class="zoom" href="assets/omw-28d.jpg" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp YouTube Studio: lượt xem và thời gian xem 28 ngày của kênh One Man's War" src="assets/omw-28d.jpg"></a>
       <figcaption><b>21,7 NGHÌN</b>lượt xem trong 2 tuần đầu mở kênh.</figcaption>
     </figure>
   </div>
   <h3 class="shot-h reveal"><a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener">Khỏe Khoa Học</a><small>Facebook · không chạy quảng cáo</small></h3>
   <div class="shots">
     <figure class="reveal">
-      <img loading="lazy" alt="Ảnh chụp thông tin chi tiết của trang Facebook Khỏe Khoa Học: 3.256.634 lượt xem trong 28 ngày" src="assets/kkh-insights.jpg">
+      <a class="zoom" href="assets/kkh-insights.jpg" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp thông tin chi tiết của trang Facebook Khỏe Khoa Học: 3.256.634 lượt xem trong 28 ngày" src="assets/kkh-insights.jpg"></a>
       <figcaption><b>3,25 TRIỆU</b>lượt xem trong 28 ngày.</figcaption>
     </figure>
     <figure class="reveal">
-      <img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/kkh-page.jpg">
+      <a class="zoom" href="assets/kkh-page.jpg" target="_blank" rel="noopener"><img loading="lazy" alt="Ảnh chụp trang Facebook Khỏe Khoa Học" src="assets/kkh-page.jpg"></a>
       <figcaption><b>0 → 17 NGHÌN</b>người theo dõi sau 2 tháng.</figcaption>
     </figure>
   </div>
