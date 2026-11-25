@@ -224,6 +224,8 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .chn:hover{border-color:var(--film);background:rgba(255,255,255,.03)}
 .chn img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;background:#222}
 .chn span{min-width:0}
+.chn.etc{border-style:dashed}
+.chn.etc i{width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;background:#17181c;color:var(--film-ink);font:400 1.8rem/1 var(--display);font-style:normal;padding-bottom:.35em}
 .chn b{display:block;font:700 1.0625rem/1.25 var(--body);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chn small{display:block;margin-top:5px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--film-ink)}
 .shot-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin:48px 0 0;padding-bottom:14px;border-bottom:1px solid var(--line);font:400 clamp(1.6rem,3vw,2.2rem)/1 var(--display);letter-spacing:.01em}
@@ -414,6 +416,9 @@ const CHANNELS = [
   ["Same Ground", "YouTube", "av-sg", "https://www.youtube.com/@samegroundmaps"],
   ["Uncle Kenji's Japan", "YouTube", "av-UncleKenjiJapan", "https://www.youtube.com/@UncleKenjiJapan"],
   ["Harlan Boone", "YouTube", "av-HarlanBoone", "https://www.youtube.com/@HarlanBooneYT"],
+  ["True Cowboy Stories", "YouTube", "av-TrueCowboyStories12", "https://www.youtube.com/@TrueCowboyStories12"],
+  ["Ranger's Briefing Room", "YouTube", "av-RangersBriefingRoom", "https://www.youtube.com/@RangersBriefingRoom"],
+  ["The Grey Dispatch", "YouTube", "av-TheGreyDispatch", "https://www.youtube.com/@TheGreyDispatch"],
   ["Mẹo Hay Mẹ Bỉm", "TikTok", "av-d1", "https://www.tiktok.com/@meohaymebim.dake"],
   ["Mẹ Bỉm Mát Tay", "TikTok", "av-d2", "https://www.tiktok.com/@mebimmattay.dake"],
   ["Mẹ Bỉm Mìn Tây", "TikTok", "av-d3", "https://www.tiktok.com/@mebimmintay.dake"],
@@ -457,7 +462,8 @@ else tcode.textContent = "REC";
 document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}>
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
-document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("");
+document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("")
+  + `<div class="chn etc"><i>…</i><span><b>Và các kênh khác</b><small>YouTube · TikTok</small></span></div>`;
 document.getElementById("more-tt").innerHTML = MORE_TT.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 document.getElementById("more").innerHTML = MORE.map(m => `<a href="${m[1]}" ${ext}>${m[0]}</a>`).join("");
 
