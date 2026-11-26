@@ -354,8 +354,9 @@ html.j .only-j + .display{margin-top:.3em}
 html.j .tape{position:fixed;inset:auto 0 0;z-index:40;border-block:0;border-top:2px solid #0b0b0b;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 html.j .tape.hide{transform:translateY(102%)}
 html.j .tape span{font-size:1.05rem;padding:9px 0}
-html.j .contact.st{display:flex;flex-direction:column;justify-content:center;inset:-90px;padding:90px}
-html.j .contact::before{position:absolute;inset:calc(90px + 62px) 0 auto}
+html.j .contact.st{display:flex;flex-direction:column;justify-content:center;padding:0;background:none}
+html.j .contact::before{display:none}
+html.j body::after{content:"";position:fixed;inset:62px 0 auto;height:26px;z-index:39;pointer-events:none;opacity:var(--red,0);background:repeating-linear-gradient(-45deg,#0b0b0b 0 26px,transparent 26px 52px)}
 html.j .contact .wrap{width:100%}
 html.j .hud{display:flex;align-items:center;gap:12px;position:fixed;right:var(--gut);bottom:50px;z-index:41;font:600 12px/1 var(--mono);letter-spacing:.14em;color:var(--paper);transition:opacity .4s}
 html.j .hud i{font-style:normal;color:var(--mute);animation:nudge 1.6s ease-in-out infinite}
@@ -652,10 +653,17 @@ if (J) {
   if (window.Lenis) { window.lenis = new Lenis({ lerp: .1 }); }
 
   const go = n => { n = Math.max(0, Math.min(N - 1, n)); window.lenis ? lenis.scrollTo(n * L, { duration: 1.5 }) : scrollTo({ top: n * L, behavior: "smooth" }); };
+  // Bấm nút hoặc phím: bay một mạch tới trạm đích bằng một nhịp tăng giảm tốc duy nhất, không khựng ở các trạm giữa đường
+  let jump = null;
+  const fly = n => { n = Math.max(0, Math.min(N - 1, n)); if (Math.abs(n - cam.c) < .02) return;
+    jump = { a: cam.c, b: n, t: performance.now(), d: 1200 + 500 * Math.abs(n - cam.c) };
+    window.lenis ? lenis.scrollTo(n * L, { immediate: true, force: true }) : scrollTo(0, n * L); };
+  const stopJump = () => { jump = null; };
+  addEventListener("wheel", stopJump, { passive: true }); addEventListener("touchstart", stopJump, { passive: true });
   // Dừng cuộn giữa chừng thì tự trôi về trạm gần nhất
   let snapT; addEventListener("scroll", () => { clearTimeout(snapT); snapT = setTimeout(() => { const p = scrollY / L, t = Math.round(p); if (Math.abs(p - t) > .03) go(t); }, 240); }, { passive: true });
-  document.addEventListener("click", e => { const a = e.target.closest('a[href^="#"]'); if (!a) return; const t = document.querySelector(a.getAttribute("href")), n = t ? sts.indexOf(t.closest(".st")) : -1; if (n < 0) return; e.preventDefault(); go(n); });
-  addEventListener("keydown", e => { if (!lb.hidden || e.target.closest("input,textarea")) return; const d = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 }[e.key]; if (!d) return; e.preventDefault(); go(Math.round(scrollY / L) + d); });
+  document.addEventListener("click", e => { const a = e.target.closest('a[href^="#"]'); if (!a) return; const t = document.querySelector(a.getAttribute("href")), n = t ? sts.indexOf(t.closest(".st")) : -1; if (n < 0) return; e.preventDefault(); fly(n); });
+  addEventListener("keydown", e => { if (!lb.hidden || e.target.closest("input,textarea")) return; const d = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 }[e.key]; if (!d) return; e.preventDefault(); fly(Math.round(jump ? jump.b : scrollY / L) + d); });
 
   let last = performance.now(), active = -1;
   (function frame(now) {
@@ -665,7 +673,11 @@ if (J) {
     const p = Math.min(N - 1, Math.max(0, scrollY / L)), i = Math.min(N - 2, Math.floor(p)), f = p - i;
     const c = i + ss(.1, .9, f) * .97 + f * .03; // nghỉ ở trạm, lướt nhanh giữa hai trạm
     const k = 1 - Math.pow(.002, dt);
-    cam.c += (c - cam.c) * Math.min(1, k * 1.5); cam.x += (mouse.x * .6 - cam.x) * k * .5; cam.y += (-mouse.y * .4 - cam.y) * k * .5; cam.z = -cam.c * SP;
+    if (jump) { const q = Math.min(1, (now - jump.t) / jump.d), e = q < .5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2; cam.c = jump.a + (jump.b - jump.a) * e; if (q >= 1) jump = null; }
+    else cam.c += (c - cam.c) * Math.min(1, k * 1.5);
+    const red = ss(N - 1.75, N - 1.1, cam.c); // tới gần trạm cuối, cả không gian chuyển dần sang đỏ
+    if (red !== cam.red) { cam.red = red; document.documentElement.style.setProperty("--red", red.toFixed(3)); document.body.style.backgroundColor = `rgb(${Math.round(7 + 218 * red)},${Math.round(8 - 2 * red)},${Math.round(10 - 10 * red)})`; }
+    cam.x += (mouse.x * .6 - cam.x) * k * .5; cam.y += (-mouse.y * .4 - cam.y) * k * .5; cam.z = -cam.c * SP;
     for (let n = 0; n < N; n++) { const s = sts[n], D = D0 + (n - cam.c) * SP;
       let o = 0; if (D > 5 && D < 40) o = Math.min(1 - ss(13, 40, D), n === N - 1 ? 1 : ss(5, 8.4, D));
       if (o < .004) { if (s._on) { s._on = 0; s.style.visibility = "hidden"; } continue; }
@@ -708,10 +720,13 @@ if (J) {
     scene.add(new THREE.Points(dust, new THREE.PointsMaterial({ color: 0xb9b4a8, size: .07, transparent: true, opacity: .7 })));
     const size = () => { r.setSize(innerWidth, innerHeight, false); pc.aspect = innerWidth / innerHeight; pc.updateProjectionMatrix(); dirty = true; };
     size(); addEventListener("resize", size); cv.classList.add("on");
-    let pz = 1, px = 0, py = 0;
+    let pz = 1, px = 0, py = 0, pr = -1; const col = new THREE.Color();
     cam.draw = dt => {
       if (document.hidden || !lb.hidden) return;
       const wallOn = cam.z > -20; wall.visible = wallOn;
+      const red = cam.red || 0;
+      if (red !== pr) { pr = red; dirty = true; col.setRGB((7 + 218 * red) / 255, (8 - 2 * red) / 255, (10 - 10 * red) / 255, THREE.SRGBColorSpace);
+        scene.fog.color.copy(col); r.setClearColor(col); scene.fog.near = 9 - 5 * red; scene.fog.far = 38 - 18 * red; }
       const moving = Math.abs(cam.z - pz) + Math.abs(cam.x - px) + Math.abs(cam.y - py) > 1e-4;
       if (!wallOn && !moving && !dirty) return; // đứng yên thì không vẽ lại, đỡ tốn máy
       dirty = false; pz = cam.z; px = cam.x; py = cam.y;
