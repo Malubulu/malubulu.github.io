@@ -40,14 +40,6 @@ img{max-width:100%;display:block}
 .label{font:600 12px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .display{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:1.12;margin:0;text-wrap:balance}
 
-/* ---------- Không gian 3D (WebGL) phía sau cả trang ---------- */
-#space{position:fixed;inset:0;width:100%;height:100%;z-index:-1;display:none}
-html.gl #space{display:block}
-html.gl .wall{display:none}
-html.gl .veil{background:rgba(7,8,10,.72);padding-bottom:110px}
-html.gl .contact{margin-top:0}
-html.lenis{scroll-behavior:auto}
-
 /* ---------- Thanh trên ---------- */
 .top{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px var(--gut);background:rgba(7,8,10,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
 .top .id{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:9px;text-decoration:none}
@@ -232,8 +224,6 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .six .pick:first-child{grid-column:span 2;grid-row:span 2}
 .six .pick:first-child b{font-size:clamp(3.4rem,8.5vw,7rem);margin-top:20px}
 .six .pick:first-child .s{font-size:1.1875rem}
-.pick .thumb{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:box-shadow .25s,transform .5s cubic-bezier(.2,.8,.2,1)}
-.pick:hover .thumb{transition-duration:.25s,.18s}
 .more{margin:36px 0 0;color:var(--mute);font-size:1.0625rem}
 .more a{font:400 1.5rem/1 var(--display);color:var(--film-ink);text-decoration:none;margin-left:18px;padding:8px 0;display:inline-block}
 .more a:hover{text-decoration:underline;text-underline-offset:5px}
@@ -326,7 +316,51 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .col,.tape div,.rec,.lb,.lb-frame{animation:none}
   *{transition:none!important}
 }
+
+/* ================= Chế độ đường bay (máy tính): cuộn = bay về phía trước ================= */
+#space,#track,.hud,.only-j{display:none}
+section.nopad,section.cont{padding-block:0}
+html.j{scroll-behavior:auto}
+html.j #space{display:block;position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:0;transition:opacity 1.4s}
+html.j #space.on{opacity:1}
+html.j #track{display:block}
+html.j .only-j{display:block}
+html.j .wall{display:none}
+html.j .st{position:fixed;inset:0;z-index:1;margin:0;padding:64px 0 50px;display:grid;place-items:center;visibility:hidden;will-change:transform,opacity;transform-origin:50% 50%}
+html.j .st > .fit{width:100%;transform:scale(var(--fit,1));transform-origin:50% 50%}
+html.j .st:not(.hero):not(.contact)::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 72% 66% at 50% 50%,rgba(7,8,10,.9) 0%,rgba(7,8,10,.74) 62%,rgba(7,8,10,0) 100%)}
+html.j .hero.st{display:flex;padding:0;min-height:0}
+html.j .hero-in{padding-block:110px 84px}
+html.j h2{font-size:clamp(2.2rem,5vw,4.4rem)}
+html.j .facts{border-bottom:0}
+html.j .fact b{font-size:clamp(4rem,8.6vw,8rem)}
+html.j .six{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 20px;margin-top:26px}
+html.j .six .pick:first-child{grid-column:auto;grid-row:auto}
+html.j .pick b,html.j .six .pick:first-child b{font-size:clamp(1.7rem,2.5vw,2.5rem);margin-top:12px}
+html.j .six .pick:first-child .s{font-size:1rem}
+html.j .pick .thumb{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:box-shadow .25s,transform .5s cubic-bezier(.2,.8,.2,1)}
+html.j .pick:hover .thumb{transition-duration:.25s,.18s}
+html.j .chans{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:26px}
+html.j .shot-h{margin-top:24px}
+html.j .tools{margin-top:22px}
+html.j .tools span{font-size:15px;padding:10px 14px 10px 10px}
+html.j .only-j + .display{margin-top:.3em}
+html.j .tape{position:fixed;inset:auto 0 0;z-index:40;border-block:0;border-top:2px solid #0b0b0b;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+html.j .tape.hide{transform:translateY(102%)}
+html.j .tape span{font-size:1.05rem;padding:9px 0}
+html.j .contact.st{display:flex;flex-direction:column;justify-content:center;padding:0}
+html.j .contact::before{position:absolute;inset:0 0 auto}
+html.j .contact .wrap{width:100%}
+html.j .hud{display:flex;align-items:center;gap:12px;position:fixed;right:var(--gut);bottom:50px;z-index:41;font:600 12px/1 var(--mono);letter-spacing:.14em;color:var(--paper);transition:opacity .4s}
+html.j .hud i{font-style:normal;color:var(--mute);animation:nudge 1.6s ease-in-out infinite}
+html.j .hud.end i{display:none}
+@keyframes nudge{50%{transform:translateY(4px)}}
+html.j .top::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(var(--prog,0));background:var(--film)}
 </style>
+<script>
+/* Chế độ đường bay chỉ bật trên màn hình rộng, máy có WebGL và không tắt chuyển động. Còn lại dùng bố cục dọc thường. */
+(function(){try{var ok=innerWidth>=960&&innerHeight>=560&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!!document.createElement("canvas").getContext("webgl");if(ok)document.documentElement.className="j";}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -342,7 +376,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   </nav>
 </div>
 
-<header class="hero" id="top">
+<header class="hero st" id="top">
   <div class="wall" id="wall" aria-hidden="true"></div>
   <div class="hero-in wrap">
     <div class="tcode"><span class="rec"></span><span id="tcode">00:00:00:00</span></div>
@@ -361,32 +395,31 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 
 <div class="tape" aria-hidden="true"><div id="tape"></div></div>
 
-<main class="veil">
-<div class="wrap">
+<section class="st nopad" id="con-so"><div class="wrap fit">
   <div class="facts reveal" id="facts">
     <div class="fact"><div class="k">Lượt xem</div><b><i data-to="7.5" data-dec="1">7,5</i><small>TRIỆU</small></b><span>trên Facebook, TikTok và YouTube</span></div>
     <div class="fact"><div class="k">Năng suất</div><b><i data-to="18">18</i><small>/ TUẦN</small></b><span>bản dựng hoàn chỉnh mỗi tuần</span></div>
     <div class="fact"><div class="k">Xây kênh</div><b><em>0 →</em><i data-to="17">17</i><small>NGHÌN</small></b><span>người theo dõi trong 2 tháng, không chạy quảng cáo</span></div>
   </div>
-</div>
+</div></section>
 
-<section class="wrap" id="video">
+<section class="st" id="video"><div class="wrap fit">
   <div class="reveal">
     <div class="label">Video nổi bật</div>
     <h2 class="display">Mỗi thể loại, <em>một video</em></h2>
   </div>
   <div class="six reveal" id="six"></div>
-</section>
+</div></section>
 
-<section class="wrap" id="kenh">
+<section class="st" id="kenh"><div class="wrap fit">
   <div class="reveal">
     <div class="label">Kênh đã đăng</div>
     <h2 class="display">Kênh <em>đã làm</em></h2>
   </div>
   <div class="chans reveal" id="chans"></div>
-</section>
+</div></section>
 
-<section class="wrap" id="so-lieu">
+<section class="st" id="so-lieu"><div class="wrap fit">
   <div class="reveal">
     <div class="label">Số liệu thật</div>
     <h2 class="display">Kênh <em>nổi bật</em></h2>
@@ -402,6 +435,10 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
       <figcaption><b>21,7 NGHÌN</b>lượt xem trong 2 tuần đầu mở kênh.</figcaption>
     </figure>
   </div>
+</div></section>
+
+<section class="st cont" id="so-lieu-2"><div class="wrap fit">
+  <div class="only-j label">Số liệu thật</div>
   <h3 class="shot-h reveal"><a href="https://www.facebook.com/khoekhoahoc" target="_blank" rel="noopener">Khỏe Khoa Học</a><small>Facebook · không chạy quảng cáo</small></h3>
   <div class="shots">
     <figure class="reveal">
@@ -413,12 +450,15 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
       <figcaption><b>0 → 17 NGHÌN</b>người theo dõi sau 2 tháng.</figcaption>
     </figure>
   </div>
+</div></section>
+
+<section class="st cont" id="cong-cu"><div class="wrap fit">
+  <div class="only-j label">Công cụ</div>
+  <h2 class="only-j display">Công cụ <em>sử dụng</em></h2>
   <div class="tools" aria-label="Công cụ" id="tools"></div>
-</section>
+</div></section>
 
-</main>
-
-<footer class="contact" id="lien-he">
+<footer class="contact st" id="lien-he">
   <div class="wrap">
     <div class="label">Liên hệ</div>
     <h2 class="display">Cảm ơn anh chị <em>đã xem</em></h2>
@@ -426,6 +466,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
     <a class="btn" href="#top">Xem lại từ đầu ↑</a>
   </div>
 </footer>
+
+<div id="track"></div>
+<div class="hud" id="hud" aria-hidden="true"><span id="hud-n">01 / 08</span><i>CUỘN ↓</i></div>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Trình phát video">
   <div class="lb-in">
@@ -494,6 +537,8 @@ const p2 = n => String(n).padStart(2, "0");
 const el = (tag, attrs = {}, html = "") => { const e = document.createElement(tag); for (const k in attrs) e.setAttribute(k, attrs[k]); e.innerHTML = html; return e; };
 const ext = `target="_blank" rel="noopener"`;
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const J = document.documentElement.classList.contains("j"); // chế độ đường bay
+const mouse = { x: 0, y: 0 };
 
 // Bức tường khung hình: 5 cột, mỗi cột lặp hai lần để trôi liền mạch
 const wall = document.getElementById("wall");
@@ -534,7 +579,6 @@ document.getElementById("lb-x").addEventListener("click", lbClose);
 lb.addEventListener("click", e => { if (e.target === lb) lbClose(); });
 addEventListener("keydown", e => { if (e.key === "Escape") lbClose(); });
 
-const mouse = { x: 0, y: 0 };
 // Màn mở đầu: vùng sáng đi theo chuột, soi rõ tường khung hình
 const hero = document.querySelector(".hero");
 if (!still && matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -543,100 +587,135 @@ if (!still && matchMedia("(hover: hover) and (pointer: fine)").matches) {
     if (window.wallX) { wallX((e.clientX / innerWidth - .5) * -36); wallY((e.clientY / innerHeight - .5) * -24); } });
   hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", "-999px"); if (window.wallX) { wallX(0); wallY(0); } });
   addEventListener("pointermove", e => { mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5; }, { passive: true });
-  document.querySelectorAll(".pick").forEach(a => { const t = a.querySelector(".thumb"), set = (k, v) => t.style.setProperty(k, v);
+  if (J) document.querySelectorAll(".pick").forEach(a => { const t = a.querySelector(".thumb"), set = (k, v) => t.style.setProperty(k, v);
     a.addEventListener("pointermove", e => { const r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
       set("--ry", ((x - .5) * 10).toFixed(2) + "deg"); set("--rx", ((.5 - y) * 8).toFixed(2) + "deg"); });
     a.addEventListener("pointerleave", () => { set("--rx", "0deg"); set("--ry", "0deg"); }); });
 }
 
-// Con số nảy từ 0 lên khi cuộn tới
-if (!still && "IntersectionObserver" in window) {
+// Con số nảy từ 0 lên khi tới phần con số
+let countUp = () => {};
+if (!still) {
   const nums = [...document.querySelectorAll("#facts i[data-to]")];
   const show = (n, v) => n.textContent = v.toFixed(+n.dataset.dec || 0).replace(".", ",");
   nums.forEach(n => show(n, 0));
-  new IntersectionObserver((es, io) => { if (!es.some(e => e.isIntersecting)) return; io.disconnect();
-    const t1 = performance.now(), D = 1600;
+  let done = false;
+  countUp = () => { if (done) return; done = true; const t1 = performance.now(), D = 1600;
     (function step(now) { const k = Math.min(1, (now - t1) / D), e = 1 - Math.pow(1 - k, 4);
-      nums.forEach(n => show(n, +n.dataset.to * e)); if (k < 1) requestAnimationFrame(step); })(t1);
-  }, { threshold: .4 }).observe(document.getElementById("facts"));
+      nums.forEach(n => show(n, +n.dataset.to * e)); if (k < 1) requestAnimationFrame(step); })(t1); };
+  if (J) {} else if ("IntersectionObserver" in window) new IntersectionObserver((es, io) => { if (!es.some(e => e.isIntersecting)) return; io.disconnect(); countUp(); }, { threshold: .4 }).observe(document.getElementById("facts"));
+  else countUp();
 }
 
 // Chuyển động khi cuộn (trang vẫn đọc được đầy đủ nếu không có)
 if (window.gsap && window.ScrollTrigger && !still) {
   gsap.registerPlugin(ScrollTrigger);
-  // Cuộn mượt có quán tính (chỉ với chuột và bàn rê; điện thoại giữ cuộn gốc)
-  if (window.Lenis) { window.lenis = new Lenis({ lerp: .09, anchors: true }); lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
-  gsap.to(".hero-in", { y: -70, opacity: 0, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "35% top", end: "bottom top", scrub: true } });
   // Dự phòng: nếu máy chạy chậm, mọi hiệu ứng tự về trạng thái cuối sau 2,6 giây
   gsap.defaults({ onStart() { const t = this; setTimeout(() => t.progress(1), 2600); } });
   gsap.from("h1 span", { yPercent: 60, opacity: 0, duration: .9, stagger: .12, ease: "power4.out" });
   gsap.from(".tcode,.role,.exp li,.cta", { y: 24, opacity: 0, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
+  if (!J) {
   window.wallX = gsap.quickTo(".wall", "x", { duration: .9, ease: "power3.out", onStart: null });
   window.wallY = gsap.quickTo(".wall", "y", { duration: .9, ease: "power3.out", onStart: null });
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
   document.querySelectorAll(".reveal").forEach(sec => {
     const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, .chn, :scope > a, :scope > figcaption");
-    gsap.from(items.length ? items : sec, { y: 60, opacity: 0, duration: 1.2, stagger: .08, ease: "expo.out", scrollTrigger: { trigger: sec, start: "top 85%", once: true } });
+    gsap.from(items.length ? items : sec, { y: 28, opacity: 0, duration: .55, stagger: .07, ease: "power2.out", scrollTrigger: { trigger: sec, start: "top 85%", once: true } });
   });
   gsap.from(".contact h2", { yPercent: 30, opacity: 0, duration: .8, ease: "power3.out", scrollTrigger: { trigger: ".contact", start: "top 80%", once: true } });
+  }
 }
 
-// ====== Không gian 3D: tường khung hình có chiều sâu thật, cuộn là máy quay bay xuyên qua ======
-if (!still) import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js").then(THREE => {
-  const cv = document.getElementById("space");
-  let r; try { r = new THREE.WebGLRenderer({ canvas: cv, antialias: true }); } catch (e) { return; }
-  const BG = 0x07080a, phone = innerWidth < 768;
-  r.setPixelRatio(Math.min(devicePixelRatio, 1.5)); r.setClearColor(BG);
-  const scene = new THREE.Scene(); scene.fog = new THREE.Fog(BG, 9, 36);
-  const cam = new THREE.PerspectiveCamera(50, 1, .1, 90);
-  let dirty = true;
-  const loader = new THREE.TextureLoader(); loader.setCrossOrigin("anonymous");
-  const tex = WALL.map(id => { const t = loader.load(`https://i.ytimg.com/vi/${id}/mqdefault.jpg`, () => { dirty = true; }); t.colorSpace = THREE.SRGBColorSpace; return t; });
-  const mat = (i, b) => new THREE.MeshBasicMaterial({ map: tex[i % tex.length], color: new THREE.Color(b, b, b), transparent: true });
+// ================= Đường bay: cuộn = máy quay tiến về phía trước, mỗi phần là một trạm trong không gian =================
+if (J) {
+  const sts = [...document.querySelectorAll(".st")], N = sts.length, SP = 30, D0 = 10; // khoảng cách giữa các trạm, khoảng cách đọc
+  const track = document.getElementById("track"), hud = document.getElementById("hud"), hudN = document.getElementById("hud-n"), tapeEl = document.querySelector(".tape"), topEl = document.querySelector(".top");
+  const cam = window.CAM = { x: 0, y: 0, z: 0, c: 0, SP, D0, N };
+  const ss = (a, b, x) => { x = Math.min(1, Math.max(0, (x - a) / (b - a))); return x * x * (3 - 2 * x); };
+  let L = 1, U = 1;
+  const layout = () => {
+    if (innerWidth < 960 || innerHeight < 560) return location.reload();
+    L = Math.round(innerHeight * .7); track.style.height = ((N - 1) * L + innerHeight) + "px";
+    U = innerHeight / 2 / Math.tan(25 * Math.PI / 180) / D0; // số điểm ảnh ứng với 1 đơn vị không gian ở khoảng cách đọc
+    const avail = innerHeight - 64 - 50 - 28;
+    sts.forEach(s => { const f = s.querySelector(":scope > .fit"); if (f) f.style.setProperty("--fit", Math.min(1, avail / f.offsetHeight).toFixed(4)); });
+  };
+  sts.forEach((s, n) => s.style.zIndex = N - n);
+  layout(); addEventListener("resize", layout); addEventListener("load", layout); if (document.fonts) document.fonts.ready.then(layout);
+  if (window.Lenis) { window.lenis = new Lenis({ lerp: .1 }); }
 
-  // Tường khung hình: 5 cột trôi ngược chiều nhau, mỗi cột nằm ở một độ sâu khác
-  const W = 4.6, H = W * 9 / 16, PX = W + .32, PY = H + .32, ROWS = 9, SPAN = ROWS * PY;
-  const wall = new THREE.Group(); wall.position.z = -12; wall.rotation.z = -8 * Math.PI / 180; scene.add(wall);
-  const g1 = new THREE.PlaneGeometry(W, H), DEPTH = [0, -2.6, 1.4, -3.4, .6], frames = [];
-  for (let c = 0; c < 5; c++) for (let k = 0; k < ROWS; k++) {
-    const m = new THREE.Mesh(g1, mat(c * 9 + k, .78));
-    m.position.set((c - 2) * PX, k * PY - SPAN / 2, DEPTH[c] + (k % 3 - 1) * .35);
-    m.userData.v = (c % 2 ? -1 : 1) * (.22 + c * .035); wall.add(m); frames.push(m);
-  }
-  // Đường hầm khung hình trôi nổi dọc phần còn lại của trang
-  const pages = document.documentElement.scrollHeight / innerHeight, FAR = 26 + pages * 8;
-  const g2 = new THREE.PlaneGeometry(3.4, 3.4 * 9 / 16), tunnel = [];
-  const rnd = (i => () => { i = (i * 16807) % 2147483647; return i / 2147483647; })(20261126);
-  for (let i = 0, n = phone ? 44 : 84; i < n; i++) {
-    const m = new THREE.Mesh(g2, mat(i * 7 + 3, .9)), a = rnd() * Math.PI * 2, rad = 6 + rnd() * 7;
-    m.position.set(Math.cos(a) * rad * (phone ? .7 : 1.55), Math.sin(a) * rad * .8, -24 - (i / n) * (FAR - 24) - rnd() * 2);
-    m.rotation.set((rnd() - .5) * .3, -m.position.x * .035, (rnd() - .5) * .35); scene.add(m); tunnel.push(m);
-  }
-  const size = () => { const w = innerWidth, h = innerHeight; r.setSize(w, h, false); cam.aspect = w / h; cam.fov = w < h ? 72 : 50; cam.updateProjectionMatrix(); wall.scale.setScalar(w < h ? .62 : 1); dirty = true; };
-  size(); addEventListener("resize", size);
-  document.documentElement.classList.add("gl");
+  const go = n => { n = Math.max(0, Math.min(N - 1, n)); window.lenis ? lenis.scrollTo(n * L, { duration: 1.5 }) : scrollTo({ top: n * L, behavior: "smooth" }); };
+  // Dừng cuộn giữa chừng thì tự trôi về trạm gần nhất
+  let snapT; addEventListener("scroll", () => { clearTimeout(snapT); snapT = setTimeout(() => { const p = scrollY / L, t = Math.round(p); if (Math.abs(p - t) > .03) go(t); }, 240); }, { passive: true });
+  document.addEventListener("click", e => { const a = e.target.closest('a[href^="#"]'); if (!a) return; const t = document.querySelector(a.getAttribute("href")), n = t ? sts.indexOf(t.closest(".st")) : -1; if (n < 0) return; e.preventDefault(); go(n); });
+  addEventListener("keydown", e => { if (!lb.hidden || e.target.closest("input,textarea")) return; const d = { ArrowDown: 1, PageDown: 1, " ": 1, ArrowUp: -1, PageUp: -1 }[e.key]; if (!d) return; e.preventDefault(); go(Math.round(scrollY / L) + d); });
 
-  let last = performance.now(), cz = 0, cx = 0, cy = 0;
-  (function loop(now) {
-    requestAnimationFrame(loop);
-    if (document.hidden || !lb.hidden) { last = now; return; }
+  let last = performance.now(), active = -1;
+  (function frame(now) {
+    requestAnimationFrame(frame);
+    if (window.lenis) lenis.raf(now);
     const dt = Math.min(.05, (now - last) / 1000); last = now;
-    const s = scrollY / innerHeight, tz = -(Math.min(s, 1) * 15 + Math.max(s - 1, 0) * 8);
-    const k = 1 - Math.pow(.001, dt); // quán tính mềm, không phụ thuộc tốc độ khung hình
-    const nz = cz + (tz - cz) * Math.min(1, k * 1.6), nx = cx + (mouse.x * 2.2 - cx) * k, ny = cy + (-mouse.y * 1.4 - cy) * k;
-    const moving = Math.abs(nz - cz) + Math.abs(nx - cx) + Math.abs(ny - cy) > 2e-4;
-    cz = nz; cx = nx; cy = ny;
-    const wallOn = cz > -19; wall.visible = wallOn;
-    if (!wallOn && !moving && !dirty) return; // đứng yên thì không vẽ lại, đỡ tốn máy
-    dirty = false;
-    if (wallOn) for (const m of frames) { let y = m.position.y + m.userData.v * dt; if (y > SPAN / 2) y -= SPAN; else if (y < -SPAN / 2) y += SPAN; m.position.y = y;
-      m.material.opacity = Math.max(0, Math.min(1, (cz - (wall.position.z + m.position.z) - 1.2) / 3.5)); }
-    for (const m of tunnel) { const d = cz - m.position.z; m.visible = d > .6 && d < 40; if (m.visible) m.material.opacity = Math.min(1, (d - .6) / 4); }
-    cam.position.set(cx, cy, cz); cam.lookAt(cx * .35, cy * .35, cz - 12); cam.rotation.z += -cx * .012;
-    r.render(scene, cam);
+    const p = Math.min(N - 1, Math.max(0, scrollY / L)), i = Math.min(N - 2, Math.floor(p)), f = p - i;
+    const c = i + ss(.1, .9, f) * .97 + f * .03; // nghỉ ở trạm, lướt nhanh giữa hai trạm
+    const k = 1 - Math.pow(.002, dt);
+    cam.c += (c - cam.c) * Math.min(1, k * 1.5); cam.x += (mouse.x * .6 - cam.x) * k * .5; cam.y += (-mouse.y * .4 - cam.y) * k * .5; cam.z = -cam.c * SP;
+    for (let n = 0; n < N; n++) { const s = sts[n], D = D0 + (n - cam.c) * SP;
+      let o = 0; if (D > 5 && D < 40) o = Math.min(1 - ss(13, 40, D), n === N - 1 ? 1 : ss(5, 8.4, D));
+      if (o < .004) { if (s._on) { s._on = 0; s.style.visibility = "hidden"; } continue; }
+      let sc = D0 / D; if (Math.abs(sc - 1) < .004) sc = 1;
+      s.style.transform = `translate3d(${(-cam.x * U * sc).toFixed(2)}px,${(cam.y * U * sc).toFixed(2)}px,0) scale(${sc.toFixed(4)})`;
+      s.style.opacity = o.toFixed(3); s.style.pointerEvents = D > 8.4 && D < 11.6 ? "auto" : "none";
+      if (!s._on) { s._on = 1; s.style.visibility = "visible"; } }
+    topEl.style.setProperty("--prog", (cam.c / (N - 1)).toFixed(4));
+    const a = Math.round(cam.c);
+    if (a !== active) { active = a; hudN.textContent = `${p2(a + 1)} / ${p2(N)}`; hud.classList.toggle("end", a === N - 1); tapeEl.classList.toggle("hide", a === N - 1); if (sts[a].id === "con-so") countUp(); }
+    if (cam.draw) cam.draw(dt);
   })(last);
-}).catch(() => {});
+
+  // Không gian 3D phía sau: tường khung hình ở trạm đầu, rồi đường hầm khung hình và bụi sáng dọc đường bay
+  import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js").then(THREE => {
+    const cv = document.getElementById("space");
+    let r; try { r = new THREE.WebGLRenderer({ canvas: cv, antialias: true }); } catch (e) { return; }
+    const BG = 0x07080a; r.setPixelRatio(Math.min(devicePixelRatio, 1.5)); r.setClearColor(BG);
+    const scene = new THREE.Scene(); scene.fog = new THREE.Fog(BG, 9, 38);
+    const pc = new THREE.PerspectiveCamera(50, 1, .1, 90);
+    let dirty = true;
+    const loader = new THREE.TextureLoader(); loader.setCrossOrigin("anonymous");
+    const tex = WALL.map(id => { const t = loader.load(`https://i.ytimg.com/vi/${id}/mqdefault.jpg`, () => { dirty = true; }); t.colorSpace = THREE.SRGBColorSpace; return t; });
+    const mat = (i, b) => new THREE.MeshBasicMaterial({ map: tex[i % tex.length], color: new THREE.Color(b, b, b), transparent: true });
+    // Tường khung hình: 5 cột trôi ngược chiều nhau, mỗi cột ở một độ sâu
+    const W = 4.6, H = W * 9 / 16, PX = W + .32, PY = H + .32, ROWS = 9, SPAN = ROWS * PY;
+    const wall = new THREE.Group(); wall.position.z = -12; wall.rotation.z = -8 * Math.PI / 180; scene.add(wall);
+    const g1 = new THREE.PlaneGeometry(W, H), DEPTH = [0, -2.6, 1.4, -3.4, .6], frames = [];
+    for (let c = 0; c < 5; c++) for (let q = 0; q < ROWS; q++) { const m = new THREE.Mesh(g1, mat(c * 9 + q, .78));
+      m.position.set((c - 2) * PX, q * PY - SPAN / 2, DEPTH[c] + (q % 3 - 1) * .35); m.userData.v = (c % 2 ? -1 : 1) * (.22 + c * .035); wall.add(m); frames.push(m); }
+    // Đường hầm: khung hình trôi nổi quanh trục bay, chừa khoảng giữa cho nội dung
+    const FAR = (N - 1) * SP + 44, g2 = new THREE.PlaneGeometry(3.6, 3.6 * 9 / 16), tunnel = [];
+    const rnd = (i => () => { i = (i * 16807) % 2147483647; return i / 2147483647; })(20261126);
+    for (let i = 0, n = 120; i < n; i++) { const m = new THREE.Mesh(g2, mat(i * 7 + 3, .6)), a = rnd() * Math.PI * 2, rad = 7.5 + rnd() * 7;
+      m.position.set(Math.cos(a) * rad * 1.5, Math.sin(a) * rad * .82, -26 - (i / n) * (FAR - 26) - rnd() * 2);
+      m.rotation.set((rnd() - .5) * .3, -m.position.x * .03, (rnd() - .5) * .35); scene.add(m); tunnel.push(m); }
+    // Bụi sáng: cho cảm giác tốc độ khi bay
+    const pts = new Float32Array(900 * 3); for (let i = 0; i < 900; i++) { const a = rnd() * Math.PI * 2, rad = 2.5 + rnd() * 16; pts[i * 3] = Math.cos(a) * rad * 1.4; pts[i * 3 + 1] = Math.sin(a) * rad; pts[i * 3 + 2] = -rnd() * FAR; }
+    const dust = new THREE.BufferGeometry(); dust.setAttribute("position", new THREE.BufferAttribute(pts, 3));
+    scene.add(new THREE.Points(dust, new THREE.PointsMaterial({ color: 0xb9b4a8, size: .07, transparent: true, opacity: .7 })));
+    const size = () => { r.setSize(innerWidth, innerHeight, false); pc.aspect = innerWidth / innerHeight; pc.updateProjectionMatrix(); dirty = true; };
+    size(); addEventListener("resize", size); cv.classList.add("on");
+    let pz = 1, px = 0, py = 0;
+    cam.draw = dt => {
+      if (document.hidden || !lb.hidden) return;
+      const wallOn = cam.z > -20; wall.visible = wallOn;
+      const moving = Math.abs(cam.z - pz) + Math.abs(cam.x - px) + Math.abs(cam.y - py) > 1e-4;
+      if (!wallOn && !moving && !dirty) return; // đứng yên thì không vẽ lại, đỡ tốn máy
+      dirty = false; pz = cam.z; px = cam.x; py = cam.y;
+      if (wallOn) for (const m of frames) { let y = m.position.y + m.userData.v * dt; if (y > SPAN / 2) y -= SPAN; else if (y < -SPAN / 2) y += SPAN; m.position.y = y;
+        m.material.opacity = Math.max(0, Math.min(1, (cam.z - (wall.position.z + m.position.z) - 3.2) / 4.5)); }
+      for (const m of tunnel) { const d = cam.z - m.position.z; m.visible = d > .6 && d < 42; if (m.visible) m.material.opacity = Math.min(1, (d - .6) / 4); }
+      pc.position.set(cam.x, cam.y, cam.z); pc.rotation.set(0, 0, -cam.x * .01);
+      r.render(scene, pc);
+    };
+  }).catch(() => {});
+}
 </script>
 </body>
 </html>
