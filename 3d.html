@@ -329,7 +329,10 @@ html.j .wall{display:none}
 html.j .st{position:fixed;inset:0;z-index:1;margin:0;padding:64px 0 50px;display:grid;place-items:center;visibility:hidden;will-change:transform,opacity;transform-origin:50% 50%}
 html.j .st > .fit{width:100%;transform:scale(var(--fit,1));transform-origin:50% 50%}
 html.j .st:not(.hero):not(.contact)::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 72% 66% at 50% 50%,rgba(7,8,10,.9) 0%,rgba(7,8,10,.74) 62%,rgba(7,8,10,0) 100%)}
-html.j .hero.st{display:flex;padding:0;min-height:0}
+html.j .hero.st{display:flex;padding:0;min-height:0;overflow:visible}
+/* Lớp phủ tối rộng hơn màn hình để không lộ mép khi khung nội dung xê dịch theo chuột */
+html.j .hero::before,html.j .hero::after{inset:-160px}
+html.j .hero::before{-webkit-mask-image:radial-gradient(circle 300px at calc(var(--mx,-999px) + 160px) calc(var(--my,-999px) + 160px),rgba(0,0,0,.5) 0%,#000 100%);mask-image:radial-gradient(circle 300px at calc(var(--mx,-999px) + 160px) calc(var(--my,-999px) + 160px),rgba(0,0,0,.5) 0%,#000 100%)}
 html.j .hero-in{padding-block:110px 84px}
 html.j h2{font-size:clamp(2.2rem,5vw,4.4rem)}
 html.j .facts{border-bottom:0}
