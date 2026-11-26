@@ -60,7 +60,9 @@ img{max-width:100%;display:block}
 @keyframes drift{to{transform:translateY(-50%)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
   radial-gradient(120% 80% at 20% 100%,rgba(7,8,10,.96) 0%,rgba(7,8,10,.72) 45%,rgba(7,8,10,.25) 100%),
-  linear-gradient(180deg,rgba(7,8,10,.7) 0%,rgba(7,8,10,0) 30%,rgba(7,8,10,.5) 70%,var(--black) 100%)}
+  linear-gradient(180deg,rgba(7,8,10,.7) 0%,rgba(7,8,10,0) 30%,rgba(7,8,10,.5) 70%,var(--black) 100%);
+  -webkit-mask-image:radial-gradient(circle 300px at var(--mx,-999px) var(--my,-999px),rgba(0,0,0,.5) 0%,#000 100%);
+  mask-image:radial-gradient(circle 300px at var(--mx,-999px) var(--my,-999px),rgba(0,0,0,.5) 0%,#000 100%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;mix-blend-mode:overlay;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .hero-in{width:100%;padding-block:120px 44px}
@@ -219,6 +221,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .pick b{font:400 clamp(2.4rem,4.6vw,3.6rem)/1 var(--display);color:var(--c);margin-top:16px;font-variant-numeric:tabular-nums}
 .pick .s{color:var(--paper);margin-top:6px}
 .pick .r{font:400 12.5px/1.3 var(--mono);color:var(--mute);margin-top:6px}
+.six .pick:first-child{grid-column:span 2;grid-row:span 2}
+.six .pick:first-child b{font-size:clamp(3.4rem,8.5vw,7rem);margin-top:20px}
+.six .pick:first-child .s{font-size:1.1875rem}
 .more{margin:36px 0 0;color:var(--mute);font-size:1.0625rem}
 .more a{font:400 1.5rem/1 var(--display);color:var(--film-ink);text-decoration:none;margin-left:18px;padding:8px 0;display:inline-block}
 .more a:hover{text-decoration:underline;text-underline-offset:5px}
@@ -242,6 +247,22 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 .shots figcaption{margin-top:14px;color:var(--mute)}
 .shots figcaption b{display:inline-block;margin-right:12px;vertical-align:baseline;font:400 clamp(2.2rem,4.4vw,3.4rem)/1 var(--display);color:var(--film-ink);margin-bottom:8px}
 #so-lieu .tools{margin-top:48px}
+
+/* ---------- Khung phát video ---------- */
+.lb{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px var(--gut);background:rgba(4,5,6,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:lbin .25s ease-out}
+.lb[hidden]{display:none}
+.lb-in{width:min(1180px,100%,calc((100svh - 120px) * 16 / 9))}
+.lb-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.lb-bar .label{color:var(--paper);display:flex;align-items:center;gap:9px}
+.lb-bar div{display:flex;align-items:center;gap:8px}
+.lb-bar a,.lb-bar button{font:600 13px/1 var(--body);color:var(--paper);text-decoration:none;background:none;border:1.5px solid rgba(255,255,255,.3);border-radius:999px;padding:11px 16px;cursor:pointer}
+.lb-bar a:hover{border-color:var(--paper)}
+.lb-bar button{background:var(--film);border-color:var(--film);color:var(--on-film)}
+.lb-bar button:hover{background:#ff2a1a}
+.lb-frame{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 0 0 3px var(--film),0 30px 80px rgba(0,0,0,.6);animation:lbpop .35s cubic-bezier(.2,.8,.2,1)}
+.lb-frame iframe{width:100%;height:100%;border:0;display:block}
+@keyframes lbin{from{opacity:0}}
+@keyframes lbpop{from{transform:scale(.94);opacity:0}}
 
 /* ---------- Liên hệ ---------- */
 .contact{margin-top:110px;background:var(--film);color:var(--on-film)}
@@ -267,6 +288,9 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   .chan{padding-block:64px 0}
   .rank2{grid-template-columns:minmax(0,1fr);gap:40px}
   .six{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .six .pick:first-child{grid-row:auto}
+  .lb-bar .label{display:none}
+  .lb-bar{justify-content:flex-end}
   .shots{grid-template-columns:minmax(0,1fr)}
   .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:36px}
   .tools span{font-size:13px;white-space:normal;padding-right:8px}
@@ -289,7 +313,7 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .col,.tape div,.rec{animation:none}
+  .col,.tape div,.rec,.lb,.lb-frame{animation:none}
   *{transition:none!important}
 }
 </style>
@@ -388,13 +412,23 @@ a:hover > .thumb .play,a.thumb:hover .play{transform:scale(1.08)}
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Trình phát video">
+  <div class="lb-in">
+    <div class="lb-bar">
+      <span class="label"><span class="rec"></span><span id="lb-k"></span></span>
+      <div><a id="lb-yt" target="_blank" rel="noopener">Mở trên YouTube ↗</a><button type="button" id="lb-x">Đóng ✕</button></div>
+    </div>
+    <div class="lb-frame" id="lb-f"></div>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== SỬA NỘI DUNG Ở ĐÂY ====== */
 const TAPE = ["3D", "2D", "Motion Graphic", "Đồ hoạ", "Phim AI", "Short AI", "Video bán hàng", "Tư liệu lịch sử", "Truyện kể dài"];
 const DRV = id => ({ href: "https://drive.google.com/file/d/" + id + "/view", img: `assets/${id}.jpg` });
-const YT = id => ({ href: "https://youtu.be/" + id, img: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, alt: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` });
+const YT = id => ({ yt: id, href: "https://youtu.be/" + id, img: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, alt: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` });
 
 // Mỗi thể loại một video tốt nhất
 const SIX = [
@@ -461,11 +495,37 @@ const tcode = document.getElementById("tcode"), t0 = performance.now();
 if (!still) (function tick() { const f = Math.floor((performance.now() - t0) / 1000 * 24); const s = Math.floor(f / 24); tcode.textContent = `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}:${p2(s%60)}:${p2(f%24)}`; requestAnimationFrame(tick); })();
 else tcode.textContent = "REC";
 
-document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}>
+document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}${v.yt ? ` data-yt="${v.yt}" data-kind="${v.kind}"` : ""}>
   <span class="thumb"><img loading="lazy" alt="" src="${v.img}"${v.alt ? ` onerror="this.onerror=null;this.src='${v.alt}'"` : ""}><span class="kind">${v.kind}</span><span class="play"><span class="tri"></span>Xem</span></span>
   <b>${v.big}</b><span class="s">${v.sub}</span><span class="r">Vai trò: ${v.role}</span></a>`).join("");
 document.getElementById("chans").innerHTML = CHANNELS.map(c => `<a class="chn" href="${c[3]}" ${ext}><img loading="lazy" alt="" src="assets/${c[2]}.jpg"><span><b>${c[0]}</b><small>${c[1]}</small></span></a>`).join("")
   + `<div class="chn etc"><i>…</i><span><b>Và các kênh khác</b><small>YouTube · TikTok</small></span></div>`;
+
+// Video YouTube phát ngay trên trang; Facebook và TikTok vẫn mở tab mới
+const lb = document.getElementById("lb"), lbF = document.getElementById("lb-f");
+let lbFrom = null;
+const lbClose = () => { if (lb.hidden) return; lb.hidden = true; lbF.innerHTML = ""; document.body.style.overflow = ""; if (lbFrom) lbFrom.focus(); };
+document.getElementById("six").addEventListener("click", e => {
+  const a = e.target.closest("a[data-yt]");
+  if (!a || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault(); lbFrom = a;
+  document.getElementById("lb-k").textContent = a.dataset.kind;
+  document.getElementById("lb-yt").href = a.href;
+  lbF.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0&playsinline=1" title="${a.dataset.kind}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+  lb.hidden = false; document.body.style.overflow = "hidden"; document.getElementById("lb-x").focus();
+});
+document.getElementById("lb-x").addEventListener("click", lbClose);
+lb.addEventListener("click", e => { if (e.target === lb) lbClose(); });
+addEventListener("keydown", e => { if (e.key === "Escape") lbClose(); });
+
+// Màn mở đầu: vùng sáng đi theo chuột, soi rõ tường khung hình
+const hero = document.querySelector(".hero");
+if (!still && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect();
+    hero.style.setProperty("--mx", (e.clientX - r.left) + "px"); hero.style.setProperty("--my", (e.clientY - r.top) + "px");
+    if (window.wallX) { wallX((e.clientX / innerWidth - .5) * -36); wallY((e.clientY / innerHeight - .5) * -24); } });
+  hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", "-999px"); if (window.wallX) { wallX(0); wallY(0); } });
+}
 
 // Con số nảy từ 0 lên khi cuộn tới
 if (!still && "IntersectionObserver" in window) {
@@ -486,6 +546,8 @@ if (window.gsap && window.ScrollTrigger && !still) {
   gsap.defaults({ onStart() { const t = this; setTimeout(() => t.progress(1), 2600); } });
   gsap.from("h1 span", { yPercent: 60, opacity: 0, duration: .9, stagger: .12, ease: "power4.out" });
   gsap.from(".tcode,.role,.exp li,.cta", { y: 24, opacity: 0, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
+  window.wallX = gsap.quickTo(".wall", "x", { duration: .9, ease: "power3.out", onStart: null });
+  window.wallY = gsap.quickTo(".wall", "y", { duration: .9, ease: "power3.out", onStart: null });
   gsap.to(".wall", { yPercent: -8, ease: "none", onStart: null, scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: .5 } });
   document.querySelectorAll(".reveal").forEach(sec => {
     const items = sec.querySelectorAll(":scope > .label, :scope > h2, .fact, .pick, .chn, :scope > a, :scope > figcaption");
