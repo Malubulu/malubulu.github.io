@@ -732,7 +732,7 @@ if (J) {
       dirty = false; pz = cam.z; px = cam.x; py = cam.y;
       if (wallOn) for (const m of frames) { let y = m.position.y + m.userData.v * dt; if (y > SPAN / 2) y -= SPAN; else if (y < -SPAN / 2) y += SPAN; m.position.y = y;
         m.material.opacity = Math.max(0, Math.min(1, (cam.z - (wall.position.z + m.position.z) - 3.2) / 4.5)); }
-      for (const m of tunnel) { const d = cam.z - m.position.z; m.visible = d > .6 && d < 42; if (m.visible) m.material.opacity = Math.min(1, (d - .6) / 4); }
+      for (const m of tunnel) { const d = cam.z - m.position.z; m.visible = red < .97 && d > .6 && d < 42; if (m.visible) m.material.opacity = Math.min(1, (d - .6) / 4) * (1 - red); } // tới trạm cuối thì khung hình tan hẳn vào nền đỏ
       pc.position.set(cam.x, cam.y, cam.z); pc.rotation.set(0, 0, -cam.x * .01);
       r.render(scene, pc);
     };
