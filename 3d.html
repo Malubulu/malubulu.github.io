@@ -348,8 +348,8 @@ html.j .only-j + .display{margin-top:.3em}
 html.j .tape{position:fixed;inset:auto 0 0;z-index:40;border-block:0;border-top:2px solid #0b0b0b;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 html.j .tape.hide{transform:translateY(102%)}
 html.j .tape span{font-size:1.05rem;padding:9px 0}
-html.j .contact.st{display:flex;flex-direction:column;justify-content:center;padding:0}
-html.j .contact::before{position:absolute;inset:0 0 auto}
+html.j .contact.st{display:flex;flex-direction:column;justify-content:center;inset:-90px;padding:90px}
+html.j .contact::before{position:absolute;inset:calc(90px + 62px) 0 auto}
 html.j .contact .wrap{width:100%}
 html.j .hud{display:flex;align-items:center;gap:12px;position:fixed;right:var(--gut);bottom:50px;z-index:41;font:600 12px/1 var(--mono);letter-spacing:.14em;color:var(--paper);transition:opacity .4s}
 html.j .hud i{font-style:normal;color:var(--mute);animation:nudge 1.6s ease-in-out infinite}
