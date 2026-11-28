@@ -66,7 +66,7 @@ img{max-width:100%;display:block}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;mix-blend-mode:overlay;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .hero-in{width:100%;padding-block:120px 44px}
-.tcode{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--mono);letter-spacing:.08em;padding:9px 12px;border:1px solid rgba(255,255,255,.28);border-radius:4px;background:rgba(7,8,10,.5)}
+.tcode{contain:layout paint;display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--mono);letter-spacing:.08em;padding:9px 12px;border:1px solid rgba(255,255,255,.28);border-radius:4px;background:rgba(7,8,10,.5)}
 ::selection{background:var(--film);color:var(--on-film)}
 h1{font-size:clamp(1.6rem,min(9.4vw,16svh),8.7rem);line-height:1.04;margin-top:.34em;white-space:nowrap}
 h1.display{text-wrap:nowrap}
@@ -342,6 +342,8 @@ html.j .st:not(.hero):not(.contact)::before{content:"";position:absolute;inset:0
 html.j .hero.st{display:flex;padding:0;min-height:0;overflow:visible}
 /* Lớp phủ tối rộng hơn màn hình để không lộ mép khi khung nội dung xê dịch theo chuột */
 html.j .hero::before,html.j .hero::after{inset:-160px}
+html.j .hero::after{mix-blend-mode:normal;opacity:.05}
+html.j .top{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(7,8,10,.9)}
 html.j .hero::before{-webkit-mask-image:radial-gradient(circle 300px at calc(var(--mx,-999px) + 160px) calc(var(--my,-999px) + 160px),rgba(0,0,0,.5) 0%,#000 100%);mask-image:radial-gradient(circle 300px at calc(var(--mx,-999px) + 160px) calc(var(--my,-999px) + 160px),rgba(0,0,0,.5) 0%,#000 100%)}
 html.j .hero-in{padding-block:110px 84px}
 html.j h2{font-size:clamp(2.2rem,5vw,4.4rem)}
@@ -567,7 +569,7 @@ const mouse = { x: 0, y: 0 };
 
 // Bức tường khung hình: 5 cột, mỗi cột lặp hai lần để trôi liền mạch
 const wall = document.getElementById("wall");
-for (let c = 0; c < 5; c++) {
+for (let c = 0; c < 5 && !J; c++) {
   const col = el("div", { class: "col", style: `--d:${52 + c * 9}s` });
   const order = WALL.slice(c * 9, c * 9 + 9); // mỗi cột 9 ảnh riêng, không lặp giữa các cột
   col.innerHTML = [...order, ...order].map(id => `<img alt="" loading="eager" src="https://i.ytimg.com/vi/${id}/mqdefault.jpg">`).join("");
@@ -578,7 +580,11 @@ document.getElementById("tools").innerHTML = TOOLS.map(t => `<span><img loading=
 
 // Mã thời gian đang chạy (24 khung hình/giây)
 const tcode = document.getElementById("tcode"), t0 = performance.now();
-if (!still) (function tick() { const f = Math.floor((performance.now() - t0) / 1000 * 24); const s = Math.floor(f / 24); tcode.textContent = `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}:${p2(s%60)}:${p2(f%24)}`; requestAnimationFrame(tick); })();
+let tcF = -1;
+if (!still) (function tick() { requestAnimationFrame(tick);
+  if (document.hidden || (window.CAM ? CAM.c > .6 : scrollY > innerHeight)) return;
+  const f = Math.floor((performance.now() - t0) / 1000 * 24); if (f === tcF) return; tcF = f; const s = Math.floor(f / 24);
+  tcode.firstChild ? tcode.firstChild.nodeValue = `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}:${p2(s%60)}:${p2(f%24)}` : tcode.textContent = "00:00:00:00"; })();
 else tcode.textContent = "REC";
 
 document.getElementById("six").innerHTML = SIX.map(v => `<a class="pick" style="--c:${v.color}" href="${v.href}" ${ext}${v.yt ? ` data-yt="${v.yt}" data-kind="${v.kind}"` : ""}>
@@ -607,8 +613,10 @@ addEventListener("keydown", e => { if (e.key === "Escape") lbClose(); });
 // Màn mở đầu: vùng sáng đi theo chuột, soi rõ tường khung hình
 const hero = document.querySelector(".hero");
 if (!still && matchMedia("(hover: hover) and (pointer: fine)").matches) {
-  hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect();
-    hero.style.setProperty("--mx", (e.clientX - r.left) + "px"); hero.style.setProperty("--my", (e.clientY - r.top) + "px");
+  let spot = 0, sx = 0, sy = 0;
+  hero.addEventListener("pointermove", e => { sx = e.clientX; sy = e.clientY;
+    if (!spot) spot = requestAnimationFrame(() => { spot = 0; const r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", Math.round(sx - r.left) + "px"); hero.style.setProperty("--my", Math.round(sy - r.top) + "px"); });
     if (window.wallX) { wallX((e.clientX / innerWidth - .5) * -36); wallY((e.clientY / innerHeight - .5) * -24); } });
   hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", "-999px"); if (window.wallX) { wallX(0); wallY(0); } });
   addEventListener("pointermove", e => { mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5; }, { passive: true });
@@ -699,10 +707,12 @@ if (J) {
       let o = 0; if (D > 5 && D < 40) o = Math.min(1 - ss(13, 40, D), n === N - 1 ? 1 : ss(5, 8.4, D));
       if (o < .004) { if (s._on) { s._on = 0; s.style.visibility = "hidden"; } continue; }
       let sc = D0 / D; if (Math.abs(sc - 1) < .004) sc = 1;
-      s.style.transform = `translate3d(${(-cam.x * U * sc).toFixed(2)}px,${(cam.y * U * sc).toFixed(2)}px,0) scale(${sc.toFixed(4)})`;
-      s.style.opacity = o.toFixed(3); s.style.pointerEvents = D > 8.4 && D < 11.6 ? "auto" : "none";
+      const tf = `translate3d(${(-cam.x * U * sc).toFixed(1)}px,${(cam.y * U * sc).toFixed(1)}px,0) scale(${sc.toFixed(4)})`, op = o > .996 ? "1" : o.toFixed(3), pe = D > 8.4 && D < 11.6 ? "auto" : "none";
+      if (tf !== s._tf) s.style.transform = s._tf = tf;
+      if (op !== s._op) s.style.opacity = s._op = op;
+      if (pe !== s._pe) s.style.pointerEvents = s._pe = pe;
       if (!s._on) { s._on = 1; s.style.visibility = "visible"; } }
-    topEl.style.setProperty("--prog", (cam.c / (N - 1)).toFixed(4));
+    const pg = (cam.c / (N - 1)).toFixed(3); if (pg !== cam.pg) topEl.style.setProperty("--prog", cam.pg = pg);
     const a = Math.round(cam.c);
     if (a !== active) { active = a; hudN.textContent = `${p2(a + 1)} / ${p2(N)}`; hud.classList.toggle("end", a === N - 1); tapeEl.classList.toggle("hide", a === N - 1); if (sts[a].id === "con-so") countUp(); }
     if (cam.draw) cam.draw(dt);
@@ -711,8 +721,10 @@ if (J) {
   // Không gian 3D phía sau: tường khung hình ở trạm đầu, rồi đường hầm khung hình và bụi sáng dọc đường bay
   import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js").then(THREE => {
     const cv = document.getElementById("space");
-    let r; try { r = new THREE.WebGLRenderer({ canvas: cv, antialias: true }); } catch (e) { return; }
-    const BG = 0x07080a; r.setPixelRatio(Math.min(devicePixelRatio, 1.5)); r.setClearColor(BG);
+    let r; try { r = new THREE.WebGLRenderer({ canvas: cv, antialias: true, powerPreference: "high-performance" }); } catch (e) { return; }
+    // Nền nằm sau lớp phủ tối nên không cần nét căng: giới hạn số điểm ảnh phải vẽ, máy yếu thì tự hạ thêm
+    let q = 1; const ratio = () => Math.min(devicePixelRatio, 1.5, Math.sqrt(2.1e6 / (innerWidth * innerHeight))) * q;
+    const BG = 0x07080a; r.setPixelRatio(ratio()); r.setClearColor(BG);
     const scene = new THREE.Scene(); scene.fog = new THREE.Fog(BG, 9, 38);
     const pc = new THREE.PerspectiveCamera(50, 1, .1, 90);
     let dirty = true;
@@ -735,19 +747,23 @@ if (J) {
     const pts = new Float32Array(900 * 3); for (let i = 0; i < 900; i++) { const a = rnd() * Math.PI * 2, rad = 2.5 + rnd() * 16; pts[i * 3] = Math.cos(a) * rad * 1.4; pts[i * 3 + 1] = Math.sin(a) * rad; pts[i * 3 + 2] = -rnd() * FAR; }
     const dust = new THREE.BufferGeometry(); dust.setAttribute("position", new THREE.BufferAttribute(pts, 3));
     scene.add(new THREE.Points(dust, new THREE.PointsMaterial({ color: 0xb9b4a8, size: .07, transparent: true, opacity: .7 })));
-    const size = () => { r.setSize(innerWidth, innerHeight, false); pc.aspect = innerWidth / innerHeight; pc.updateProjectionMatrix(); dirty = true; };
+    const size = () => { r.setPixelRatio(ratio()); r.setSize(innerWidth, innerHeight, false); pc.aspect = innerWidth / innerHeight; pc.updateProjectionMatrix(); dirty = true; };
     size(); addEventListener("resize", size); cv.classList.add("on");
-    let pz = 1, px = 0, py = 0, pr = -1; const col = new THREE.Color();
+    let pz = 1, px = 0, py = 0, pr = -1, acc = 0, slow = 0, seen = 0; const col = new THREE.Color();
     cam.draw = dt => {
       if (document.hidden || !lb.hidden) return;
+      // Máy không theo kịp (khung hình rớt liên tục) thì hạ độ nét của nền, tối đa hai nấc
+      if (++seen > 90 && q > .5) { slow = dt > .024 ? slow + 1 : Math.max(0, slow - 2); if (slow > 45) { slow = 0; seen = 0; q *= .72; size(); } }
       const wallOn = cam.z > -20; wall.visible = wallOn;
       const red = cam.red || 0;
       if (red !== pr) { pr = red; dirty = true; col.setRGB((7 + 218 * red) / 255, (8 - 2 * red) / 255, (10 - 10 * red) / 255, THREE.SRGBColorSpace);
         scene.fog.color.copy(col); r.setClearColor(col); scene.fog.near = 9 - 5 * red; scene.fog.far = 38 - 18 * red; }
       const moving = Math.abs(cam.z - pz) + Math.abs(cam.x - px) + Math.abs(cam.y - py) > 1e-4;
       if (!wallOn && !moving && !dirty) return; // đứng yên thì không vẽ lại, đỡ tốn máy
+      acc += dt; if (!moving && !dirty && acc < .031) return; // tường chỉ trôi chậm: 30 khung hình/giây là đủ
+      const step = acc; acc = 0;
       dirty = false; pz = cam.z; px = cam.x; py = cam.y;
-      if (wallOn) for (const m of frames) { let y = m.position.y + m.userData.v * dt; if (y > SPAN / 2) y -= SPAN; else if (y < -SPAN / 2) y += SPAN; m.position.y = y;
+      if (wallOn) for (const m of frames) { let y = m.position.y + m.userData.v * step; if (y > SPAN / 2) y -= SPAN; else if (y < -SPAN / 2) y += SPAN; m.position.y = y;
         m.material.opacity = Math.max(0, Math.min(1, (cam.z - (wall.position.z + m.position.z) - 3.2) / 4.5)); }
       for (const m of tunnel) { const d = cam.z - m.position.z; m.visible = red < .97 && d > .6 && d < 42; if (m.visible) m.material.opacity = Math.min(1, (d - .6) / 4) * (1 - red); } // tới trạm cuối thì khung hình tan hẳn vào nền đỏ
       pc.position.set(cam.x, cam.y, cam.z); pc.rotation.set(0, 0, -cam.x * .01);
